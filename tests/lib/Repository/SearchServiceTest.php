@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Integration\Tests\API\Repository;
+namespace Ibexa\Tests\FieldTypeMatrix\Repository;
 
 use eZ\Publish\API\Repository\Tests\BaseTest;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 final class SearchServiceTest extends BaseTest
 {

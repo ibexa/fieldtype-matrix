@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Integration\Tests;
+namespace Ibexa\Tests\FieldTypeMatrix;
 
 use eZ\Publish\Core\Base\Container\Compiler;
 use RuntimeException;
