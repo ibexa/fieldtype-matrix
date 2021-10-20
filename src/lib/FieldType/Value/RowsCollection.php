@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
+namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 use ArrayObject;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
@@ -46,3 +46,5 @@ class RowsCollection extends ArrayObject
         parent::offsetSet($offset, $value);
     }
 }
+
+class_alias(RowsCollection::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection');

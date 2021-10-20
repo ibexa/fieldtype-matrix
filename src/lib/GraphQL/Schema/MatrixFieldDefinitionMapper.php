@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema;
+namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
 use eZ\Publish\API\Repository\ContentTypeService;
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
@@ -93,3 +93,5 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         throw new \Exception('Could not find content type for field definition');
     }
 }
+
+class_alias(MatrixFieldDefinitionMapper::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper');

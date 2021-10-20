@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema;
+namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
@@ -28,7 +28,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         $typeName = $this->typeName($args);
         $schema->addType(new Builder\Input\Type($typeName, 'input-object'));
 
-        /** @var FieldDefinition $fieldDefinition */
+        /** @var \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition */
         $fieldDefinition = $args['FieldDefinition'];
         foreach ($fieldDefinition->getFieldSettings()['columns'] as $column) {
             $schema->addFieldToType(
@@ -57,3 +57,5 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         return $this->nameHelper->matrixFieldDefinitionInputType($args['ContentType'], $args['FieldDefinition']);
     }
 }
+
+class_alias(MatrixFieldDefinitionInputSchemaWorker::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker');
