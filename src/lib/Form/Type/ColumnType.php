@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type;
+namespace Ibexa\FieldTypeMatrix\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,3 +38,5 @@ class ColumnType extends AbstractType
         $resolver->setDefault('translation_domain', 'matrix_fieldtype');
     }
 }
+
+class_alias(ColumnType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType');

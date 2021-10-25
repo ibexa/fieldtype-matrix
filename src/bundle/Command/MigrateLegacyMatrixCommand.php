@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtypeBundle\Command;
+namespace Ibexa\Bundle\FieldTypeMatrix\Command;
 
 use Doctrine\DBAL\Connection;
 use Exception;
@@ -15,7 +15,7 @@ use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter;
+use Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter;
 use SimpleXMLElement;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -47,7 +47,7 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configure()
     {
@@ -69,7 +69,7 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
@@ -355,3 +355,5 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
         return ['ezplatform:migrate:legacy_matrix'];
     }
 }
+
+class_alias(MigrateLegacyMatrixCommand::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand');
