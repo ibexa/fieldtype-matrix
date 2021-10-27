@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Integration\Tests;
+namespace Ibexa\Tests\FieldTypeMatrix;
 
 use eZ\Publish\API\Repository\Tests\SetupFactory\Legacy as CoreLegacySetupFactory;
 use eZ\Publish\Core\Base\ServiceContainer;
@@ -47,7 +47,7 @@ final class LegacySetupFactory extends CoreLegacySetupFactory
     {
         $configPath = realpath(__DIR__ . '/../../src/bundle/Resources/config/');
         if (false === $configPath) {
-            throw new RuntimeException('Unable to find EzPlatformMatrixFieldtype package config');
+            throw new RuntimeException('Unable to find FieldTypeMatrix package config');
         }
 
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($configPath));
