@@ -1,15 +1,15 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
 use eZ\Publish\Core\FieldType\Value as BaseValue;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
+use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class Value extends BaseValue
 {
@@ -50,3 +50,5 @@ class Value extends BaseValue
         return '';
     }
 }
+
+class_alias(Value::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value');

@@ -1,24 +1,23 @@
 {
-    "name": "ezsystems/ezplatform-matrix-fieldtype",
+    "name": "ibexa/fieldtype-matrix",
     "description": "Repository dedicated to Matrix Field Type for eZ Platform",
     "type": "library",
     "license": "GPL-2.0-only",
-    "authors": [
-        {
-            "name": "eZ dev-team & eZ Community",
-            "homepage": "https://github.com/ezsystems/ezplatform-matrix-fieldtype/contributors"
-        }
-    ],
+    "replace": {
+        "ezsystems/ezplatform-matrix-fieldtype": "*"
+    },
     "autoload": {
         "psr-4": {
             "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
+            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/",
+            "Ibexa\\FieldTypeMatrix\\": "src/lib/",
+            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/"
         }
     },
     "autoload-dev": {
-      "psr-4": {
-        "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
-      }
+        "psr-4": {
+            "Ibexa\\Tests\\FieldTypeMatrix\\": "tests/lib/"
+        }
     },
     "require": {
         "php": "^7.3",
@@ -45,18 +44,18 @@
         "ezsystems/ezplatform-rest": "^4.0@dev",
         "ezsystems/ezplatform-http-cache": "^4.0@dev",
         "ezsystems/ezplatform-design-engine": "^4.0@dev",
-        "ezsystems/ezplatform-code-style": "^0.1.0",
+        "ezsystems/ezplatform-code-style": "^1.0",
         "friendsofphp/php-cs-fixer": "^2.16.0",
         "phpunit/phpunit": "^6.4"
     },
     "scripts": {
-        "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
+        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
-        "test": "phpunit -c phpunit-integration-legacy.xml"
+        "test": "phpunit -c phpunit.xml"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-main": "4.0.x-dev"
         }
     }
 }
