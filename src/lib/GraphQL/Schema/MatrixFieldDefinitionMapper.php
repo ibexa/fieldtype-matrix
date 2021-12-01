@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
-use EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
-use EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
+use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
+use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 
 class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper
 {
-    /** @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper */
+    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
-    /** @var \eZ\Publish\API\Repository\ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
     public function __construct(FieldDefinitionMapper $innerMapper, NameHelper $nameHelper, ContentTypeService $contentTypeService)

@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ibexa\Tests\FieldTypeMatrix;
 
-use eZ\Publish\API\Repository\Tests\SetupFactory\Legacy as CoreLegacySetupFactory;
-use eZ\Publish\Core\Base\ServiceContainer;
+use Ibexa\Contracts\Core\Test\Repository\SetupFactory\Legacy as CoreLegacySetupFactory;
+use Ibexa\Core\Base\ServiceContainer;
 use RuntimeException;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

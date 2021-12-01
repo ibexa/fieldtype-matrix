@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
-use eZ\Publish\SPI\FieldType\Value;
-use EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
+use Ibexa\Contracts\Core\FieldType\Value;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\FieldTypeMatrix\FieldType\Value as MatrixValue;
 
 class InputHandler implements FieldTypeInputHandler

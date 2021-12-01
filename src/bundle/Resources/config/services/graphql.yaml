@@ -5,7 +5,7 @@ services:
         public: false
 
     Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionMapper:
-        decorates: EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
         arguments:
             $innerMapper: '@Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionMapper.inner'
 
