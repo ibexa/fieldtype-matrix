@@ -80,7 +80,7 @@ class MatrixFieldType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($columnsByIdentifier) {
             $value = $event->getData();
 
-            /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row $originalRow */
+            /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\Row $originalRow */
             foreach ($value->getRows() as $originalRow) {
                 $cells = $originalRow->getCells();
                 $rows[] = new Row(array_intersect_key($cells, $columnsByIdentifier));

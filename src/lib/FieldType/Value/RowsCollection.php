@@ -9,14 +9,14 @@ declare(strict_types=1);
 namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 use ArrayObject;
-use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
+use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 
 class RowsCollection extends ArrayObject
 {
     /**
-     * @param \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row[] $elements
+     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $elements
      *
-     * @throws \eZ\Publish\Core\Base\Exceptions\InvalidArgumentType
+     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
      */
     public function __construct(array $elements = [])
     {
@@ -31,7 +31,7 @@ class RowsCollection extends ArrayObject
      * @param mixed $offset
      * @param mixed $value
      *
-     * @throws \eZ\Publish\Core\Base\Exceptions\InvalidArgumentType
+     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
      */
     public function offsetSet($offset, $value)
     {
