@@ -36,7 +36,7 @@
     },
     "require-dev": {
         "ibexa/ci-scripts": "^0.2@dev",
-        "ibexa/doctrine-dbal-schema": "^4.0@dev",
+        "ibexa/doctrine-schema": "^4.0@dev",
         "ibexa/admin-ui": "^4.0@dev",
         "ibexa/user": "^4.0@dev",
         "ibexa/fieldtype-richtext": "^4.0@dev",
