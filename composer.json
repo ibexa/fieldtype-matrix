@@ -45,7 +45,7 @@
         "ibexa/http-cache": "^4.0@dev",
         "ibexa/design-engine": "^4.0@dev",
         "ibexa/code-style": "^1.0",
-        "friendsofphp/php-cs-fixer": "^2.16.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^6.4"
     },
     "scripts": {
