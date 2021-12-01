@@ -37,7 +37,8 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
                     $column['identifier'],
                     'String',
                     ['description' => $column['name']]
-                ));
+                )
+            );
         }
     }
 

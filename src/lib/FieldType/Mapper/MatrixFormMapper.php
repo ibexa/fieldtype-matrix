@@ -74,7 +74,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 $formConfig->getFormFactory()->createBuilder()
                     ->create(
                         'value',
-                        MatrixFieldType::class, [
+                        MatrixFieldType::class,
+                        [
                             'label' => $fieldDefinition->getName(),
                             'required' => $fieldDefinition->isRequired,
                             'columns' => $fieldDefinition->fieldSettings['columns'],
