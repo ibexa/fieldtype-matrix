@@ -49,7 +49,7 @@
         "phpunit/phpunit": "^6.4"
     },
     "scripts": {
-        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php --show-progress=dots",
+        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
         "test": "phpunit -c phpunit.xml"
     },
