@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use EzSystems\EzPlatformGraphQL\Schema\Builder;
-use EzSystems\EzPlatformGraphQL\Schema\Worker;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\GraphQL\Schema\Builder;
+use Ibexa\GraphQL\Schema\Worker;
 
 class MatrixFieldDefinitionInputSchemaWorker implements Worker
 {
-    /** @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper */
+    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
     public function __construct(NameHelper $nameHelper)
@@ -28,7 +28,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         $typeName = $this->typeName($args);
         $schema->addType(new Builder\Input\Type($typeName, 'input-object'));
 
-        /** @var \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition */
         $fieldDefinition = $args['FieldDefinition'];
         foreach ($fieldDefinition->getFieldSettings()['columns'] as $column) {
             $schema->addFieldToType(
@@ -37,7 +37,8 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
                     $column['identifier'],
                     'String',
                     ['description' => $column['name']]
-                ));
+                )
+            );
         }
     }
 

@@ -8,10 +8,10 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\FieldType\Mapper;
 
-use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
-use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
-use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
+use Ibexa\AdminUi\FieldType\FieldDefinitionFormMapperInterface;
+use Ibexa\AdminUi\Form\Data\FieldDefinitionData;
+use Ibexa\Contracts\ContentForms\Data\Content\FieldData;
+use Ibexa\Contracts\ContentForms\FieldType\FieldValueFormMapperInterface;
 use Ibexa\FieldTypeMatrix\Form\Type\ColumnType;
 use Ibexa\FieldTypeMatrix\Form\Type\FieldType\MatrixFieldType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -28,7 +28,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * - default value.
      *
      * @param \Symfony\Component\Form\FormInterface $fieldDefinitionForm form for current FieldDefinition
-     * @param \EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
+     * @param \Ibexa\AdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
      */
     public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
     {
@@ -62,7 +62,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * Allows to add form fields for content edition.
      *
      * @param \Symfony\Component\Form\FormInterface $fieldForm form for the current Field
-     * @param \EzSystems\EzPlatformContentForms\Data\Content\FieldData $data underlying data for current Field form
+     * @param \Ibexa\Contracts\ContentForms\Data\Content\FieldData $data underlying data for current Field form
      */
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
     {
@@ -74,7 +74,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 $formConfig->getFormFactory()->createBuilder()
                     ->create(
                         'value',
-                        MatrixFieldType::class, [
+                        MatrixFieldType::class,
+                        [
                             'label' => $fieldDefinition->getName(),
                             'required' => $fieldDefinition->isRequired,
                             'columns' => $fieldDefinition->fieldSettings['columns'],

@@ -10,11 +10,11 @@ namespace Ibexa\Bundle\FieldTypeMatrix\Command;
 
 use Doctrine\DBAL\Connection;
 use Exception;
-use eZ\Bundle\EzPublishCoreBundle\Command\BackwardCompatibleCommand;
-use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
-use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
-use eZ\Publish\SPI\Persistence\Content\FieldValue;
-use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Bundle\Core\Command\BackwardCompatibleCommand;
+use Ibexa\Contracts\Core\Persistence\Content\FieldValue;
+use Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition;
+use Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue;
 use Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter;
 use SimpleXMLElement;
 use Symfony\Component\Console\Command\Command;
@@ -47,7 +47,7 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -69,7 +69,7 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {

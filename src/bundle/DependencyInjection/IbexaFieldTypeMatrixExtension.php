@@ -54,7 +54,7 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
     {
         $configFile = __DIR__ . '/../Resources/config/kernel.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
-        $container->prependExtensionConfig('ezpublish', $config);
+        $container->prependExtensionConfig('ibexa', $config);
         $container->addResource(new FileResource($configFile));
     }
 

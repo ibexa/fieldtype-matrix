@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class FieldValueResolver

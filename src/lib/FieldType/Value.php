@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\FieldType;
 
-use eZ\Publish\Core\FieldType\Value as BaseValue;
+use Ibexa\Core\FieldType\Value as BaseValue;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class Value extends BaseValue
 {
-    /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection */
+    /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection */
     protected $rows;
 
     /**
@@ -25,7 +25,7 @@ class Value extends BaseValue
     }
 
     /**
-     * @return \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection
+     * @return \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection
      */
     public function getRows(): RowsCollection
     {
@@ -33,7 +33,7 @@ class Value extends BaseValue
     }
 
     /**
-     * @param \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection $rows
+     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows
      */
     public function setRows(RowsCollection $rows): void
     {

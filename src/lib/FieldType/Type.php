@@ -8,17 +8,17 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\FieldType;
 
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use eZ\Publish\Core\FieldType\FieldType;
-use eZ\Publish\Core\FieldType\ValidationError;
-use eZ\Publish\Core\FieldType\Value as FieldTypeValue;
-use eZ\Publish\SPI\FieldType\Value as SPIValue;
+use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\FieldType\FieldType;
+use Ibexa\Core\FieldType\ValidationError;
+use Ibexa\Core\FieldType\Value as FieldTypeValue;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class Type extends FieldType
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $settingsSchema = [
         'minimum_rows' => [
@@ -43,7 +43,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getSortInfo(FieldTypeValue $value)
     {
@@ -51,7 +51,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validateFieldSettings($fieldSettings): array
     {
@@ -93,7 +93,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function createValueFromInput($inputValue)
     {
@@ -105,7 +105,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFieldTypeIdentifier(): string
     {
@@ -113,7 +113,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
     {
@@ -121,7 +121,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getEmptyValue(): SPIValue
     {
@@ -131,7 +131,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function fromHash($hash): SPIValue
     {
@@ -145,7 +145,7 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function checkValueStructure(FieldTypeValue $value)
     {
@@ -154,16 +154,16 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isEmptyValue(SPIValue $value): bool
     {
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         return $value->getRows()->count() === 0;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
     {
@@ -173,7 +173,7 @@ class Type extends FieldType
 
         $countNonEmptyRows = 0;
 
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         foreach ($value->getRows() as $row) {
             if (!$row->isEmpty()) {
                 ++$countNonEmptyRows;
@@ -195,11 +195,11 @@ class Type extends FieldType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function toHash(SPIValue $value)
     {
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         $rows = $value->getRows();
 
         $hash['entries'] = [];
