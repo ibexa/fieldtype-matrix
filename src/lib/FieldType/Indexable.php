@@ -11,7 +11,7 @@ namespace Ibexa\FieldTypeMatrix\FieldType;
 use Ibexa\Contracts\Core\FieldType\Indexable as IndexableInterface;
 use Ibexa\Contracts\Core\Persistence\Content\Field;
 use Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition;
-use Ibexa\Core\Search;
+use Ibexa\Contracts\Core\Search;
 
 final class Indexable implements IndexableInterface
 {
