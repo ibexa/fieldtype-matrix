@@ -20,7 +20,7 @@
         {% set head_cols = head_cols|merge([{ content: column['name'] }]) %}
     {% endfor %}
 
-    {% include '@ezdesign/ui/component/table/table.html.twig' with {
+    {% include '@ibexadesign/ui/component/table/table.html.twig' with {
         headline: 'field.columns'|trans|desc('Columns'),
         head_cols,
         body_rows,

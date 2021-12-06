@@ -16,7 +16,7 @@
     {% endfor %}
     {% set head_cols = head_cols|merge([{}]) %}
 
-    {% embed '@ezdesign/ui/component/table/table.html.twig' with {
+    {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
         head_cols,
         class: 'ibexa-table--not-striped',
         table_body_attr: {
@@ -26,7 +26,7 @@
         show_head_cols_if_empty: true,
     } %}
         {% block header %}
-            {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
+            {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
                 {% trans_default_domain 'matrix_fieldtype' %}
 
                 {% block actions %}
@@ -82,7 +82,7 @@
     {% endfor %}
     {% set body_row_cols = body_row_cols|merge([{ content: col_actions }]) %}
 
-    {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
+    {% include '@ibexadesign/ui/component/table/table_body_row.html.twig' with {
         body_row_cols,
         class: 'ibexa-table__matrix-entry',
     } %}

@@ -15,7 +15,7 @@
                 <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-matrix-settings__column-checkbox" />
             {% endset %}
 
-            {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
+            {% include '@ibexadesign/ui/component/table/table_body_row.html.twig' with {
                 body_row_cols: [
                     { has_checkbox: true, content: col_checkbox, raw: true },
                     { content: form_widget(form.columns.vars.prototype.name), raw: true },
@@ -42,7 +42,7 @@
             }]) %}
         {% endfor %}
 
-        {% embed '@ezdesign/ui/component/table/table.html.twig' with {
+        {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
             headline: 'field.columns'|trans|desc('Columns'),
             head_cols: [
                 { has_checkbox: true },
@@ -55,7 +55,7 @@
             }
         } %}
             {% block header %}
-                {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
+                {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
                     {% block actions %}
                         <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-column">
                             <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
