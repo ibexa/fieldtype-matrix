@@ -1,4 +1,4 @@
-(function(global, doc, eZ) {
+(function(global, doc, ibexa) {
     const SELECTOR_REMOVE_MATRIX_BULK = '.ibexa-btn--bulk-remove-matrix';
     const SELECTOR_REMOVE_MATRIX_ENTRY = '.ibexa-btn--remove-matrix-entry';
     const SELECTOR_ADD_MATRIX_ENTRY = '.ibexa-btn--add-matrix-entry';
@@ -13,7 +13,7 @@
         return;
     }
 
-    class EzMatrixValidator extends eZ.BaseFieldValidator {
+    class EzMatrixValidator extends ibexa.BaseFieldValidator {
         /**
          * Adds an item.
          *
@@ -161,5 +161,5 @@
 
     validator.init();
 
-    global.eZ.fieldTypeValidators = global.eZ.fieldTypeValidators ? [...global.eZ.fieldTypeValidators, validator] : [validator];
-})(window, window.document, window.eZ);
+    global.ibexa.fieldTypeValidators = global.ibexa.fieldTypeValidators ? [...global.ibexa.fieldTypeValidators, validator] : [validator];
+})(window, window.document, window.ibexa);

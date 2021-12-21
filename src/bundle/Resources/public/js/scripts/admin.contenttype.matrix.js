@@ -1,11 +1,11 @@
 (function(global, doc) {
-    const SELECTOR_SETTINGS_COLUMNS = '.ez-matrix-settings__columns';
-    const SELECTOR_COLUMN = '.ez-matrix-settings__column';
+    const SELECTOR_SETTINGS_COLUMNS = '.ibexa-matrix-settings__columns';
+    const SELECTOR_COLUMN = '.ibexa-matrix-settings__column';
     const SELECTOR_COLUMNS_CONTAINER = '.ibexa-table__body';
-    const SELECTOR_COLUMN_CHECKBOX = '.ez-matrix-settings__column-checkbox';
+    const SELECTOR_COLUMN_CHECKBOX = '.ibexa-matrix-settings__column-checkbox';
     const SELECTOR_ADD_COLUMN = '.ibexa-btn--add-column';
     const SELECTOR_REMOVE_COLUMN = '.ibexa-btn--remove-column';
-    const SELECTOR_TEMPLATE = '.ez-matrix-settings__column-template';
+    const SELECTOR_TEMPLATE = '.ibexa-matrix-settings__column-template';
     const NUMBER_PLACEHOLDER = /__number__/g;
     const getNextIndex = (parentNode) => {
         return parentNode.dataset.nextIndex++;
