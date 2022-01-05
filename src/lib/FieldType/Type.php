@@ -1,19 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use eZ\Publish\Core\FieldType\FieldType;
-use eZ\Publish\Core\FieldType\ValidationError;
-use eZ\Publish\Core\FieldType\Value as FieldTypeValue;
-use eZ\Publish\SPI\FieldType\Value as SPIValue;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
+use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\FieldType\FieldType;
+use Ibexa\Core\FieldType\ValidationError;
+use Ibexa\Core\FieldType\Value as FieldTypeValue;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class Type extends FieldType
 {
@@ -158,7 +158,7 @@ class Type extends FieldType
      */
     public function isEmptyValue(SPIValue $value): bool
     {
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         return $value->getRows()->count() === 0;
     }
 
@@ -173,7 +173,7 @@ class Type extends FieldType
 
         $countNonEmptyRows = 0;
 
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         foreach ($value->getRows() as $row) {
             if (!$row->isEmpty()) {
                 ++$countNonEmptyRows;
@@ -199,7 +199,7 @@ class Type extends FieldType
      */
     public function toHash(SPIValue $value)
     {
-        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         $rows = $value->getRows();
 
         $hash['entries'] = [];
@@ -216,3 +216,5 @@ class Type extends FieldType
         return true;
     }
 }
+
+class_alias(Type::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Type');

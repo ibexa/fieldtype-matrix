@@ -1,19 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper;
+namespace Ibexa\FieldTypeMatrix\FieldType\Mapper;
 
-use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
-use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
-use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType;
+use Ibexa\AdminUi\FieldType\FieldDefinitionFormMapperInterface;
+use Ibexa\AdminUi\Form\Data\FieldDefinitionData;
+use Ibexa\Contracts\ContentForms\Data\Content\FieldData;
+use Ibexa\Contracts\ContentForms\FieldType\FieldValueFormMapperInterface;
+use Ibexa\FieldTypeMatrix\Form\Type\ColumnType;
+use Ibexa\FieldTypeMatrix\Form\Type\FieldType\MatrixFieldType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;
@@ -27,8 +27,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * - field settings
      * - default value.
      *
-     * @param FormInterface $fieldDefinitionForm form for current FieldDefinition
-     * @param FieldDefinitionData $data underlying data for current FieldDefinition form
+     * @param \Symfony\Component\Form\FormInterface $fieldDefinitionForm form for current FieldDefinition
+     * @param \Ibexa\AdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
      */
     public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
     {
@@ -61,8 +61,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * Maps Field form to current FieldType.
      * Allows to add form fields for content edition.
      *
-     * @param FormInterface $fieldForm form for the current Field
-     * @param FieldData $data underlying data for current Field form
+     * @param \Symfony\Component\Form\FormInterface $fieldForm form for the current Field
+     * @param \Ibexa\Contracts\ContentForms\Data\Content\FieldData $data underlying data for current Field form
      */
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
     {
@@ -74,7 +74,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 $formConfig->getFormFactory()->createBuilder()
                     ->create(
                         'value',
-                        MatrixFieldType::class, [
+                        MatrixFieldType::class,
+                        [
                             'label' => $fieldDefinition->getName(),
                             'required' => $fieldDefinition->isRequired,
                             'columns' => $fieldDefinition->fieldSettings['columns'],
@@ -86,3 +87,5 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
             );
     }
 }
+
+class_alias(MatrixFormMapper::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper');

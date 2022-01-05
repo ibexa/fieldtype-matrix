@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
+namespace Ibexa\FieldTypeMatrix\Form\Type\FieldType;
 
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Transformer\FieldTypeModelTransformer;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
+use Ibexa\FieldTypeMatrix\Form\Transformer\FieldTypeModelTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -77,10 +77,10 @@ class MatrixFieldType extends AbstractType
         $columnsByIdentifier = array_flip(array_column($options['columns'], 'identifier'));
 
         // Filter out unnecessary/obsolete columns data
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($columnsByIdentifier) {
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($columnsByIdentifier) {
             $value = $event->getData();
 
-            /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row $originalRow */
+            /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\Row $originalRow */
             foreach ($value->getRows() as $originalRow) {
                 $cells = $originalRow->getCells();
                 $rows[] = new Row(array_intersect_key($cells, $columnsByIdentifier));
@@ -92,3 +92,5 @@ class MatrixFieldType extends AbstractType
         $builder->addModelTransformer(new FieldTypeModelTransformer());
     }
 }
+
+class_alias(MatrixFieldType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType');
