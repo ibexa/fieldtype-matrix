@@ -13,7 +13,7 @@
     </php>
     <testsuites>
         <testsuite name="fieldtype-matrix">
-            <directory>/tests/lib/</directory>
+            <directory>tests/lib/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "ext-libxml": "*",
         "ext-simplexml": "*",
         "ibexa/core": "^4.0@dev",
@@ -46,7 +46,7 @@
         "ibexa/design-engine": "^4.0@dev",
         "ibexa/code-style": "^1.0",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^9.5"
     },
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",

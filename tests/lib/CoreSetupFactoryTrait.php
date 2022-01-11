@@ -19,22 +19,22 @@ use Symfony\Component\DependencyInjection\Reference;
 trait CoreSetupFactoryTrait
 {
     /**
-     * Load eZ Platform Kernel settings and setup container.
+     * Load Ibexa/Core settings and setup container.
      *
-     * @todo refactor ezplatform-kernel SetupFactory to include that setup w/o relying on config.php
+     * @todo refactor ibexa/core SetupFactory to include that setup w/o relying on config.php
      *
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
      *
      * @throws \Exception
      */
-    protected function loadCoreSettings(ContainerBuilder $containerBuilder)
+    protected function loadCoreSettings(ContainerBuilder $containerBuilder): void
     {
-        // @todo refactor when refactoring kernel SetupFactory to avoid hardcoding package path
-        $kernelRootDir = realpath(__DIR__ . '/../../vendor/ezsystems/ezplatform-kernel');
+        // @todo refactor when refactoring SetupFactory to avoid hardcoding package path
+        $kernelRootDir = realpath(__DIR__ . '/../../vendor/ibexa/core');
         if (false === $kernelRootDir) {
-            throw new RuntimeException('Unable to find the ezplatform-kernel package directory');
+            throw new RuntimeException('Unable to find the ibexa/core package directory');
         }
-        $settingsPath = "{$kernelRootDir}/eZ/Publish/Core/settings";
+        $settingsPath = "{$kernelRootDir}/src/lib/Resources/settings";
 
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
 
@@ -56,14 +56,15 @@ trait CoreSetupFactoryTrait
         $loader->load('search_engines/common.yml');
         $loader->load('settings.yml');
         $loader->load('utils.yml');
-        $loader->load('tests/common.yml');
         $loader->load('policies.yml');
         $loader->load('thumbnails.yml');
-
         $loader->load('search_engines/legacy.yml');
-        $loader->load('tests/integration_legacy.yml');
 
-        // Cache settings (takes same env variables as ezplatform does, only supports "singleredis" setup)
+        $integrationSettingsLoader = $this->provideIntegrationSettingsLoader($kernelRootDir, $containerBuilder);
+        $integrationSettingsLoader->load('common.yml');
+        $integrationSettingsLoader->load('integration_legacy.yml');
+
+        // Cache settings (takes same env variables as Ibexa DXP does, only supports "singleredis" setup)
         if (getenv('CUSTOM_CACHE_POOL') === 'singleredis') {
             /*
              * Symfony\Component\Cache\Adapter\RedisAdapter
@@ -108,6 +109,15 @@ trait CoreSetupFactoryTrait
         );
 
         // load overrides just before creating test Container
-        $loader->load('tests/override.yml');
+        $integrationSettingsLoader->load('override.yml');
+    }
+
+    private function provideIntegrationSettingsLoader(
+        string $kernelRootDir,
+        ContainerBuilder $containerBuilder
+    ): YamlFileLoader {
+        $settingsPath = "{$kernelRootDir}/tests/integration/Core/Resources/settings";
+
+        return new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
     }
 }
