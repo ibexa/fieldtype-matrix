@@ -15,17 +15,17 @@ services:
         arguments:
             $fieldTypeIdentifier: '%ezplatform.fieldtype.matrix.identifier%'
         tags:
-            - { name: ezplatform.field_type, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter:
         tags:
-            - { name: ezplatform.field_type.legacy_storage.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type.storage.legacy.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Mapper\MatrixFormMapper:
         tags:
-            - { name: ezplatform.field_type.form_mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
-            - { name: ezplatform.field_type.form_mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.admin_ui.field_type.form.mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.admin_ui.field_type.form.mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Indexable:
         tags:
-            - { name: ezplatform.field_type.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }

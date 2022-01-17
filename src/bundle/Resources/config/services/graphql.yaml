@@ -13,15 +13,15 @@ services:
 
     Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionSchemaWorker:
         tags:
-            - { name: ezplatform_graphql.domain_schema_worker }
+            - { name: ibexa.graphql.domain.schema.worker }
 
     Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker:
         tags:
-            - { name: ezplatform_graphql.domain_schema_worker }
+            - { name: ibexa.graphql.domain.schema.worker }
 
     Ibexa\FieldTypeMatrix\GraphQL\InputHandler:
         tags:
-            - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: ezmatrix }
+            - { name: ibexa.graphql.field_type.input.handler, fieldtype: ezmatrix }
 
     Ibexa\FieldTypeMatrix\GraphQL\FieldValueResolver:
         tags:
