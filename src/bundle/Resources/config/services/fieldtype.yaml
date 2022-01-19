@@ -11,7 +11,7 @@ services:
         autoconfigure: false
         autowire: true
         public: true
-        parent: ezpublish.fieldType
+        parent: Ibexa\Core\FieldType\FieldType
         arguments:
             $fieldTypeIdentifier: '%ezplatform.fieldtype.matrix.identifier%'
         tags:
