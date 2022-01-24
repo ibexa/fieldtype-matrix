@@ -23,6 +23,11 @@
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
         const template = settingsNode.querySelector(SELECTOR_TEMPLATE).innerHTML;
         const node = settingsNode.querySelector(SELECTOR_COLUMNS_CONTAINER);
+        const emptyPlaceholder = node.querySelector('.ibexa-table__empty-table-cell');
+
+        if (emptyPlaceholder) {
+            emptyPlaceholder.closest('.ibexa-table__row').remove();
+        }
 
         node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(node)));
 

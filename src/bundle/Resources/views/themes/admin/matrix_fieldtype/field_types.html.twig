@@ -12,7 +12,9 @@
     <div class="ibexa-matrix-settings__columns">
         <script type="text/template" class="ibexa-matrix-settings__column-template">
             {% set col_checkbox %}
-                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox" />
+                <div class="form-check">
+                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                </div>
             {% endset %}
 
             {% include '@ibexadesign/ui/component/table/table_body_row.html.twig' with {
@@ -29,7 +31,9 @@
         {% set body_rows = [] %}
         {% for column in form.columns %}
             {% set col_checkbox %}
-                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                <div class="form-check">
+                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                </div>
             {% endset %}
 
             {% set body_rows = body_rows|merge([{
@@ -57,15 +61,21 @@
             {% block header %}
                 {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
                     {% block actions %}
-                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-column">
+                        <button type="button" class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small ibexa-btn--add-column">
                             <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
                                 <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
                             </svg>
+                            <span class="ibexa-btn__label">
+                                {{ 'field.column.add_new'|trans|desc('Add new') }}
+                            </span>
                         </button>
-                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-column">
+                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--remove-column">
                             <svg class="ibexa-icon ibexa-icon--small ibexa-icon--trash">
                                 <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
                             </svg>
+                            <span class="ibexa-btn__label">
+                                {{ 'field.column.delete'|trans|desc('Delete') }}
+                            </span>
                         </button>
                     {% endblock %}
                 {% endembed %}
