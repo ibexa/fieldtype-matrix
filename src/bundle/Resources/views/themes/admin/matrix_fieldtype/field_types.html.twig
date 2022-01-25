@@ -48,6 +48,7 @@
 
         {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
             headline: 'field.columns'|trans|desc('Columns'),
+            class: 'ibexa-table--has-bulk-checkbox',
             head_cols: [
                 { has_checkbox: true },
                 { content: 'field.column.name'|trans|desc('Name') },
