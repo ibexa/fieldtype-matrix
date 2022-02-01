@@ -1,5 +1,5 @@
 parameters:
-    ezplatform.fieldtype.matrix.identifier: 'ezmatrix'
+    ibexa.field_type.matrix.identifier: 'ezmatrix'
 
 services:
     _defaults:
@@ -13,19 +13,19 @@ services:
         public: true
         parent: Ibexa\Core\FieldType\FieldType
         arguments:
-            $fieldTypeIdentifier: '%ezplatform.fieldtype.matrix.identifier%'
+            $fieldTypeIdentifier: '%ibexa.field_type.matrix.identifier%'
         tags:
-            - { name: ibexa.field_type, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type, alias: '%ibexa.field_type.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter:
         tags:
-            - { name: ibexa.field_type.storage.legacy.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type.storage.legacy.converter, alias: '%ibexa.field_type.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Mapper\MatrixFormMapper:
         tags:
-            - { name: ibexa.admin_ui.field_type.form.mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
-            - { name: ibexa.admin_ui.field_type.form.mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.admin_ui.field_type.form.mapper.definition, fieldType: '%ibexa.field_type.matrix.identifier%' }
+            - { name: ibexa.admin_ui.field_type.form.mapper.value, fieldType: '%ibexa.field_type.matrix.identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Indexable:
         tags:
-            - { name: ibexa.field_type.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ibexa.field_type.indexable, alias: '%ibexa.field_type.matrix.identifier%' }
