@@ -83,7 +83,7 @@ trait CoreSetupFactoryTrait
                 ->setArguments([new Reference('ezpublish.cache_pool.driver.redis'), '', 120]);
         }
 
-        $containerBuilder->setParameter('ezpublish.kernel.root_dir', realpath($kernelRootDir));
+        $containerBuilder->setParameter('ibexa.kernel.root_dir', realpath($kernelRootDir));
 
         $containerBuilder->addCompilerPass(new Compiler\FieldTypeRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Persistence\FieldTypeRegistryPass());
@@ -99,12 +99,12 @@ trait CoreSetupFactoryTrait
         $containerBuilder->addCompilerPass(new Compiler\Search\FieldRegistryPass());
 
         $containerBuilder->setParameter(
-            'legacy_dsn',
+            'ibexa.persistence.legacy.dsn',
             self::$dsn
         );
 
         $containerBuilder->setParameter(
-            'io_root_dir',
+            'ibexa.io.dir.root',
             self::$ioRootDir . '/'
         );
 
