@@ -1,4 +1,4 @@
-(function(global, doc, ibexa) {
+(function (global, doc, ibexa) {
     const SELECTOR_REMOVE_MATRIX_BULK = '.ibexa-btn--bulk-remove-matrix';
     const SELECTOR_REMOVE_MATRIX_ENTRY = '.ibexa-btn--remove-matrix-entry';
     const SELECTOR_ADD_MATRIX_ENTRY = '.ibexa-btn--add-matrix-entry';

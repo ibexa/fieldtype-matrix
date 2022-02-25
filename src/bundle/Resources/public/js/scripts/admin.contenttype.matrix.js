@@ -1,4 +1,4 @@
-(function(global, doc) {
+(function (global, doc) {
     const SELECTOR_SETTINGS_COLUMNS = '.ibexa-matrix-settings__columns';
     const SELECTOR_COLUMN = '.ibexa-matrix-settings__column';
     const SELECTOR_COLUMNS_CONTAINER = '.ibexa-table__body';
