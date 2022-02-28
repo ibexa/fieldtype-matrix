@@ -5,7 +5,7 @@
     "repository": "https://github.com/ezsystems/ezplatform-matrix-fieldtype.git",
     "private": true,
     "devDependencies": {
-        "eslint-config-ibexa": "git+https://github.com/ibexa/eslint-config-ibexa.git#add-prettier"
+        "eslint-config-ibexa": "https://github.com/ibexa/eslint-config-ibexa.git"
     },
     "scripts": {
         "test": "yarn eslint-test",
