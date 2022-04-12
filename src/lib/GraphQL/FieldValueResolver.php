@@ -1,13 +1,15 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL;
+declare(strict_types=1);
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
+namespace Ibexa\FieldTypeMatrix\GraphQL;
+
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class FieldValueResolver
 {
@@ -15,7 +17,7 @@ class FieldValueResolver
     {
         $silentRows = [];
 
-        /** @var RowsCollection $rows $rows */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows $rows */
         $rows = $content->getFieldValue($fieldDefIdentifier)->getRows();
         foreach ($rows as $row) {
             $silentRows[] = new SilentRow($row->getCells());
@@ -24,3 +26,5 @@ class FieldValueResolver
         return new RowsCollection($silentRows);
     }
 }
+
+class_alias(FieldValueResolver::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\FieldValueResolver');
