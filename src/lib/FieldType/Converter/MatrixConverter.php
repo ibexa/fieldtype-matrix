@@ -1,19 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter;
+namespace Ibexa\FieldTypeMatrix\FieldType\Converter;
 
-use eZ\Publish\Core\FieldType\FieldSettings;
-use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
-use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
-use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
-use eZ\Publish\SPI\Persistence\Content\FieldValue;
-use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Contracts\Core\Persistence\Content\FieldValue;
+use Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Core\FieldType\FieldSettings;
+use Ibexa\Core\Persistence\Legacy\Content\FieldValue\Converter;
+use Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition;
+use Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue;
 
 class MatrixConverter implements Converter
 {
@@ -23,8 +23,8 @@ class MatrixConverter implements Converter
      *       Rather allow invalid value or omit it to let validation layer in FieldType handle issues when user tried
      *       to publish the given draft.
      *
-     * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $value
-     * @param \eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue $storageFieldValue
+     * @param \Ibexa\Contracts\Core\Persistence\Content\FieldValue $value
+     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue $storageFieldValue
      */
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue): void
     {
@@ -36,8 +36,8 @@ class MatrixConverter implements Converter
     /**
      * Converts data from $value to $fieldValue.
      *
-     * @param \eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue $value
-     * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $fieldValue
+     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue $value
+     * @param \Ibexa\Contracts\Core\Persistence\Content\FieldValue $fieldValue
      */
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue): void
     {
@@ -49,8 +49,8 @@ class MatrixConverter implements Converter
     /**
      * Converts field definition data in $fieldDef into $storageFieldDef.
      *
-     * @param \eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition $fieldDef
-     * @param \eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
+     * @param \Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition $fieldDef
+     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
      */
     public function toStorageFieldDefinition(FieldDefinition $fieldDef, StorageFieldDefinition $storageDef): void
     {
@@ -59,7 +59,7 @@ class MatrixConverter implements Converter
         $columns = array_values($fieldSettings['columns']);
         $minimumRows = (int)$fieldSettings['minimum_rows'];
 
-        array_walk($columns, function ($column) {
+        array_walk($columns, static function ($column) {
             return [
                 'identifier' => trim($column['identifier'] ?? ''),
                 'name' => trim($column['name'] ?? ''),
@@ -73,8 +73,8 @@ class MatrixConverter implements Converter
     /**
      * Converts field definition data in $storageDef into $fieldDef.
      *
-     * @param \eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
-     * @param \eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition $fieldDef
+     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
+     * @param \Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition $fieldDef
      */
     public function toFieldDefinition(StorageFieldDefinition $storageDef, FieldDefinition $fieldDef): void
     {
@@ -102,3 +102,5 @@ class MatrixConverter implements Converter
         return false;
     }
 }
+
+class_alias(MatrixConverter::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter');
