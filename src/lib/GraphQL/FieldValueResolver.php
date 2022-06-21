@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
-use Ibexa\GraphQL\Value\Item;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
+use Ibexa\GraphQL\Value\Item;
 
 class FieldValueResolver
 {
