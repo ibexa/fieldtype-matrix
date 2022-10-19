@@ -1,6 +1,8 @@
 {% trans_default_domain 'matrix_fieldtype' %}
 
 {% block ezplatform_fieldtype_ezmatrix_widget %}
+    {% set readonly = attr.readonly|default(false) %}
+
     <script type="text/template" class="ibexa-data-source__entry-template">
         {{ form_row(form.entries.vars.prototype) }}
     </script>
@@ -33,6 +35,7 @@
                     <button
                         type="button"
                         class="btn ibexa-btn ibexa-btn--secondary ibexa-btn--small ibexa-btn--add-matrix-entry"
+                        {{ readonly ? 'disabled' }}
                     >
                         <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
                             <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
@@ -42,6 +45,7 @@
                     <button
                         type="button"
                         class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--bulk-remove-matrix"
+                        {{ readonly ? 'disabled' }}
                     >
                         <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
                             <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
