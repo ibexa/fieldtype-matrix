@@ -56,20 +56,26 @@
             {% endembed %}
         {% endblock %}
         {% block tbody %}
-            {{ form_widget(form) }}
+            {{ form_widget(form, { attr: { readonly: readonly }}) }}
         {% endblock %}
     {% endembed %}
 {% endblock %}
 
 {% block ezplatform_fieldtype_ezmatrix_entry_row %}
+    {% set readonly = attr.readonly|default(false) %}
     {% set col_checkbox %}
-        <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-table__ezmatrix-entry-checkbox">
+        <input
+            type="checkbox"
+            class="ibexa-input ibexa-input--checkbox ibexa-table__ezmatrix-entry-checkbox"
+            {{ readonly ? 'disabled' }}
+        >
     {% endset %}
 
     {% set col_actions %}
         <button
             type="button"
             class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-matrix-entry"
+            {{ readonly ? 'disabled' }}
         >
             <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
                 <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
@@ -80,7 +86,7 @@
     {% set body_row_cols = [{ has_checkbox: true, content: col_checkbox }] %}
     {% for input in form.children %}
         {% set body_row_cols = body_row_cols|merge([{
-            content: form_widget(input, { attr: { class: 'ibexa-input--small' }}),
+            content: form_widget(input, { attr: { class: 'ibexa-input--small', readonly: readonly }}),
             raw: true,
         }]) %}
     {% endfor %}
