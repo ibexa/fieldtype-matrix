@@ -4,7 +4,7 @@
     {% set readonly = attr.readonly|default(false) %}
 
     <script type="text/template" class="ibexa-data-source__entry-template">
-        {{ form_row(form.entries.vars.prototype) }}
+        {{ form_row(form.entries.vars.prototype, { attr: { readonly: readonly }}) }}
     </script>
 
     {% set head_cols = [{}] %}
