@@ -14,6 +14,8 @@ jobs:
         with:
             project-edition: 'oss'
             project-version: '4.2.x-dev'
+            test-setup-phase-1: '--profile=setup --suite=content-translation --mode=standard'
             test-suite:  '--profile=browser --suite=admin-ui'
+            timeout: 40
         secrets:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
