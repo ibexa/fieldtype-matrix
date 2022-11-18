@@ -9,11 +9,13 @@ on:
 
 jobs:
     matrix-fieldtype:
-        name: "Browser fieldtype tests"
+        name: 'Browser fieldtype tests'
         uses: ibexa/gh-workflows/.github/workflows/browser-tests.yml@main
         with:
             project-edition: 'oss'
             project-version: '4.3.x-dev'
-            test-suite:  '--profile=browser --suite=admin-ui'
+            test-setup-phase-1: '--profile=setup --suite=content-translation --mode=standard'
+            test-suite: '--profile=browser --suite=admin-ui'
+            timeout: 40
         secrets:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
