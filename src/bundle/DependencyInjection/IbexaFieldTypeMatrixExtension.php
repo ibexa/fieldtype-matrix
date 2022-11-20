@@ -65,7 +65,7 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
     {
         $container->prependExtensionConfig('jms_translation', [
             'configs' => [
-                'ezplatform_matrix_fieldtype' => [
+                'ibexa_fieldtype_matrix' => [
                     'dirs' => [
                         __DIR__ . '/../../',
                     ],
