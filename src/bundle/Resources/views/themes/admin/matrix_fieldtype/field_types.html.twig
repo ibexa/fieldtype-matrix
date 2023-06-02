@@ -3,66 +3,83 @@
 {% set fieldtype_name = 'ezmatrix.name'|trans({}, 'fieldtypes')|desc('Matrix') %}
 
 {% block ezmatrix_field_definition_edit %}
-    <div class="ez-matrix-settings__minimum-rows">
-        {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ez-label' } }) -}}
+    <div class="ibexa-matrix-settings__minimum-rows">
+        {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ibexa-label' } }) -}}
         {{- form_errors(form.minimum_rows) -}}
         {{- form_widget(form.minimum_rows) -}}
     </div>
 
-    <div class="ez-matrix-settings__columns">
-        <script type="text/template" class="ez-matrix-settings__column-template">
-            <tr class="ez-matrix-settings__column">
-                <td>
-                    <input type="checkbox" class="ez-matrix-settings__column-checkbox">
-                </td>
-                <td>
-                    {{ form_widget(form.columns.vars.prototype.name) }}
-                </td>
-                <td>
-                    {{ form_widget(form.columns.vars.prototype.identifier) }}
-                </td>
-            </tr>
+    <div class="ibexa-matrix-settings__columns">
+        <script type="text/template" class="ibexa-matrix-settings__column-template">
+            {% set col_checkbox %}
+                <div class="form-check">
+                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                </div>
+            {% endset %}
+
+            {% include '@ibexadesign/ui/component/table/table_body_row.html.twig' with {
+                body_row_cols: [
+                    { has_checkbox: true, content: col_checkbox, raw: true },
+                    { content: form_widget(form.columns.vars.prototype.name), raw: true },
+                    { content: form_widget(form.columns.vars.prototype.identifier), raw: true },
+                ],
+                class: 'ibexa-matrix-settings__column',
+            } %}
         </script>
-        {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ez-label' } }) }}
+        {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ibexa-label' } }) }}
         {{ form_errors(form.columns) }}
-        <div class="ez-table-header">
-            <div class="ez-table-header__headline">{{ 'field.columns'|trans|desc('Columns') }}</div>
-            <div>
-                <button type="button" class="btn btn-icon ez-btn--add-column">
-                    <svg class="ez-icon ez-icon--create">
-                        <use xlink:href="{{ ez_icon_path('create') }}"></use>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-icon ez-btn--remove-column">
-                    <svg class="ez-icon ez-icon--trash">
-                        <use xlink:href="{{ ez_icon_path('trash') }}"></use>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <table class="ez-table table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>{{ 'field.column.name'|trans|desc('Name') }}</th>
-                    <th>{{ 'field.column.identifier'|trans|desc('Identifier') }}</th>
-                </tr>
-            </thead>
-            <tbody class="ez-table__body" data-next-index="{{ form.columns.children|length ? max(form.columns.children|keys) + 1 : 0 }}">
-                {% for column in form.columns %}
-                    <tr class="ez-matrix-settings__column">
-                        <td>
-                            <input type="checkbox" class="ez-matrix-settings__column-checkbox">
-                        </td>
-                        <td>
-                            {{ form_widget(column.name) }}
-                        </td>
-                        <td>
-                            {{ form_widget(column.identifier) }}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% set body_rows = [] %}
+        {% for column in form.columns %}
+            {% set col_checkbox %}
+                <div class="form-check">
+                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                </div>
+            {% endset %}
+
+            {% set body_rows = body_rows|merge([{
+                cols: [
+                    { has_checkbox: true, content: col_checkbox, raw: true },
+                    { content: form_widget(column.name), raw: true },
+                    { content: form_widget(column.identifier), raw: true },
+                ],
+                class: 'ibexa-matrix-settings__column',
+            }]) %}
+        {% endfor %}
+
+        {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
+            headline: 'field.columns'|trans|desc('Columns'),
+            head_cols: [
+                { has_checkbox: true },
+                { content: 'field.column.name'|trans|desc('Name') },
+                { content: 'field.column.identifier'|trans|desc('Identifier') },
+            ],
+            body_rows,
+            table_body_attr: {
+                'data-next-index': form.columns.children|length ? max(form.columns.children|keys) + 1 : 0,
+            }
+        } %}
+            {% block header %}
+                {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
+                    {% block actions %}
+                        <button type="button" class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small ibexa-btn--add-column">
+                            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
+                                <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
+                            </svg>
+                            <span class="ibexa-btn__label">
+                                {{ 'field.column.add_new'|trans|desc('Add new') }}
+                            </span>
+                        </button>
+                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--remove-column">
+                            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--trash">
+                                <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
+                            </svg>
+                            <span class="ibexa-btn__label">
+                                {{ 'field.column.delete'|trans|desc('Delete') }}
+                            </span>
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
     </div>
 {% endblock %}

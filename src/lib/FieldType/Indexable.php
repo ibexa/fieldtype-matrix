@@ -1,17 +1,17 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
-use eZ\Publish\SPI\FieldType\Indexable as IndexableInterface;
-use eZ\Publish\SPI\Persistence\Content\Field;
-use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
-use eZ\Publish\SPI\Search;
+use Ibexa\Contracts\Core\FieldType\Indexable as IndexableInterface;
+use Ibexa\Contracts\Core\Persistence\Content\Field;
+use Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Contracts\Core\Search;
 
 final class Indexable implements IndexableInterface
 {
@@ -50,3 +50,5 @@ final class Indexable implements IndexableInterface
         return null;
     }
 }
+
+class_alias(Indexable::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable');

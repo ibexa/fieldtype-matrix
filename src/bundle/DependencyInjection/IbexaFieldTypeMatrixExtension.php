@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtypeBundle\DependencyInjection;
+namespace Ibexa\Bundle\FieldTypeMatrix\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Resource\FileResource;
@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Yaml\Yaml;
 
-class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExtensionInterface
+class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * Loads a specific configuration.
@@ -54,7 +54,7 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
     {
         $configFile = __DIR__ . '/../Resources/config/kernel.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
-        $container->prependExtensionConfig('ezpublish', $config);
+        $container->prependExtensionConfig('ibexa', $config);
         $container->addResource(new FileResource($configFile));
     }
 
@@ -65,7 +65,7 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
     {
         $container->prependExtensionConfig('jms_translation', [
             'configs' => [
-                'ezplatform_matrix_fieldtype' => [
+                'ibexa_fieldtype_matrix' => [
                     'dirs' => [
                         __DIR__ . '/../../',
                     ],
@@ -94,3 +94,5 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
         ]);
     }
 }
+
+class_alias(IbexaFieldTypeMatrixExtension::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\DependencyInjection\EzPlatformMatrixFieldtypeExtension');

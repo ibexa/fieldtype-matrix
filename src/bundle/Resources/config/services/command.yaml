@@ -4,8 +4,8 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
+    Ibexa\Bundle\FieldTypeMatrix\Command\MigrateLegacyMatrixCommand:
         arguments:
-            - '@ezpublish.persistence.connection'
+            - '@ibexa.persistence.connection'
         tags:
             - { name: console.command }

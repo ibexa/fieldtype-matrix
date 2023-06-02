@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
+namespace Ibexa\FieldTypeMatrix\Form\Type\FieldType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -74,3 +74,5 @@ class MatrixEntryType extends AbstractType
         parent::buildForm($builder, $options);
     }
 }
+
+class_alias(MatrixEntryType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixEntryType');
