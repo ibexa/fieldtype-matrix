@@ -45,7 +45,7 @@ class MatrixFieldType extends AbstractType
         $resolver->setDefined(['columns', 'minimum_rows']);
         $resolver->addAllowedTypes('columns', 'array');
         $resolver->addAllowedTypes('minimum_rows', 'integer');
-        $resolver->setDefault('translation_domain', 'matrix_fieldtype');
+        $resolver->setDefault('translation_domain', 'ibexa_matrix_fieldtype');
     }
 
     /**

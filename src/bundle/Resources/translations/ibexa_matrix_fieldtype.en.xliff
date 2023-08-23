@@ -16,6 +16,16 @@
         <target state="new">Delete</target>
         <note>key: ezmatrix.remove</note>
       </trans-unit>
+      <trans-unit id="8422049ef51bbcd967ea5578aee3ed094edd252c" resname="field.column.add_new">
+        <source>Add new</source>
+        <target state="new">Add new</target>
+        <note>key: field.column.add_new</note>
+      </trans-unit>
+      <trans-unit id="ba5b5f28d4530d7374b45639acfe2b7ed6277497" resname="field.column.delete">
+        <source>Delete</source>
+        <target state="new">Delete</target>
+        <note>key: field.column.delete</note>
+      </trans-unit>
       <trans-unit id="fa41ae6cab6d74c6548f4052c02c0c5129a27f1d" resname="field.column.identifier">
         <source>Identifier</source>
         <target state="new">Identifier</target>
