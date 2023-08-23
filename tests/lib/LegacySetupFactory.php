@@ -52,5 +52,8 @@ final class LegacySetupFactory extends CoreLegacySetupFactory
 
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($configPath));
         $loader->load('services/fieldtype.yaml');
+
+        $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/_fixtures/config'));
+        $loader->load('services.yaml');
     }
 }
