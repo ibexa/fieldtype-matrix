@@ -1,6 +1,6 @@
-{% trans_default_domain 'matrix_fieldtype' %}
+{% trans_default_domain 'ibexa_matrix_fieldtype' %}
 
-{% set fieldtype_name = 'ezmatrix.name'|trans({}, 'fieldtypes')|desc('Matrix') %}
+{% set fieldtype_name = 'ezmatrix.name'|trans({}, 'ibexa_fieldtypes')|desc('Matrix') %}
 
 {% block ezmatrix_field_definition_edit %}
     <div class="ibexa-matrix-settings__minimum-rows">
@@ -60,6 +60,7 @@
         } %}
             {% block header %}
                 {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
+                    {% trans_default_domain 'ibexa_matrix_fieldtype' %}
                     {% block actions %}
                         <button type="button" class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small ibexa-btn--add-column">
                             <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">

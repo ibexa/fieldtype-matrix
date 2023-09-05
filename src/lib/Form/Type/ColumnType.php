@@ -35,7 +35,7 @@ class ColumnType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('translation_domain', 'matrix_fieldtype');
+        $resolver->setDefault('translation_domain', 'ibexa_matrix_fieldtype');
     }
 }
 

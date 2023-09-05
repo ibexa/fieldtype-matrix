@@ -38,7 +38,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 'required' => false,
                 'property_path' => 'fieldSettings[minimum_rows]',
                 'label' => /** @Desc("Minimum number of rows") */ 'field_definition.ezmatrix.minimum_rows',
-                'translation_domain' => 'matrix_fieldtype',
+                'translation_domain' => 'ibexa_matrix_fieldtype',
                 'disabled' => $isTranslation,
             ])
             ->add('columns', CollectionType::class, [
@@ -52,7 +52,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 'required' => false,
                 'property_path' => 'fieldSettings[columns]',
                 'label' => /** @Desc("Columns") */ 'field_definition.ezmatrix.columns',
-                'translation_domain' => 'matrix_fieldtype',
+                'translation_domain' => 'ibexa_matrix_fieldtype',
                 'disabled' => $isTranslation,
             ]);
     }
