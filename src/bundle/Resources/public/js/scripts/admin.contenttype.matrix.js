@@ -49,8 +49,8 @@
         updateDisabledState(parentNode);
 
         parentNode.querySelectorAll(SELECTOR_COLUMN_CHECKBOX).forEach((btn) => {
-            btn.removeEventListener('click', checkColumn, false);
-            btn.addEventListener('click', checkColumn, false);
+            btn.removeEventListener('change', checkColumn, false);
+            btn.addEventListener('change', checkColumn, false);
         });
     };
     const initComponent = (container) => {
