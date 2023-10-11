@@ -48,9 +48,9 @@
     const initColumns = (parentNode) => {
         updateDisabledState(parentNode);
 
-        parentNode.querySelectorAll(SELECTOR_COLUMN_CHECKBOX).forEach((btn) => {
-            btn.removeEventListener('change', checkColumn, false);
-            btn.addEventListener('change', checkColumn, false);
+        parentNode.querySelectorAll(SELECTOR_COLUMN_CHECKBOX).forEach((checkbox) => {
+            checkbox.removeEventListener('change', checkColumn, false);
+            checkbox.addEventListener('change', checkColumn, false);
         });
     };
     const initComponent = (container) => {
