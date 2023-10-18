@@ -32,11 +32,17 @@
         node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(node)));
 
         initColumns(settingsNode);
+
+        node.closest('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
     };
     const removeItems = (event) => {
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
 
-        findCheckedColumns(settingsNode).forEach((btn) => btn.closest(SELECTOR_COLUMN).remove());
+        findCheckedColumns(settingsNode).forEach((checkbox) => {
+            checkbox.checked = false;
+            checkbox.dispatchEvent(new Event('change'));
+            checkbox.closest(SELECTOR_COLUMN).remove();
+        });
 
         initColumns(settingsNode);
     };
