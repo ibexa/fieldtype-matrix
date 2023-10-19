@@ -47,7 +47,12 @@
         initColumns(settingsNode);
     };
     const checkColumn = (event) => {
-        const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
+        const settingsNode = event.currentTarget.closest(SELECTOR_SETTINGS_COLUMNS);
+        const isFromJS = event.detail?.isFromJS ?? false;
+
+        if (isFromJS) {
+            return;
+        }
 
         updateDisabledState(settingsNode);
     };
@@ -58,6 +63,8 @@
             checkbox.removeEventListener('change', checkColumn, false);
             checkbox.addEventListener('change', checkColumn, false);
         });
+
+        parentNode.querySelector('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
     };
     const initComponent = (container) => {
         container.querySelector(SELECTOR_ADD_COLUMN).addEventListener('click', addItem, false);
