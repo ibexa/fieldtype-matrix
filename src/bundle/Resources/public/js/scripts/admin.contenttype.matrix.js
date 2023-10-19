@@ -47,12 +47,7 @@
         initColumns(settingsNode);
     };
     const checkColumn = (event) => {
-        const settingsNode = event.currentTarget.closest(SELECTOR_SETTINGS_COLUMNS);
-        const isFromJS = event.detail?.isFromJS ?? false;
-
-        if (isFromJS) {
-            return;
-        }
+        const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
 
         updateDisabledState(settingsNode);
     };
