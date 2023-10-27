@@ -62,7 +62,7 @@
                 checkbox.dispatchEvent(new Event('change'));
                 checkbox.closest(SELECTOR_COLUMN).remove();
             });
-        }, 1);
+        }, 0);
 
         initColumns(settingsNode);
     };
