@@ -23,10 +23,14 @@
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
         const template = settingsNode.querySelector(SELECTOR_TEMPLATE).innerHTML;
         const node = settingsNode.querySelector(SELECTOR_COLUMNS_CONTAINER);
-        const emptyPlaceholder = node.querySelector('.ibexa-table__empty-table-cell');
+        const table = settingsNode.querySelector('.ibexa-table');
+        const tableHead = table.querySelector('.ibexa-table thead');
+        const emptyPlaceholder = table.querySelector('.ibexa-table__empty-table-cell');
 
         if (emptyPlaceholder) {
             emptyPlaceholder.closest('.ibexa-table__row').remove();
+
+            tableHead.hidden = false;
         }
 
         node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(node)));
@@ -37,12 +41,28 @@
     };
     const removeItems = (event) => {
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
+        const checkedRows = findCheckedColumns(settingsNode);
+        const allRows = settingsNode.querySelectorAll(':not(.ibexa-table__template--empty-row) .ibexa-table__row');
+        const tableHead = settingsNode.querySelector('.ibexa-table thead');
+        const tableBody = settingsNode.querySelector('.ibexa-table__body');
+        const emptyPlaceholder = settingsNode.querySelector('.ibexa-table__template--empty-row')?.content.cloneNode(true);
+        const removedAllRows = checkedRows.length === allRows.length;
 
-        findCheckedColumns(settingsNode).forEach((checkbox) => {
-            checkbox.checked = false;
-            checkbox.dispatchEvent(new Event('change'));
-            checkbox.closest(SELECTOR_COLUMN).remove();
-        });
+        if (removedAllRows) {
+            tableBody.appendChild(emptyPlaceholder);
+        }
+
+        setTimeout(() => {
+            if (removedAllRows) {
+                tableHead.hidden = true;
+            }
+
+            checkedRows.forEach((checkbox) => {
+                checkbox.checked = false;
+                checkbox.dispatchEvent(new Event('change'));
+                checkbox.closest(SELECTOR_COLUMN).remove();
+            });
+        }, 0);
 
         initColumns(settingsNode);
     };
