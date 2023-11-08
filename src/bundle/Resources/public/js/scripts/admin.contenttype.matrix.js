@@ -98,9 +98,19 @@
             const { nodes } = event.detail;
 
             nodes.forEach((container) => {
-                if (!container.querySelector(SELECTOR_SETTINGS_COLUMNS)) {
+                const matrixColumnsWidget = container.querySelector(SELECTOR_SETTINGS_COLUMNS);
+
+                if (!matrixColumnsWidget) {
                     return;
                 }
+
+                const table = matrixColumnsWidget.querySelector('.ibexa-table');
+
+                doc.body.dispatchEvent(
+                    new CustomEvent('ibexa-init-main-table-checkboxes-listeners', {
+                        detail: { table },
+                    }),
+                );
 
                 initComponent(container);
             });
