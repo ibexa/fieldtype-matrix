@@ -8,6 +8,7 @@ services:
         decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
         arguments:
             $innerMapper: '@Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionMapper.inner'
+            $strategies: !tagged_iterator ibexa.graphql.field_type.matrix_mapper.content_type.strategy
 
     Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper: ~
 
