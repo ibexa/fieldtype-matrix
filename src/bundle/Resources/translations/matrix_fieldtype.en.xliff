@@ -31,11 +31,6 @@
         <target state="new">Columns</target>
         <note>key: field.columns</note>
       </trans-unit>
-      <trans-unit id="207b1ea4ef32f10b29a4cff6869126da1f4b980a" resname="field_definition.ezmatrix.columns">
-        <source>Columns</source>
-        <target state="new">Columns</target>
-        <note>key: field_definition.ezmatrix.columns</note>
-      </trans-unit>
       <trans-unit id="07c51cf854c53ebcc11d9261c7ca5b0772d7f7a4" resname="field_definition.ezmatrix.minimum_rows">
         <source>Minimum number of rows</source>
         <target state="new">Minimum number of rows</target>
