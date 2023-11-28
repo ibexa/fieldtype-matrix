@@ -38,14 +38,10 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         iterable $strategies
     ) {
         parent::__construct($innerMapper);
+        
         $this->nameHelper = $nameHelper;
         $this->contentTypeService = $contentTypeService;
-
-        foreach ($strategies as $strategy) {
-            if ($strategy instanceof FieldTypeToContentTypeStrategyInterface) {
-                $this->strategies[] = $strategy;
-            }
-        }
+        $this->strategies = $strategies;
     }
 
     public function mapToFieldDefinitionType(FieldDefinition $fieldDefinition): ?string
