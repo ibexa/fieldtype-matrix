@@ -13,7 +13,6 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
-use Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
 
@@ -38,7 +37,7 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         iterable $strategies
     ) {
         parent::__construct($innerMapper);
-        
+
         $this->nameHelper = $nameHelper;
         $this->contentTypeService = $contentTypeService;
         $this->strategies = $strategies;
