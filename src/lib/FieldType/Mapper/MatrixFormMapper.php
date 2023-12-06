@@ -51,7 +51,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                 'prototype_name' => '__number__',
                 'required' => false,
                 'property_path' => 'fieldSettings[columns]',
-                'label' => /** @Desc("Columns") */ 'field_definition.ezmatrix.columns',
+                'label' => false,
                 'translation_domain' => 'ibexa_matrix_fieldtype',
                 'disabled' => $isTranslation,
             ]);
