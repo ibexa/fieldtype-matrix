@@ -47,6 +47,7 @@
         const tableBody = settingsNode.querySelector('.ibexa-table__body');
         const emptyPlaceholder = settingsNode.querySelector('.ibexa-table__template--empty-row')?.content.cloneNode(true);
         const removedAllRows = checkedRows.length === allRows.length;
+        const node = settingsNode.querySelector(SELECTOR_COLUMNS_CONTAINER);
 
         if (removedAllRows) {
             tableBody.appendChild(emptyPlaceholder);
@@ -62,6 +63,8 @@
                 checkbox.dispatchEvent(new Event('change'));
                 checkbox.closest(SELECTOR_COLUMN).remove();
             });
+
+            node.closest('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
         }, 0);
 
         initColumns(settingsNode);
