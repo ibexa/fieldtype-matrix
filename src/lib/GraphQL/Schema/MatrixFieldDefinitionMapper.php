@@ -12,6 +12,7 @@ use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\Core\Base\Exceptions\NotFoundException;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
 
@@ -23,11 +24,23 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
     /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
-    public function __construct(FieldDefinitionMapper $innerMapper, NameHelper $nameHelper, ContentTypeService $contentTypeService)
-    {
+    /* @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
+    private iterable $strategies;
+
+    /**
+     * @param iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> $strategies
+     */
+    public function __construct(
+        FieldDefinitionMapper $innerMapper,
+        NameHelper $nameHelper,
+        ContentTypeService $contentTypeService,
+        iterable $strategies
+    ) {
         parent::__construct($innerMapper);
+
         $this->nameHelper = $nameHelper;
         $this->contentTypeService = $contentTypeService;
+        $this->strategies = $strategies;
     }
 
     public function mapToFieldDefinitionType(FieldDefinition $fieldDefinition): ?string
@@ -46,9 +59,21 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
             return parent::mapToFieldValueType($fieldDefinition);
         }
 
-        return sprintf(
-            '[%s]',
-            $this->nameHelper->matrixFieldDefinitionType($this->findContentTypeOf($fieldDefinition), $fieldDefinition)
+        foreach ($this->strategies as $strategy) {
+            $contentType = $strategy->findContentTypeOf($fieldDefinition);
+            if ($contentType === null) {
+                continue;
+            }
+
+            return sprintf(
+                '[%s]',
+                $this->nameHelper->matrixFieldDefinitionType($contentType, $fieldDefinition)
+            );
+        }
+
+        throw new NotFoundException(
+            'Could not find content type for field definition',
+            $fieldDefinition->identifier
         );
     }
 
@@ -74,23 +99,6 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
             '@=resolver("MatrixFieldValue", [value, "%s"])',
             $fieldDefinition->identifier
         );
-    }
-
-    private function findContentTypeOf(FieldDefinition $fieldDefinition): ContentType
-    {
-        foreach ($this->contentTypeService->loadContentTypeGroups() as $group) {
-            foreach ($this->contentTypeService->loadContentTypes($group) as $type) {
-                $foundFieldDefinition = $type->getFieldDefinition($fieldDefinition->identifier);
-                if ($foundFieldDefinition === null) {
-                    continue;
-                }
-                if ($foundFieldDefinition->id === $fieldDefinition->id) {
-                    return $type;
-                }
-            }
-        }
-
-        throw new \Exception('Could not find content type for field definition');
     }
 }
 

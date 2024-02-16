@@ -29,3 +29,9 @@ services:
     Ibexa\FieldTypeMatrix\FieldType\Indexable:
         tags:
             - { name: ibexa.field_type.indexable, alias: '%ibexa.field_type.matrix.identifier%' }
+
+    Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategy:
+        arguments:
+            $contentTypeService: '@ibexa.api.service.content_type'
+        tags:
+            - { name: ibexa.graphql.field_type.matrix_mapper.content_type.strategy, priority: -20 }
