@@ -23,9 +23,9 @@
         "php": "^7.4 || ^8.0",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "ibexa/core": "~4.6.0@dev",
-        "ibexa/content-forms": "~4.6.0@dev",
-        "ibexa/graphql": "~4.6.0@dev",
+        "ibexa/core": "~5.0.0@dev",
+        "ibexa/content-forms": "~5.0.0@dev",
+        "ibexa/graphql": "~5.0.0@dev",
         "symfony/http-kernel": "^5.0",
         "symfony/console": "^5.0",
         "symfony/config": "^5.0",
@@ -36,14 +36,14 @@
     },
     "require-dev": {
         "ibexa/ci-scripts": "^0.2@dev",
-        "ibexa/doctrine-schema": "~4.6.0@dev",
-        "ibexa/admin-ui": "~4.6.0@dev",
-        "ibexa/user": "~4.6.0@dev",
-        "ibexa/fieldtype-richtext": "~4.6.0@dev",
-        "ibexa/search": "~4.6.0@dev",
-        "ibexa/rest": "~4.6.0@dev",
-        "ibexa/http-cache": "~4.6.0@dev",
-        "ibexa/design-engine": "~4.6.0@dev",
+        "ibexa/doctrine-schema": "~5.0.0@dev",
+        "ibexa/admin-ui": "~5.0.0@dev",
+        "ibexa/user": "~5.0.0@dev",
+        "ibexa/fieldtype-richtext": "~5.0.0@dev",
+        "ibexa/search": "~5.0.0@dev",
+        "ibexa/rest": "~5.0.0@dev",
+        "ibexa/http-cache": "~5.0.0@dev",
+        "ibexa/design-engine": "~5.0.0@dev",
         "ibexa/code-style": "^1.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5"
@@ -55,7 +55,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "4.6.x-dev"
+            "dev-main": "5.0.x-dev"
         }
     }
 }
