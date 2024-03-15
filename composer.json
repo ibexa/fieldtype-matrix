@@ -11,7 +11,8 @@
             "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
             "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/",
             "Ibexa\\FieldTypeMatrix\\": "src/lib/",
-            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/"
+            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/",
+            "Ibexa\\Contracts\\FieldTypeMatrix\\": "src/contracts/"
         }
     },
     "autoload-dev": {
@@ -45,6 +46,7 @@
         "ibexa/http-cache": "~4.6.0@dev",
         "ibexa/design-engine": "~4.6.0@dev",
         "ibexa/code-style": "^1.0",
+        "ibexa/solr": "~4.6.0@dev",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5"
     },
