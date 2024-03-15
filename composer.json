@@ -16,7 +16,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ibexa\\Tests\\FieldTypeMatrix\\": "tests/lib/"
+            "Ibexa\\Tests\\FieldTypeMatrix\\": "tests/lib/",
+            "Ibexa\\Tests\\Integration\\FieldTypeMatrix\\": "tests/integration/"
         }
     },
     "require": {
@@ -42,6 +43,7 @@
         "ibexa/fieldtype-richtext": "~4.6.0@dev",
         "ibexa/search": "~4.6.0@dev",
         "ibexa/rest": "~4.6.0@dev",
+        "ibexa/test-core": "^4.6.x-dev",
         "ibexa/http-cache": "~4.6.0@dev",
         "ibexa/design-engine": "~4.6.0@dev",
         "ibexa/code-style": "^1.0",
@@ -51,7 +53,8 @@
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
-        "test": "phpunit -c phpunit.xml"
+        "test": "phpunit -c phpunit.xml",
+        "test-integration": "phpunit -c phpunit.integration.xml"
     },
     "extra": {
         "branch-alias": {
