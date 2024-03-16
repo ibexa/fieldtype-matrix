@@ -37,6 +37,10 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
         if ($container->hasExtension('ibexa_solr')) {
             $loader->load('services/solr.yaml');
         }
+
+        if ($container->hasExtension('ibexa_elasticsearch')) {
+            $loader->load('services/elasticsearch.yaml');
+        }
     }
 
     /**
