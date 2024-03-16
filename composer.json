@@ -8,11 +8,11 @@
     },
     "autoload": {
         "psr-4": {
+            "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
+            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/",
             "Ibexa\\FieldTypeMatrix\\": "src/lib/",
             "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/",
-            "Ibexa\\Contracts\\FieldTypeMatrix\\": "src/contracts/",
-            "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
+            "Ibexa\\Contracts\\FieldTypeMatrix\\": "src/contracts/"
         }
     },
     "autoload-dev": {
@@ -47,7 +47,6 @@
         "ibexa/design-engine": "~4.6.0@dev",
         "ibexa/code-style": "^1.0",
         "ibexa/solr": "~4.6.0@dev",
-        "ibexa/elasticsearch": "~4.6.0@dev",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5"
     },
@@ -60,8 +59,5 @@
         "branch-alias": {
             "dev-main": "4.6.x-dev"
         }
-    },
-    "repositories": [
-        { "type": "composer", "url": "https://updates.ibexa.co" }
-    ]
+    }
 }
