@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Ibexa\FieldTypeMatrix\Search\Elasticsearch\IndexSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }
+
+    Ibexa\FieldTypeMatrix\Search\Elasticsearch\Criterion\ColumnCriterionVisitor:
+        tags:
+            - { name: ibexa.search.elasticsearch.query.content.criterion.visitor }
+            - { name: ibexa.search.elasticsearch.query.location.criterion.visitor }

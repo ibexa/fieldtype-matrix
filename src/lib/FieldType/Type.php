@@ -17,6 +17,8 @@ use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class Type extends FieldType
 {
+    public const FIELD_TYPE_IDENTIFIER = 'matrix';
+
     /**
      * {@inheritdoc}
      */

@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Ibexa\FieldTypeMatrix\Search\Solr\ContentFieldMapper:
+        tags:
+            - { name: ibexa.search.solr.field.mapper.content }
+
+    Ibexa\FieldTypeMatrix\Search\Solr\ColumnCriterionVisitor:
+        tags:
+            - { name: ibexa.search.solr.query.content.criterion.visitor }
+            - { name: ibexa.search.solr.query.location.criterion.visitor }

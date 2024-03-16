@@ -11,6 +11,7 @@ namespace Ibexa\Tests\FieldTypeMatrix\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\FieldTypeMatrix\Search\Criterion\Column;
 use Ibexa\FieldTypeMatrix\FieldType\Value;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 use Ibexa\Tests\Integration\Core\Repository\BaseTest;
@@ -42,6 +43,35 @@ final class SearchServiceTest extends BaseTest
         $this->assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
     }
 
+    public function testFindContentWithMatrixColumnValue(): void
+    {
+        if (!in_array(getenv('SEARCH_ENGINE'), ['solr', 'elasticsearch'], true)) {
+            $this->markTestSkipped(Column::class . ' criterion is not supported by legacy search engine');
+        }
+
+        $content = $this->createAndPublishContentWithMatrixFieldType(
+            'Content with table',
+            new Value([
+                new Row([
+                    'foo' => 'Foo',
+                    'bar' => 'Bar',
+                    'baz' => 'Baz',
+                ]),
+            ])
+        );
+
+        $searchService = $this->getRepository()->getSearchService();
+
+        $searchResults = $searchService->findContent(
+            new Query([
+                'filter' => new Column('table', 'foo', 'Foo'),
+            ])
+        );
+
+        $this->assertEquals(1, $searchResults->totalCount);
+        $this->assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
+    }
+
     private function createAndPublishContentWithMatrixFieldType(string $title, Value $table): Content
     {
         $contentType = $this->createContentTypeWithMatrixFieldType('content_with_table');
@@ -50,14 +80,8 @@ final class SearchServiceTest extends BaseTest
         $locationService = $this->getRepository()->getLocationService();
 
         $contentCreateStruct = $contentService->newContentCreateStruct($contentType, 'eng-GB');
-        $contentCreateStruct->setField('title', 'Content with table');
-        $contentCreateStruct->setField('table', new Value([
-            new Row([
-                'foo' => 'Foo',
-                'bar' => 'Bar',
-                'baz' => 'Baz',
-            ]),
-        ]));
+        $contentCreateStruct->setField('title', $title);
+        $contentCreateStruct->setField('table', $table);
 
         $contentCreateStruct->remoteId = 'abcdef0123456789abcdef0123456789';
         $contentCreateStruct->alwaysAvailable = true;
