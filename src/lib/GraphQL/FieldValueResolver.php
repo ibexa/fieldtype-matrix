@@ -24,6 +24,10 @@ class FieldValueResolver
         $this->strategies = $strategies;
     }
 
+    /**
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
+     */
     public function resolveMatrixFieldValue(object $item, string $fieldDefIdentifier): RowsCollection
     {
         $silentRows = [];
