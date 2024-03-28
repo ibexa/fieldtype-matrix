@@ -8,10 +8,10 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/",
             "Ibexa\\FieldTypeMatrix\\": "src/lib/",
-            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/"
+            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/",
+            "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
+            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
         }
     },
     "autoload-dev": {
@@ -60,5 +60,8 @@
         "branch-alias": {
             "dev-main": "4.6.x-dev"
         }
+    },
+    "config": {
+        "allow-plugins": false
     }
 }

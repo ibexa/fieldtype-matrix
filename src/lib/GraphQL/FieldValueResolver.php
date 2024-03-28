@@ -8,17 +8,48 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
+use Ibexa\Core\Base\Exceptions\BadStateException;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
-use Ibexa\GraphQL\Value\Item;
 
 class FieldValueResolver
 {
-    public function resolveMatrixFieldValue(Item $item, string $fieldDefIdentifier): RowsCollection
+    /** @var iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> */
+    private iterable $strategies;
+
+    /**
+     * @param iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> $strategies
+     */
+    public function __construct(iterable $strategies)
+    {
+        $this->strategies = $strategies;
+    }
+
+    /**
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
+     */
+    public function resolveMatrixFieldValue(object $item, string $fieldDefIdentifier): RowsCollection
     {
         $silentRows = [];
+        $content = null;
+
+        foreach ($this->strategies as $strategy) {
+            if (!$strategy->supports($item)) {
+                continue;
+            }
+
+            $content = $strategy->resolveContent($item);
+        }
+
+        if ($content === null) {
+            throw new BadStateException(
+                '$item',
+                'GraphQL item cannot be resolved to a content.'
+            );
+        }
 
         /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows $rows */
-        $rows = $item->getContent()->getFieldValue($fieldDefIdentifier)->getRows();
+        $rows = $content->getFieldValue($fieldDefIdentifier)->getRows();
         foreach ($rows as $row) {
             $silentRows[] = new SilentRow($row->getCells());
         }
