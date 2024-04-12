@@ -30,6 +30,8 @@
 
             this.reinit();
             this.updateDisabledState(matrixNode);
+
+            doc.body.dispatchEvent(new CustomEvent('ibexa-inputs:added'));
         }
 
         findCheckedEntries(node) {
