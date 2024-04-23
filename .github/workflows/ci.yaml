@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.3'
     steps:
       - uses: actions/checkout@v4
 
@@ -26,9 +26,9 @@ jobs:
           extensions: 'pdo_sqlite, gd'
           tools: cs2pr
 
-      - uses: "ramsey/composer-install@v2"
+      - uses: ramsey/composer-install@v3
         with:
-          dependency-versions: "highest"
+          dependency-versions: highest
 
       - name: Run code style check
         run: composer run-script check-cs -- --format=checkstyle | cs2pr
@@ -42,7 +42,6 @@ jobs:
       fail-fast: false
       matrix:
         php:
-          - '8.2'
           - '8.3'
 
     steps:
@@ -56,9 +55,9 @@ jobs:
           extensions: pdo_sqlite, gd
           tools: cs2pr
 
-      - uses: "ramsey/composer-install@v2"
+      - uses: ramsey/composer-install@v3
         with:
-          dependency-versions: "highest"
+          dependency-versions: highest
 
       - name: Setup problem matchers for PHPUnit
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
@@ -76,7 +75,6 @@ jobs:
       fail-fast: false
       matrix:
         php:
-          - '8.2'
           - '8.3'
 
     steps:
@@ -90,9 +88,9 @@ jobs:
           extensions: pdo_sqlite, gd
           tools: cs2pr
 
-      - uses: "ramsey/composer-install@v2"
+      - uses: ramsey/composer-install@v3
         with:
-          dependency-versions: "highest"
+          dependency-versions: highest
 
       - name: Setup problem matchers for PHPUnit
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
