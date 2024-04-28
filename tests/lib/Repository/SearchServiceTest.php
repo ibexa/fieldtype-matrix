@@ -38,8 +38,8 @@ final class SearchServiceTest extends BaseTest
             ])
         );
 
-        $this->assertEquals(1, $searchResults->totalCount);
-        $this->assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
+        self::assertEquals(1, $searchResults->totalCount);
+        self::assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
     }
 
     private function createAndPublishContentWithMatrixFieldType(string $title, Value $table): Content
