@@ -9,9 +9,7 @@
     "autoload": {
         "psr-4": {
             "Ibexa\\FieldTypeMatrix\\": "src/lib/",
-            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
+            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/"
         }
     },
     "autoload-dev": {
