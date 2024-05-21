@@ -72,5 +72,3 @@ class MatrixCollectionType extends AbstractType
         return CollectionType::class;
     }
 }
-
-class_alias(MatrixCollectionType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixCollectionType');

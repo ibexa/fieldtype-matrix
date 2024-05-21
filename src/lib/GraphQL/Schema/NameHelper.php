@@ -36,5 +36,3 @@ class NameHelper
         );
     }
 }
-
-class_alias(NameHelper::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper');

@@ -216,5 +216,3 @@ class Type extends FieldType
         return true;
     }
 }
-
-class_alias(Type::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Type');

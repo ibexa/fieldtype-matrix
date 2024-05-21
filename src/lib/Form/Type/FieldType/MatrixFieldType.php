@@ -92,5 +92,3 @@ class MatrixFieldType extends AbstractType
         $builder->addModelTransformer(new FieldTypeModelTransformer());
     }
 }
-
-class_alias(MatrixFieldType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType');

@@ -57,5 +57,3 @@ class FieldValueResolver
         return new RowsCollection($silentRows);
     }
 }
-
-class_alias(FieldValueResolver::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\FieldValueResolver');

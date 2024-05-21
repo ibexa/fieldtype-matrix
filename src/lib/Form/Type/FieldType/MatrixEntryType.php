@@ -74,5 +74,3 @@ class MatrixEntryType extends AbstractType
         parent::buildForm($builder, $options);
     }
 }
-
-class_alias(MatrixEntryType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixEntryType');

@@ -355,5 +355,3 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
         return ['ezplatform:migrate:legacy_matrix'];
     }
 }
-
-class_alias(MigrateLegacyMatrixCommand::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand');

@@ -46,5 +46,3 @@ class RowsCollection extends ArrayObject
         parent::offsetSet($offset, $value);
     }
 }
-
-class_alias(RowsCollection::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection');

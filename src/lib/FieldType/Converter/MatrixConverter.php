@@ -102,5 +102,3 @@ class MatrixConverter implements Converter
         return false;
     }
 }
-
-class_alias(MatrixConverter::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter');

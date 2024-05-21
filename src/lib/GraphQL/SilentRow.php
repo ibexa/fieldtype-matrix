@@ -17,5 +17,3 @@ class SilentRow extends Row
         return $this->cells[$name] ?? '';
     }
 }
-
-class_alias(SilentRow::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\SilentRow');

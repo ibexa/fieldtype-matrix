@@ -87,5 +87,3 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
             );
     }
 }
-
-class_alias(MatrixFormMapper::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper');

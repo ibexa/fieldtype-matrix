@@ -50,5 +50,3 @@ class Value extends BaseValue
         return '';
     }
 }
-
-class_alias(Value::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value');
