@@ -58,5 +58,3 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
         return $this->nameHelper->matrixFieldDefinitionType($args['ContentType'], $args['FieldDefinition']);
     }
 }
-
-class_alias(MatrixFieldDefinitionSchemaWorker::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionSchemaWorker');

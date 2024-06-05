@@ -38,5 +38,3 @@ class ColumnType extends AbstractType
         $resolver->setDefault('translation_domain', 'ibexa_matrix_fieldtype');
     }
 }
-
-class_alias(ColumnType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType');

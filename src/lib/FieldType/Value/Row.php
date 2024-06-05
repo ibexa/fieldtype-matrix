@@ -61,5 +61,3 @@ class Row
         return isset($this->cells[$name]);
     }
 }
-
-class_alias(Row::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row');

@@ -101,5 +101,3 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         );
     }
 }
-
-class_alias(MatrixFieldDefinitionMapper::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper');

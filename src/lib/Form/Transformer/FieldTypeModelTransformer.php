@@ -59,5 +59,3 @@ class FieldTypeModelTransformer implements DataTransformerInterface
         return new Value($rows ?? []);
     }
 }
-
-class_alias(FieldTypeModelTransformer::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Transformer\FieldTypeModelTransformer');

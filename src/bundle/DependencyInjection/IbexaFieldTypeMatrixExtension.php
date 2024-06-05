@@ -94,5 +94,3 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
         ]);
     }
 }
-
-class_alias(IbexaFieldTypeMatrixExtension::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\DependencyInjection\EzPlatformMatrixFieldtypeExtension');

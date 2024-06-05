@@ -26,5 +26,3 @@ class InputHandler implements FieldTypeInputHandler
         );
     }
 }
-
-class_alias(InputHandler::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\InputHandler');

@@ -50,5 +50,3 @@ final class Indexable implements IndexableInterface
         return null;
     }
 }
-
-class_alias(Indexable::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable');
