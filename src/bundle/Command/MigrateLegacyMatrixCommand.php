@@ -67,7 +67,7 @@ class MigrateLegacyMatrixCommand extends Command
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
@@ -78,7 +78,7 @@ class MigrateLegacyMatrixCommand extends Command
             if ($answer !== self::CONFIRMATION_ANSWER) {
                 $io->comment('Canceled.');
 
-                return 1;
+                return Command::FAILURE;
             }
         }
 
@@ -200,7 +200,7 @@ class MigrateLegacyMatrixCommand extends Command
 
         $io->success('Done.');
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     /**
