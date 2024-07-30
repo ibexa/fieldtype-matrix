@@ -8,5 +8,6 @@ system:
 
     admin_group:
         admin_ui_forms:
-            content_edit_form_templates:
-                - { template: '@ibexadesign/matrix_fieldtype/content_edit_form_fields.html.twig', priority: 1 }
+            content_edit:
+                form_templates:
+                    - { template: '@ibexadesign/matrix_fieldtype/content_edit_form_fields.html.twig', priority: 1 }
