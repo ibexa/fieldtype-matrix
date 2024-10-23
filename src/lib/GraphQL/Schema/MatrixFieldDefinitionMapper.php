@@ -8,21 +8,16 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
-use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
-use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
 
-class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper
+class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
     /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
     private $nameHelper;
-
-    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
-    private $contentTypeService;
 
     /* @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
     private iterable $strategies;
@@ -33,13 +28,11 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
     public function __construct(
         FieldDefinitionMapper $innerMapper,
         NameHelper $nameHelper,
-        ContentTypeService $contentTypeService,
         iterable $strategies
     ) {
         parent::__construct($innerMapper);
 
         $this->nameHelper = $nameHelper;
-        $this->contentTypeService = $contentTypeService;
         $this->strategies = $strategies;
     }
 
