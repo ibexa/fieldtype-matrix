@@ -162,6 +162,7 @@ class Type extends FieldType
 
     /**
      * {@inheritdoc}
+     *
      * @param \Ibexa\FieldTypeMatrix\FieldType\Value $value
      */
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
