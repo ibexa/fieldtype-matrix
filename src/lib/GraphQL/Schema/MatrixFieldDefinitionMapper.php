@@ -21,10 +21,7 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
     /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
-    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
-    private $contentTypeService;
-
-    /* @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
+    /** @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
     private iterable $strategies;
 
     /**
@@ -33,13 +30,11 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
     public function __construct(
         FieldDefinitionMapper $innerMapper,
         NameHelper $nameHelper,
-        ContentTypeService $contentTypeService,
         iterable $strategies
     ) {
         parent::__construct($innerMapper);
 
         $this->nameHelper = $nameHelper;
-        $this->contentTypeService = $contentTypeService;
         $this->strategies = $strategies;
     }
 

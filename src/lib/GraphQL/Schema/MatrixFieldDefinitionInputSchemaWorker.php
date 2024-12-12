@@ -23,7 +23,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         $this->nameHelper = $nameHelper;
     }
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $typeName = $this->typeName($args);
         $schema->addType(new Builder\Input\Type($typeName, 'input-object'));
@@ -42,7 +42,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         }
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentType'])
@@ -53,7 +53,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
             && !$schema->hasType($this->typeName($args));
     }
 
-    private function typeName(array $args)
+    private function typeName(array $args): string
     {
         return $this->nameHelper->matrixFieldDefinitionInputType($args['ContentType'], $args['FieldDefinition']);
     }
