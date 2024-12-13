@@ -13,38 +13,26 @@ use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class Value extends BaseValue
 {
-    /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection */
-    protected $rows;
+    protected RowsCollection $rows;
 
     /**
-     * @param array $rows
+     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $rows
      */
     public function __construct(array $rows = [])
     {
         $this->rows = new RowsCollection($rows);
     }
 
-    /**
-     * @return \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection
-     */
     public function getRows(): RowsCollection
     {
         return $this->rows;
     }
 
-    /**
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows
-     */
     public function setRows(RowsCollection $rows): void
     {
         $this->rows = $rows;
     }
 
-    /**
-     * Returns a string representation of the field value.
-     *
-     * @return string
-     */
     public function __toString(): string
     {
         return '';

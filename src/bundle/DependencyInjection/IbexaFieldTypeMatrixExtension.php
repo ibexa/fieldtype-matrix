@@ -18,13 +18,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensionInterface
 {
-    /**
-     * Loads a specific configuration.
-     *
-     * @param array $configs
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
             $container,
@@ -35,22 +29,14 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
         $loader->load('services.yaml');
     }
 
-    /**
-     * Allow an extension to prepend the extension configurations.
-     *
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $this->prependKernelSettings($container);
         $this->prependJMSTranslation($container);
         $this->prependGraphQL($container);
     }
 
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function prependKernelSettings(ContainerBuilder $container)
+    public function prependKernelSettings(ContainerBuilder $container): void
     {
         $configFile = __DIR__ . '/../Resources/config/kernel.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
@@ -58,9 +44,6 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
         $container->addResource(new FileResource($configFile));
     }
 
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
     public function prependJMSTranslation(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig('jms_translation', [
@@ -78,7 +61,7 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
         ]);
     }
 
-    private function prependGraphQL(ContainerBuilder $container)
+    private function prependGraphQL(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig('overblog_graphql', [
             'definitions' => [

@@ -22,6 +22,7 @@
         "php": " >=8.3",
         "ext-libxml": "*",
         "ext-simplexml": "*",
+        "ext-json": "*",
         "ibexa/content-forms": "~5.0.x-dev",
         "ibexa/core": "~5.0.x-dev",
         "ibexa/graphql": "~5.0.x-dev",
@@ -46,13 +47,17 @@
         "ibexa/search": "~5.0.x-dev",
         "ibexa/test-core": "~5.0.x-dev",
         "ibexa/user": "~5.0.x-dev",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0"
     },
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
         "test": "phpunit -c phpunit.xml",
-        "test-integration": "phpunit -c phpunit.integration.xml"
+        "test-integration": "phpunit -c phpunit.integration.xml",
+        "phpstan": "phpstan analyse"
     },
     "extra": {
         "branch-alias": {

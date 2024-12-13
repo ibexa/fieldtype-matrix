@@ -10,29 +10,18 @@ namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 class Row
 {
-    protected $cells;
+    protected array $cells;
 
-    /**
-     * Row constructor.
-     *
-     * @param array $cells
-     */
     public function __construct(array $cells = [])
     {
         $this->cells = $cells;
     }
 
-    /**
-     * @return array
-     */
     public function getCells(): array
     {
         return $this->cells;
     }
 
-    /**
-     * @return bool
-     */
     public function isEmpty(): bool
     {
         $trimmed = array_map('trim', $this->cells);
@@ -41,21 +30,11 @@ class Row
         return count($filtered) === 0;
     }
 
-    /**
-     * @param $name
-     *
-     * @return mixed
-     */
     public function __get($name)
     {
         return $this->cells[$name];
     }
 
-    /**
-     * @param $name
-     *
-     * @return bool
-     */
     public function __isset($name): bool
     {
         return isset($this->cells[$name]);

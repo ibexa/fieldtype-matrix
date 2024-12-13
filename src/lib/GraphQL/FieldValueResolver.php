@@ -48,9 +48,12 @@ class FieldValueResolver
             );
         }
 
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows $rows */
-        $rows = $content->getFieldValue($fieldDefIdentifier)->getRows();
-        foreach ($rows as $row) {
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value|null $fieldValue */
+        $fieldValue = $content->getFieldValue($fieldDefIdentifier);
+        if ($fieldValue === null) {
+            return new RowsCollection();
+        }
+        foreach ($fieldValue->getRows() as $row) {
             $silentRows[] = new SilentRow($row->getCells());
         }
 

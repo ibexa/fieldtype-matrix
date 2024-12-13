@@ -19,7 +19,7 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
     /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
-    /* @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
+    /** @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
     private iterable $strategies;
 
     /**
