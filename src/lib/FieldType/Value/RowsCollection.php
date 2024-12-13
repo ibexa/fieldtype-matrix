@@ -11,6 +11,9 @@ namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 use ArrayObject;
 use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 
+/**
+ * @extends ArrayObject<int, \Ibexa\FieldTypeMatrix\FieldType\Value\Row>
+ */
 class RowsCollection extends ArrayObject
 {
     /**

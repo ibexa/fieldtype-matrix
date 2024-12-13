@@ -12,20 +12,18 @@ use Ibexa\FieldTypeMatrix\FieldType\Value;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 use Symfony\Component\Form\DataTransformerInterface;
 
+/**
+ * @implements DataTransformerInterface<\Ibexa\FieldTypeMatrix\FieldType\Value, array<string, mixed>>
+ */
 class FieldTypeModelTransformer implements DataTransformerInterface
 {
-    /**
-     * Transforms a value from the original representation to a transformed representation.
-     *
-     * @param mixed $value The value in the original representation
-     *
-     * @return mixed The value in the transformed representation
-     *
-     * @throws \Symfony\Component\Form\Exception\TransformationFailedException when the transformation fails
-     */
     public function transform($value)
     {
         $hash['entries'] = [];
+
+        if ($value === null) {
+            return $hash;
+        }
 
         foreach ($value->getRows() as $row) {
             $hash['entries'][] = $row->getCells();
@@ -34,16 +32,6 @@ class FieldTypeModelTransformer implements DataTransformerInterface
         return $hash;
     }
 
-    /**
-     * Transforms a value from the transformed representation to its original
-     * representation.
-     *
-     * @param mixed $value The value in the transformed representation
-     *
-     * @return mixed The value in the original representation
-     *
-     * @throws \Symfony\Component\Form\Exception\TransformationFailedException when the transformation fails
-     */
     public function reverseTransform($value)
     {
         $entries = $value['entries'] ?? [];

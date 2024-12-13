@@ -125,9 +125,7 @@ class Type extends FieldType
      */
     public function getEmptyValue(): SPIValue
     {
-        $value = new Value([]);
-
-        return $value;
+        return new Value([]);
     }
 
     /**
@@ -147,7 +145,7 @@ class Type extends FieldType
     /**
      * {@inheritdoc}
      */
-    protected function checkValueStructure(FieldTypeValue $value)
+    protected function checkValueStructure(FieldTypeValue $value): void
     {
         // Value is self-contained and strong typed
         return;
@@ -164,6 +162,8 @@ class Type extends FieldType
 
     /**
      * {@inheritdoc}
+     *
+     * @param \Ibexa\FieldTypeMatrix\FieldType\Value $value
      */
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
     {
@@ -173,7 +173,6 @@ class Type extends FieldType
 
         $countNonEmptyRows = 0;
 
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         foreach ($value->getRows() as $row) {
             if (!$row->isEmpty()) {
                 ++$countNonEmptyRows;

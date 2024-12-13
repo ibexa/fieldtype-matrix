@@ -30,7 +30,7 @@ class MatrixConverter implements Converter
     {
         $entries = $value->data['entries'] ?? [];
 
-        $storageFieldValue->dataText = json_encode(array_values($entries));
+        $storageFieldValue->dataText = json_encode(array_values($entries)) ?: '';
     }
 
     /**
@@ -67,7 +67,7 @@ class MatrixConverter implements Converter
         });
 
         $storageDef->dataInt1 = $minimumRows;
-        $storageDef->dataText5 = json_encode($columns);
+        $storageDef->dataText5 = json_encode($columns) ?: '';
     }
 
     /**
