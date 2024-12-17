@@ -19,12 +19,6 @@ parameters:
 			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
 
 		-
-			message: '#^Method Ibexa\\Bundle\\FieldTypeMatrix\\Command\\MigrateLegacyMatrixCommand\:\:configure\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
-
-		-
 			message: '#^Method Ibexa\\Bundle\\FieldTypeMatrix\\Command\\MigrateLegacyMatrixCommand\:\:convertCellsToRows\(\) has parameter \$cells with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -203,9 +197,3 @@ parameters:
 			identifier: isset.property
 			count: 1
 			path: tests/lib/LegacySetupFactory.php
-
-		-
-			message: '#^Access to an undefined property Ibexa\\Contracts\\Core\\Repository\\Values\\ValueObject\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: tests/lib/Repository/SearchServiceTest.php
