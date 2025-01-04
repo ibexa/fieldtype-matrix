@@ -28,7 +28,7 @@ services:
         arguments:
             $strategies: !tagged_iterator ibexa.graphql.field_type.matrix_resolver.content.strategy
         tags:
-            - { name: overblog_graphql.resolver, alias: "MatrixFieldValue", method: "resolveMatrixFieldValue" }
+            - { name: overblog_graphql.query, alias: "MatrixFieldValue", method: "resolveMatrixFieldValue" }
 
     Ibexa\FieldTypeMatrix\GraphQL\Strategy\ItemContentResolvingStrategy:
         tags:

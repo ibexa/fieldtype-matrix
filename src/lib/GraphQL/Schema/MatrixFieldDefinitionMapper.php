@@ -89,7 +89,7 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         // We can't "pass the definition" to the resolver. We need the columns names. Pass them to the resolver ??
         // An alternative is to
         return sprintf(
-            '@=resolver("MatrixFieldValue", [value, "%s"])',
+            '@=query("MatrixFieldValue", value, "%s")',
             $fieldDefinition->identifier
         );
     }
