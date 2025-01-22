@@ -4,7 +4,7 @@ Repository dedicated to Matrix Field Type for [Ibexa DXP](https://www.ibexa.co/p
 Open Source.
 
 ## COPYRIGHT
-Copyright (C) 1999-2024 Ibexa AS (formerly eZ Systems AS). All rights reserved.
+Copyright (C) 1999-2025 Ibexa AS (formerly eZ Systems AS). All rights reserved.
 
 ## LICENSE
 This source code is available separately under the following licenses:
