@@ -38,6 +38,7 @@
         initColumns(settingsNode);
 
         node.closest('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
+        doc.body.dispatchEvent(new CustomEvent('ibexa-inputs:added'));
     };
     const removeItems = (event) => {
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
