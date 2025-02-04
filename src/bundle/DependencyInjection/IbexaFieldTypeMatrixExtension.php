@@ -55,6 +55,7 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
                     'output_dir' => __DIR__ . '/../Resources/translations/',
                     'output_format' => 'xliff',
                     'excluded_dirs' => ['Behat', 'Tests', 'node_modules'],
+                    'ignored_domains' => ['ibexa_repository_exceptions'],
                     'extractors' => [],
                 ],
             ],
