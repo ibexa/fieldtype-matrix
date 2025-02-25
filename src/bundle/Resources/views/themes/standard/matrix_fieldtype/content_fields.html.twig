@@ -1,5 +1,4 @@
 {% block ezmatrix_field %}
-{% apply spaceless %}
     {% set columnsSettings = fieldSettings['columns'] %}
     {% set fieldData = field.value.rows %}
 
@@ -21,5 +20,4 @@
         {% endfor %}
         </tbody>
     </table>
-{% endapply %}
 {% endblock %}
