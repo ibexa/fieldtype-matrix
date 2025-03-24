@@ -16,6 +16,7 @@ use Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue;
 use Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter;
 use SimpleXMLElement;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,15 +24,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-#[\Symfony\Component\Console\Attribute\AsCommand(name: 'ibexa:migrate:legacy_matrix')]
+#[AsCommand(name: 'ibexa:migrate:legacy_matrix')]
 class MigrateLegacyMatrixCommand extends Command
 {
     private const DEFAULT_ITERATION_COUNT = 1000;
     private const EZMATRIX_IDENTIFIER = 'ezmatrix';
     private const CONFIRMATION_ANSWER = 'yes';
 
-    /** @var \Doctrine\DBAL\Connection */
-    private $connection;
+    private Connection $connection;
 
     /**
      * @param \Doctrine\DBAL\Connection $connection

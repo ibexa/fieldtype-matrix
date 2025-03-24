@@ -16,8 +16,7 @@ use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDe
 
 class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
-    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
     /** @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
     private iterable $strategies;

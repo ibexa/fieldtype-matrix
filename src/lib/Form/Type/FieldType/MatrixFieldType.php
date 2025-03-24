@@ -68,7 +68,7 @@ class MatrixFieldType extends AbstractType
         $columnsByIdentifier = array_flip(array_column($options['columns'], 'identifier'));
 
         // Filter out unnecessary/obsolete columns data
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($columnsByIdentifier) {
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($columnsByIdentifier): void {
             $value = $event->getData();
 
             /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\Row $originalRow */

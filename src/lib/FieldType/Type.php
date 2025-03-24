@@ -31,8 +31,7 @@ class Type extends FieldType
         ],
     ];
 
-    /** @var string */
-    private $fieldTypeIdentifier;
+    private string $fieldTypeIdentifier;
 
     /**
      * @param string $fieldTypeIdentifier
