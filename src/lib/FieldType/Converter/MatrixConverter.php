@@ -59,7 +59,7 @@ class MatrixConverter implements Converter
         $columns = array_values($fieldSettings['columns']);
         $minimumRows = (int)$fieldSettings['minimum_rows'];
 
-        array_walk($columns, static function ($column) {
+        array_walk($columns, static function ($column): array {
             return [
                 'identifier' => trim($column['identifier'] ?? ''),
                 'name' => trim($column['name'] ?? ''),

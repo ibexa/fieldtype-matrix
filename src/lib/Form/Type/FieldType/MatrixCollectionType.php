@@ -14,6 +14,9 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @phpstan-extends \Symfony\Component\Form\AbstractType<array<int, array<string, mixed>>>
+ */
 class MatrixCollectionType extends AbstractType
 {
     public function getName(): string

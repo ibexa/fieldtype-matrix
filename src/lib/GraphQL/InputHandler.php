@@ -11,6 +11,7 @@ namespace Ibexa\FieldTypeMatrix\GraphQL;
 use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\FieldTypeMatrix\FieldType\Value as MatrixValue;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class InputHandler implements FieldTypeInputHandler
 {
@@ -18,8 +19,8 @@ class InputHandler implements FieldTypeInputHandler
     {
         return new MatrixValue(
             array_map(
-                static function (array $row) {
-                    return new MatrixValue\Row($row);
+                static function (array $row): Row {
+                    return new Row($row);
                 },
                 $input
             )

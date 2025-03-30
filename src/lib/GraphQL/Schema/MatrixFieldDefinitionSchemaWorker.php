@@ -15,8 +15,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class MatrixFieldDefinitionSchemaWorker implements Worker
 {
-    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
     public function __construct(NameHelper $nameHelper)
     {
