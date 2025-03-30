@@ -19,27 +19,21 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @phpstan-extends \Symfony\Component\Form\AbstractType<array{entries: array<int, array<string, mixed>>}>
+ */
 class MatrixFieldType extends AbstractType
 {
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->getBlockPrefix();
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'ezplatform_fieldtype_ezmatrix';
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefined(['columns', 'minimum_rows']);
