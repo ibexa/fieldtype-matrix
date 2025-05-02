@@ -46,6 +46,8 @@
         "ibexa/rest": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/search": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/test-core": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
+        "ibexa/templated-uri-bundle": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
+        "ibexa/templated-uri-router": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/user": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
