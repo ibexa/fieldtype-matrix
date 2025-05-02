@@ -249,7 +249,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->where('attr.data_type_string = :identifier')
             ->setParameter(':identifier', self::EZMATRIX_IDENTIFIER);
 
-        return $query->execute()->fetchAll();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
@@ -269,7 +269,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->setParameter(':minimum_rows', $minimumRows)
             ->setParameter(':columns', $columns);
 
-        $query->execute();
+        $query->executeStatement();
     }
 
     /**
@@ -286,7 +286,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->where('attr.contentclassattribute_id = :class_attr_id')
             ->setParameter(':class_attr_id', $id);
 
-        return (int)$query->execute()->fetchColumn(0);
+        return (int)$query->executeQuery()->fetchOne();
     }
 
     /**
@@ -307,7 +307,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->setFirstResult($offset)
             ->setMaxResults($iterationCount);
 
-        return $query->execute()->fetchAll();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
@@ -324,7 +324,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->setParameter(':id', $id)
             ->setParameter(':rows', $rows);
 
-        $query->execute();
+        $query->executeStatement();
     }
 
     /**
