@@ -247,9 +247,9 @@ class MigrateLegacyMatrixCommand extends Command
             ->from('ezcontentclass_attribute', 'attr')
             ->join('attr', 'ezcontentclass', 'class', 'class.id = attr.contentclass_id')
             ->where('attr.data_type_string = :identifier')
-            ->setParameter(':identifier', self::EZMATRIX_IDENTIFIER);
+            ->setParameter('identifier', self::EZMATRIX_IDENTIFIER);
 
-        return $query->execute()->fetchAll();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
@@ -265,11 +265,11 @@ class MigrateLegacyMatrixCommand extends Command
             ->set('attr.data_int1', ':minimum_rows')
             ->set('attr.data_text5', ':columns')
             ->where('attr.id = :id')
-            ->setParameter(':id', $id)
-            ->setParameter(':minimum_rows', $minimumRows)
-            ->setParameter(':columns', $columns);
+            ->setParameter('id', $id)
+            ->setParameter('minimum_rows', $minimumRows)
+            ->setParameter('columns', $columns);
 
-        $query->execute();
+        $query->executeStatement();
     }
 
     /**
@@ -284,9 +284,9 @@ class MigrateLegacyMatrixCommand extends Command
             ->select('count(1)')
             ->from('ezcontentobject_attribute', 'attr')
             ->where('attr.contentclassattribute_id = :class_attr_id')
-            ->setParameter(':class_attr_id', $id);
+            ->setParameter('class_attr_id', $id);
 
-        return (int)$query->execute()->fetchColumn(0);
+        return (int)$query->executeQuery()->fetchOne();
     }
 
     /**
@@ -303,11 +303,11 @@ class MigrateLegacyMatrixCommand extends Command
             ->select(['id', 'data_text'])
             ->from('ezcontentobject_attribute', 'attr')
             ->where('attr.contentclassattribute_id = :class_attr_id')
-            ->setParameter(':class_attr_id', $id)
+            ->setParameter('class_attr_id', $id)
             ->setFirstResult($offset)
             ->setMaxResults($iterationCount);
 
-        return $query->execute()->fetchAll();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
@@ -321,10 +321,10 @@ class MigrateLegacyMatrixCommand extends Command
             ->update('ezcontentobject_attribute', 'attr')
             ->set('attr.data_text', ':rows')
             ->where('attr.id = :id')
-            ->setParameter(':id', $id)
-            ->setParameter(':rows', $rows);
+            ->setParameter('id', $id)
+            ->setParameter('rows', $rows);
 
-        $query->execute();
+        $query->executeStatement();
     }
 
     /**

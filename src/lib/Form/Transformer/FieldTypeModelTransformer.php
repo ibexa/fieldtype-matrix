@@ -17,7 +17,7 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 class FieldTypeModelTransformer implements DataTransformerInterface
 {
-    public function transform($value)
+    public function transform(mixed $value): mixed
     {
         $hash['entries'] = [];
 
@@ -32,7 +32,7 @@ class FieldTypeModelTransformer implements DataTransformerInterface
         return $hash;
     }
 
-    public function reverseTransform($value)
+    public function reverseTransform(mixed $value): mixed
     {
         $entries = $value['entries'] ?? [];
 
