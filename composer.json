@@ -45,6 +45,7 @@
         "ibexa/rector": "~5.0.x-dev",
         "ibexa/rest": "~5.0.x-dev",
         "ibexa/search": "~5.0.x-dev",
+        "ibexa/twig-components": "~5.0.x-dev",
         "ibexa/test-core": "~5.0.x-dev",
         "ibexa/twig-components": "~5.0.x-dev",
         "ibexa/user": "~5.0.x-dev",
