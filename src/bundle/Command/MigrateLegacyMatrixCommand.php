@@ -12,8 +12,10 @@ use Doctrine\DBAL\Connection;
 use Exception;
 use Ibexa\Contracts\Core\Persistence\Content\FieldValue;
 use Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition;
+use Ibexa\Core\Persistence\Legacy\Content\Gateway;
 use Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue;
+use Ibexa\Core\Persistence\Legacy\Content\Type\Gateway as ContentTypeGateway;
 use Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter;
 use SimpleXMLElement;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -244,8 +246,8 @@ class MigrateLegacyMatrixCommand extends Command
                 'attr.data_text5 as columns',
                 'class.identifier as contenttype_identifier',
             ])
-            ->from('ezcontentclass_attribute', 'attr')
-            ->join('attr', 'ezcontentclass', 'class', 'class.id = attr.contentclass_id')
+            ->from(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
+            ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.contentclass_id')
             ->where('attr.data_type_string = :identifier')
             ->setParameter('identifier', self::EZMATRIX_IDENTIFIER);
 
@@ -261,7 +263,7 @@ class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update('ezcontentclass_attribute', 'attr')
+            ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
             ->set('attr.data_int1', ':minimum_rows')
             ->set('attr.data_text5', ':columns')
             ->where('attr.id = :id')
@@ -282,7 +284,7 @@ class MigrateLegacyMatrixCommand extends Command
         $query = $this->connection->createQueryBuilder();
         $query
             ->select('count(1)')
-            ->from('ezcontentobject_attribute', 'attr')
+            ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
             ->where('attr.contentclassattribute_id = :class_attr_id')
             ->setParameter('class_attr_id', $id);
 
@@ -301,7 +303,7 @@ class MigrateLegacyMatrixCommand extends Command
         $query = $this->connection->createQueryBuilder();
         $query
             ->select(['id', 'data_text'])
-            ->from('ezcontentobject_attribute', 'attr')
+            ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
             ->where('attr.contentclassattribute_id = :class_attr_id')
             ->setParameter('class_attr_id', $id)
             ->setFirstResult($offset)
@@ -318,7 +320,7 @@ class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update('ezcontentobject_attribute', 'attr')
+            ->update(Gateway::CONTENT_FIELD_TABLE, 'attr')
             ->set('attr.data_text', ':rows')
             ->where('attr.id = :id')
             ->setParameter('id', $id)
