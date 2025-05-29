@@ -3,6 +3,8 @@
     "description": "Repository dedicated to Matrix Field Type for eZ Platform",
     "type": "library",
     "license": "GPL-2.0-only",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "replace": {
         "ezsystems/ezplatform-matrix-fieldtype": "*"
     },
@@ -45,9 +47,7 @@
         "ibexa/rector": "~5.0.x-dev",
         "ibexa/rest": "~5.0.x-dev",
         "ibexa/search": "~5.0.x-dev",
-        "ibexa/twig-components": "~5.0.x-dev",
         "ibexa/test-core": "~5.0.x-dev",
-        "ibexa/twig-components": "~5.0.x-dev",
         "ibexa/user": "~5.0.x-dev",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
