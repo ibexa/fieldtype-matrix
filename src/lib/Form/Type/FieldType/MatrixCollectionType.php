@@ -26,7 +26,7 @@ class MatrixCollectionType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'ezplatform_fieldtype_ezmatrix_collection';
+        return 'ezplatform_fieldtype_ibexa_matrix_collection';
     }
 
     public function configureOptions(OptionsResolver $resolver): void

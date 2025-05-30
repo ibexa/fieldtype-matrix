@@ -37,7 +37,7 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
             ->add('minimum_rows', IntegerType::class, [
                 'required' => false,
                 'property_path' => 'fieldSettings[minimum_rows]',
-                'label' => /** @Desc("Minimum number of rows") */ 'field_definition.ezmatrix.minimum_rows',
+                'label' => /** @Desc("Minimum number of rows") */ 'field_definition.ibexa_matrix.minimum_rows',
                 'translation_domain' => 'ibexa_matrix_fieldtype',
                 'disabled' => $isTranslation,
             ])

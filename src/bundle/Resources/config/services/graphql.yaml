@@ -22,7 +22,7 @@ services:
 
     Ibexa\FieldTypeMatrix\GraphQL\InputHandler:
         tags:
-            - { name: ibexa.graphql.field_type.input.handler, fieldtype: ezmatrix }
+            - { name: ibexa.graphql.field_type.input.handler, fieldtype: ibexa_matrix }
 
     Ibexa\FieldTypeMatrix\GraphQL\FieldValueResolver:
         arguments:

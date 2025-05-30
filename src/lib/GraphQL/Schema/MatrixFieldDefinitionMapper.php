@@ -42,7 +42,7 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
 
     protected function getFieldTypeIdentifier(): string
     {
-        return 'ezmatrix';
+        return 'ibexa_matrix';
     }
 
     public function mapToFieldValueType(FieldDefinition $fieldDefinition): ?string
