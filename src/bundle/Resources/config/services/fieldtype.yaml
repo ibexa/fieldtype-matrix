@@ -16,7 +16,7 @@ services:
         arguments:
             $fieldTypeIdentifier: '%ibexa.field_type.matrix.identifier%'
         tags:
-            - { name: ibexa.field_type, alias: '%ibexa.field_type.matrix.identifier%', legacy_matrix: '%ibexa.field_type.matrix.legacy_identifier%' }
+            - { name: ibexa.field_type, alias: '%ibexa.field_type.matrix.identifier%', legacy_alias: '%ibexa.field_type.matrix.legacy_identifier%' }
 
     Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter:
         tags:
