@@ -1,8 +1,8 @@
 {% trans_default_domain 'ibexa_matrix_fieldtype' %}
 
-{% set fieldtype_name = 'ezmatrix.name'|trans({}, 'ibexa_fieldtypes')|desc('Matrix') %}
+{% set fieldtype_name = 'ibexa_matrix.name'|trans({}, 'ibexa_fieldtypes')|desc('Matrix') %}
 
-{% block ezmatrix_field_definition_edit %}
+{% block ibexa_matrix_field_definition_edit %}
     <div class="ibexa-matrix-settings__minimum-rows">
         {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ibexa-label' } }) -}}
         {{- form_errors(form.minimum_rows) -}}

@@ -10,7 +10,7 @@ module.exports = (ibexaConfig, ibexaConfigManager) => {
     ibexaConfigManager.add({
         ibexaConfig,
         entryName: 'ibexa-admin-ui-content-edit-parts-js',
-        newItems: [path.resolve(__dirname, '../public/js/scripts/fieldType/ezmatrix.js')],
+        newItems: [path.resolve(__dirname, '../public/js/scripts/fieldType/ibexa_matrix.js')],
     });
 
     ibexaConfigManager.add({

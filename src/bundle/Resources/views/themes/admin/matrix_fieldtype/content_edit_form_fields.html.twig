@@ -1,6 +1,6 @@
 {% trans_default_domain 'ibexa_matrix_fieldtype' %}
 
-{% block ezplatform_fieldtype_ezmatrix_widget %}
+{% block ezplatform_fieldtype_ibexa_matrix_widget %}
     {% set readonly = attr.readonly|default(false) %}
 
     <script type="text/template" class="ibexa-data-source__entry-template">
@@ -40,7 +40,7 @@
                         <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
                             <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
                         </svg>
-                        <span class="ibexa-btn__label">{{ 'ezmatrix.add'|trans|desc('Add') }}</span>
+                        <span class="ibexa-btn__label">{{ 'ibexa_matrix.add'|trans|desc('Add') }}</span>
                     </button>
                     <button
                         type="button"
@@ -50,7 +50,7 @@
                         <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
                             <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
                         </svg>
-                        <span class="ibexa-btn__label">{{ 'ezmatrix.remove'|trans|desc('Delete') }}</span>
+                        <span class="ibexa-btn__label">{{ 'ibexa_matrix.remove'|trans|desc('Delete') }}</span>
                     </button>
                 {% endblock %}
             {% endembed %}
@@ -61,12 +61,12 @@
     {% endembed %}
 {% endblock %}
 
-{% block ezplatform_fieldtype_ezmatrix_entry_row %}
+{% block ezplatform_fieldtype_ibexa_matrix_entry_row %}
     {% set readonly = attr.readonly|default(false) %}
     {% set col_checkbox %}
         <input
             type="checkbox"
-            class="ibexa-input ibexa-input--checkbox ibexa-table__ezmatrix-entry-checkbox"
+            class="ibexa-input ibexa-input--checkbox ibexa-table__ibexa_matrix-entry-checkbox"
             {{ readonly ? 'disabled' }}
         >
     {% endset %}

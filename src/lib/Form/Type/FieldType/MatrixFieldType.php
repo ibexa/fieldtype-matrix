@@ -31,7 +31,7 @@ class MatrixFieldType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'ezplatform_fieldtype_ezmatrix';
+        return 'ezplatform_fieldtype_ibexa_matrix';
     }
 
     public function configureOptions(OptionsResolver $resolver): void
