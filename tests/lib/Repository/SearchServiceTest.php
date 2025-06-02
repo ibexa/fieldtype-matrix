@@ -13,9 +13,9 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\FieldTypeMatrix\FieldType\Value;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
-use Ibexa\Tests\Integration\Core\Repository\BaseTest;
+use Ibexa\Tests\Integration\Core\Repository\BaseTestCase;
 
-final class SearchServiceTest extends BaseTest
+final class SearchServiceTest extends BaseTestCase
 {
     public function testFindContentWithMatrixFieldType(): void
     {
