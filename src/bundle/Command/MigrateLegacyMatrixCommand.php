@@ -247,7 +247,7 @@ class MigrateLegacyMatrixCommand extends Command
                 'class.identifier as contenttype_identifier',
             ])
             ->from(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
-            ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.contentclass_id')
+            ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.content_type_id')
             ->where('attr.data_type_string = :identifier')
             ->setParameter('identifier', self::EZMATRIX_IDENTIFIER);
 
