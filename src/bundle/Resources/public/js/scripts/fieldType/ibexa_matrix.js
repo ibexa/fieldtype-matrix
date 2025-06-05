@@ -4,22 +4,22 @@
     const SELECTOR_ADD_MATRIX_ENTRY = '.ibexa-btn--add-matrix-entry';
     const SELECTOR_MATRIX_ENTRIES_CONTAINER = '.ibexa-table__body';
     const SELECTOR_MATRIX_ENTRY_TEMPLATE = '.ibexa-data-source__entry-template';
-    const SELECTOR_MATRIX_ENTRY_CHECKBOX = '.ibexa-table__ezmatrix-entry-checkbox';
+    const SELECTOR_MATRIX_ENTRY_CHECKBOX = '.ibexa-table__ibexa_matrix-entry-checkbox';
     const SELECTOR_MATRIX_ENTRY = '.ibexa-table__matrix-entry';
-    const SELECTOR_FIELD = '.ibexa-field-edit--ezmatrix';
+    const SELECTOR_FIELD = '.ibexa-field-edit--ibexa_matrix';
     const NUMBER_PLACEHOLDER = /__index__/g;
 
     if (!doc.querySelector(SELECTOR_FIELD)) {
         return;
     }
 
-    class EzMatrixValidator extends ibexa.BaseFieldValidator {
+    class IbexaMatrixValidator extends ibexa.BaseFieldValidator {
         /**
          * Adds an item.
          *
          * @method addItem
          * @param {Event} event
-         * @memberof EzMatrixValidator
+         * @memberof IbexaMatrixValidator
          */
         addItem(event) {
             const matrixNode = event.target.closest(SELECTOR_FIELD);
@@ -51,7 +51,7 @@
          * @param {HTMLElement} parentNode
          * @param {String} template
          * @returns {String}
-         * @memberof EzMatrixValidator
+         * @memberof IbexaMatrixValidator
          */
         setIndex(parentNode, template) {
             return template.replace(NUMBER_PLACEHOLDER, this.getNextIndex(parentNode));
@@ -62,7 +62,7 @@
          *
          * @method updateDisabledState
          * @param {HTMLElement} parentNode
-         * @memberof EzMatrixValidator
+         * @memberof IbexaMatrixValidator
          */
         updateDisabledState(parentNode) {
             const isEnabled = this.findCheckedEntries(parentNode).length > 0;
@@ -76,7 +76,7 @@
          *
          * @method removeItem
          * @param {Event} event
-         * @memberof EzMatrixValidator
+         * @memberof IbexaMatrixValidator
          */
         removeItems(event) {
             const matrixNode = event.target.closest(SELECTOR_FIELD);
@@ -107,7 +107,7 @@
          * Attaches event listeners based on a config.
          *
          * @method init
-         * @memberof EzMatrixValidator
+         * @memberof IbexaMatrixValidator
          */
         init() {
             super.init();
@@ -130,7 +130,7 @@
         }
     }
 
-    const validator = new EzMatrixValidator({
+    const validator = new IbexaMatrixValidator({
         classInvalid: 'is-invalid',
         fieldSelector: SELECTOR_FIELD,
         eventsMap: [

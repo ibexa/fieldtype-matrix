@@ -90,7 +90,7 @@ final class SearchServiceTest extends BaseTestCase
         $typeCreate->creatorId = $this->generateId('user', $permissionResolver->getCurrentUserReference()->getUserId());
         $typeCreate->creationDate = $this->createDateTime();
 
-        $titleFieldCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct('title', 'ezstring');
+        $titleFieldCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct('title', 'ibexa_string');
         $titleFieldCreateStruct->names = [
             'eng-GB' => 'Title',
         ];
@@ -103,7 +103,7 @@ final class SearchServiceTest extends BaseTestCase
         $titleFieldCreateStruct->isSearchable = true;
         $titleFieldCreateStruct->defaultValue = '';
 
-        $tableFieldCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct('table', 'ezmatrix');
+        $tableFieldCreateStruct = $contentTypeService->newFieldDefinitionCreateStruct('table', 'ibexa_matrix');
         $tableFieldCreateStruct->names = [
             'eng-GB' => 'Table',
         ];

@@ -48,7 +48,7 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
             && $args['ContentType'] instanceof ContentType
             && isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition
-            && $args['FieldDefinition']->fieldTypeIdentifier === 'ezmatrix'
+            && $args['FieldDefinition']->fieldTypeIdentifier === 'ibexa_matrix'
             && !$schema->hasType($this->typeName($args));
     }
 
