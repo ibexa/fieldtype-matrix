@@ -254,11 +254,6 @@ class MigrateLegacyMatrixCommand extends Command
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    /**
-     * @param int $id
-     * @param int $minimumRows
-     * @param string $columns
-     */
     private function updateContentClassAttribute(int $id, int $minimumRows, string $columns): void
     {
         $query = $this->connection->createQueryBuilder();
@@ -274,28 +269,19 @@ class MigrateLegacyMatrixCommand extends Command
         $query->executeStatement();
     }
 
-    /**
-     * @param int $id
-     *
-     * @return int
-     */
     private function getContentObjectAttributesCount(int $id): int
     {
         $query = $this->connection->createQueryBuilder();
         $query
             ->select('count(1)')
             ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
-            ->where('attr.contentclassattribute_id = :class_attr_id')
-            ->setParameter('class_attr_id', $id);
+            ->where('attr.content_type_field_definition_id = :ct_field_def_id')
+            ->setParameter('ct_field_def_id', $id);
 
         return (int)$query->executeQuery()->fetchOne();
     }
 
     /**
-     * @param int $id
-     * @param int $offset
-     * @param int $iterationCount
-     *
      * @return array
      */
     private function getContentObjectAttributes(int $id, int $offset, int $iterationCount): array
@@ -304,18 +290,14 @@ class MigrateLegacyMatrixCommand extends Command
         $query
             ->select(['id', 'data_text'])
             ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
-            ->where('attr.contentclassattribute_id = :class_attr_id')
-            ->setParameter('class_attr_id', $id)
+            ->where('attr.content_type_field_definition_id = :ct_field_def_id')
+            ->setParameter('ct_field_def_id', $id)
             ->setFirstResult($offset)
             ->setMaxResults($iterationCount);
 
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    /**
-     * @param int $id
-     * @param string $rows
-     */
     private function updateContentObjectAttribute(int $id, string $rows): void
     {
         $query = $this->connection->createQueryBuilder();
@@ -329,12 +311,6 @@ class MigrateLegacyMatrixCommand extends Command
         $query->executeStatement();
     }
 
-    /**
-     * @param int $maxSteps
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return \Symfony\Component\Console\Helper\ProgressBar
-     */
     protected function getProgressBar(int $maxSteps, OutputInterface $output): ProgressBar
     {
         $progressBar = new ProgressBar($output, $maxSteps);
