@@ -155,9 +155,3 @@ parameters:
 			identifier: missingType.parameter
 			count: 1
 			path: src/lib/GraphQL/SilentRow.php
-
-		-
-			message: '#^Static property Ibexa\\Contracts\\Core\\Test\\Repository\\SetupFactory\\Legacy\:\:\$serviceContainer \(Ibexa\\Core\\Base\\ServiceContainer\) in isset\(\) is not nullable\.$#'
-			identifier: isset.property
-			count: 1
-			path: tests/lib/LegacySetupFactory.php
