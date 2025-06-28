@@ -26,13 +26,13 @@
         "ibexa/content-forms": "~5.0.x-dev",
         "ibexa/core": "~5.0.x-dev",
         "ibexa/graphql": "~5.0.x-dev",
-        "symfony/config": "^7.2",
-        "symfony/console": "^7.2",
-        "symfony/dependency-injection": "^7.2",
-        "symfony/form": "^7.2",
-        "symfony/http-kernel": "^7.2",
-        "symfony/options-resolver": "^7.2",
-        "symfony/yaml": "^7.2"
+        "symfony/config": "^7.3",
+        "symfony/console": "^7.3",
+        "symfony/dependency-injection": "^7.3",
+        "symfony/form": "^7.3",
+        "symfony/http-kernel": "^7.3",
+        "symfony/options-resolver": "^7.3",
+        "symfony/yaml": "^7.3"
     },
     "require-dev": {
         "ibexa/admin-ui": "~5.0.x-dev",
