@@ -15,11 +15,9 @@ use Ibexa\Core\FieldType\ValidationError;
 use Ibexa\Core\FieldType\Value as FieldTypeValue;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
-class Type extends FieldType
+final class Type extends FieldType
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** @var array<string, array<string, int|string|array<mixed>>> */
     protected $settingsSchema = [
         'minimum_rows' => [
             'type' => 'integer',
@@ -31,28 +29,16 @@ class Type extends FieldType
         ],
     ];
 
-    private string $fieldTypeIdentifier;
-
-    /**
-     * @param string $fieldTypeIdentifier
-     */
-    public function __construct(string $fieldTypeIdentifier)
+    public function __construct(private readonly string $fieldTypeIdentifier)
     {
-        $this->fieldTypeIdentifier = $fieldTypeIdentifier;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function getSortInfo(FieldTypeValue $value)
+    protected function getSortInfo(FieldTypeValue $value): string
     {
         return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validateFieldSettings($fieldSettings): array
+    public function validateFieldSettings(mixed $fieldSettings): array
     {
         $minimumRows = $fieldSettings['minimum_rows'];
         $columns = array_values($fieldSettings['columns'] ?? []);
@@ -91,10 +77,7 @@ class Type extends FieldType
         return $errors ?? [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function createValueFromInput($inputValue)
+    protected function createValueFromInput(mixed $inputValue): mixed
     {
         if (is_array($inputValue)) {
             $inputValue = new Value($inputValue);
@@ -103,33 +86,21 @@ class Type extends FieldType
         return $inputValue;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFieldTypeIdentifier(): string
     {
         return $this->fieldTypeIdentifier;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
     {
         return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEmptyValue(): SPIValue
     {
         return new Value([]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fromHash($hash): SPIValue
     {
         $entries = $hash['entries'] ?? [];
@@ -141,18 +112,11 @@ class Type extends FieldType
         return new Value($rows ?? []);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function checkValueStructure(FieldTypeValue $value): void
     {
         // Value is self-contained and strong typed
-        return;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isEmptyValue(SPIValue $value): bool
     {
         /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
@@ -160,11 +124,11 @@ class Type extends FieldType
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param \Ibexa\FieldTypeMatrix\FieldType\Value $value
+     *
+     * @return \Ibexa\Core\FieldType\ValidationError[]
      */
-    public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
+    public function validate(FieldDefinition $fieldDefinition, SPIValue $value): array
     {
         if ($this->isEmptyValue($value)) {
             return [];
@@ -193,13 +157,12 @@ class Type extends FieldType
     }
 
     /**
-     * {@inheritdoc}
+     * @return array<string, mixed>
      */
-    public function toHash(SPIValue $value)
+    public function toHash(SPIValue $value): array
     {
         /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
         $rows = $value->getRows();
-
         $hash['entries'] = [];
 
         foreach ($rows as $row) {
@@ -209,7 +172,7 @@ class Type extends FieldType
         return $hash;
     }
 
-    public function isSearchable(): bool
+    public function isSearchable(): true
     {
         return true;
     }

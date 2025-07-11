@@ -12,13 +12,10 @@ use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 
-final class FieldTypeToContentTypeStrategy implements FieldTypeToContentTypeStrategyInterface
+final readonly class FieldTypeToContentTypeStrategy implements FieldTypeToContentTypeStrategyInterface
 {
-    private ContentTypeService $contentTypeService;
-
-    public function __construct(ContentTypeService $contentTypeService)
+    public function __construct(private ContentTypeService $contentTypeService)
     {
-        $this->contentTypeService = $contentTypeService;
     }
 
     public function findContentTypeOf(FieldDefinition $fieldDefinition): ?ContentType

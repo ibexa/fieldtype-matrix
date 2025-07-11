@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @phpstan-extends \Symfony\Component\Form\AbstractType<array<int, array<string, mixed>>>
  */
-class MatrixCollectionType extends AbstractType
+final class MatrixCollectionType extends AbstractType
 {
     public function getName(): string
     {
@@ -47,6 +47,9 @@ class MatrixCollectionType extends AbstractType
         parent::configureOptions($resolver);
     }
 
+    /**
+     * @param array<string, mixed> $options
+     */
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars['columns'] = $options['columns'];

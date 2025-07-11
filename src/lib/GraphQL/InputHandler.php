@@ -13,9 +13,12 @@ use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\FieldTypeMatrix\FieldType\Value as MatrixValue;
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
-class InputHandler implements FieldTypeInputHandler
+final readonly class InputHandler implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
+    /**
+     * @param array<string, mixed> $input
+     */
+    public function toFieldValue($input, mixed $inputFormat = null): Value
     {
         return new MatrixValue(
             array_map(

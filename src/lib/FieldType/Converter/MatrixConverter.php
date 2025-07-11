@@ -15,16 +15,13 @@ use Ibexa\Core\Persistence\Legacy\Content\FieldValue\Converter;
 use Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue;
 
-class MatrixConverter implements Converter
+final readonly class MatrixConverter implements Converter
 {
     /**
      * Converts data from $value to $storageFieldValue.
      * Note: You should not throw on validation here, as it is implicitly used by ContentService->createContentDraft().
      *       Rather allow invalid value or omit it to let validation layer in FieldType handle issues when user tried
      *       to publish the given draft.
-     *
-     * @param \Ibexa\Contracts\Core\Persistence\Content\FieldValue $value
-     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue $storageFieldValue
      */
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue): void
     {
@@ -33,12 +30,6 @@ class MatrixConverter implements Converter
         $storageFieldValue->dataText = json_encode(array_values($entries)) ?: '';
     }
 
-    /**
-     * Converts data from $value to $fieldValue.
-     *
-     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldValue $value
-     * @param \Ibexa\Contracts\Core\Persistence\Content\FieldValue $fieldValue
-     */
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue): void
     {
         $fieldValue->data = [
@@ -46,12 +37,6 @@ class MatrixConverter implements Converter
         ];
     }
 
-    /**
-     * Converts field definition data in $fieldDef into $storageFieldDef.
-     *
-     * @param \Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition $fieldDef
-     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
-     */
     public function toStorageFieldDefinition(FieldDefinition $fieldDef, StorageFieldDefinition $storageDef): void
     {
         $fieldSettings = $fieldDef->fieldTypeConstraints->fieldSettings;
@@ -70,18 +55,12 @@ class MatrixConverter implements Converter
         $storageDef->dataText5 = json_encode($columns) ?: '';
     }
 
-    /**
-     * Converts field definition data in $storageDef into $fieldDef.
-     *
-     * @param \Ibexa\Core\Persistence\Legacy\Content\StorageFieldDefinition $storageDef
-     * @param \Ibexa\Contracts\Core\Persistence\Content\Type\FieldDefinition $fieldDef
-     */
     public function toFieldDefinition(StorageFieldDefinition $storageDef, FieldDefinition $fieldDef): void
     {
         $fieldDef->fieldTypeConstraints->fieldSettings = new FieldSettings(
             [
                 'minimum_rows' => (int)$storageDef->dataInt1,
-                'columns' => json_decode($storageDef->dataText5 ?? '[]', true),
+                'columns' => json_decode($storageDef->dataText5, true),
             ]
         );
 
@@ -94,10 +73,8 @@ class MatrixConverter implements Converter
      * "sort_key_int" or "sort_key_string". This column is then used for
      * filtering and sorting for this type.
      * If the indexing is not supported, this method must return false.
-     *
-     * @return string|false
      */
-    public function getIndexColumn()
+    public function getIndexColumn(): false
     {
         return false;
     }

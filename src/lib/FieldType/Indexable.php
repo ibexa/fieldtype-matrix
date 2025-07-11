@@ -21,7 +21,7 @@ final class Indexable implements IndexableInterface
 
         $cells = [];
         foreach ($entries as $entry) {
-            foreach ($entry as $column => $value) {
+            foreach ($entry as $value) {
                 $cells[] = $value;
             }
         }
@@ -40,12 +40,12 @@ final class Indexable implements IndexableInterface
         return [];
     }
 
-    public function getDefaultMatchField(): ?string
+    public function getDefaultMatchField(): null
     {
         return null;
     }
 
-    public function getDefaultSortField(): ?string
+    public function getDefaultSortField(): null
     {
         return null;
     }

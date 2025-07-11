@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\Form\Type;
 
+use JMS\TranslationBundle\Annotation\Desc;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,8 +17,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @phpstan-extends \Symfony\Component\Form\AbstractType<array{name: string, identifier: string}>
  */
-class ColumnType extends AbstractType
+final class ColumnType extends AbstractType
 {
+    /**
+     * @param array<string, mixed> $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

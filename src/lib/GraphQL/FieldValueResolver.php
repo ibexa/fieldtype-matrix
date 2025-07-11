@@ -12,21 +12,16 @@ use Ibexa\Core\Base\Exceptions\BadStateException;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
-class FieldValueResolver implements QueryInterface
+final readonly class FieldValueResolver implements QueryInterface
 {
-    /** @var iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> */
-    private iterable $strategies;
-
     /**
      * @param iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> $strategies
      */
-    public function __construct(iterable $strategies)
+    public function __construct(private iterable $strategies)
     {
-        $this->strategies = $strategies;
     }
 
     /**
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
      */
     public function resolveMatrixFieldValue(object $item, string $fieldDefIdentifier): RowsCollection

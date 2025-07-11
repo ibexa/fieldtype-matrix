@@ -27,28 +27,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(name: 'ibexa:migrate:legacy_matrix')]
-class MigrateLegacyMatrixCommand extends Command
+final class MigrateLegacyMatrixCommand extends Command
 {
-    private const DEFAULT_ITERATION_COUNT = 1000;
-    private const EZMATRIX_IDENTIFIER = 'ezmatrix';
-    private const CONFIRMATION_ANSWER = 'yes';
+    private const int DEFAULT_ITERATION_COUNT = 1000;
+    private const string IBEXA_MATRIX_IDENTIFIER = 'ibexa_matrix';
+    private const string CONFIRMATION_ANSWER = 'yes';
 
-    private Connection $connection;
-
-    /**
-     * @param \Doctrine\DBAL\Connection $connection
-     */
     public function __construct(
-        Connection $connection
+        private readonly Connection $connection
     ) {
-        $this->connection = $connection;
-
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -66,9 +56,6 @@ class MigrateLegacyMatrixCommand extends Command
             );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -84,7 +71,7 @@ class MigrateLegacyMatrixCommand extends Command
             }
         }
 
-        $io->comment('Migrating legacy ezmatrix fieldtype');
+        $io->comment('Migrating legacy ibexa_matrix fieldtype');
 
         $iterationCount = (int)$input->getOption('iteration-count');
         $converter = new MatrixConverter();
@@ -94,13 +81,19 @@ class MigrateLegacyMatrixCommand extends Command
         libxml_use_internal_errors(true);
 
         foreach ($contentClassAttributes as $contentClassAttribute) {
-            $io->comment(sprintf('Migrate %s:%s attribute.', $contentClassAttribute['contenttype_identifier'], $contentClassAttribute['identifier']));
+            $io->comment(
+                sprintf(
+                    'Migrate %s:%s attribute.',
+                    $contentClassAttribute['contenttype_identifier'],
+                    $contentClassAttribute['identifier']
+                )
+            );
 
             try {
                 $xml = new SimpleXMLElement((string)$contentClassAttribute['columns']);
 
                 $isValidXml = true;
-            } catch (Exception $e) {
+            } catch (Exception) {
                 $isValidXml = false;
             }
 
@@ -128,8 +121,8 @@ class MigrateLegacyMatrixCommand extends Command
 
                 $this->updateContentClassAttribute(
                     (int)$contentClassAttribute['id'],
-                    (int)$storageFieldDefinition->dataInt1,
-                    (string)$storageFieldDefinition->dataText5
+                    $storageFieldDefinition->dataInt1,
+                    $storageFieldDefinition->dataText5
                 );
 
                 $columnsJson = $storageFieldDefinition->dataText5;
@@ -141,8 +134,15 @@ class MigrateLegacyMatrixCommand extends Command
                 (int)$contentClassAttribute['id']
             );
 
-            if ($contentAttributesCount === 0) {
-                $io->comment(sprintf('Zero instances of %s:%s attribute to migrate.', $contentClassAttribute['contenttype_identifier'], $contentClassAttribute['identifier']));
+            if ($contentAttributesCount == 0) {
+                $io->comment(
+                    sprintf(
+                        'Zero instances of %s:%s attribute to migrate.',
+                        $contentClassAttribute['contenttype_identifier'],
+                        $contentClassAttribute['identifier']
+                    )
+                );
+
                 continue;
             }
 
@@ -165,7 +165,7 @@ class MigrateLegacyMatrixCommand extends Command
                         $xml = new SimpleXMLElement(
                             (string)$contentObjectAttribute['data_text']
                         );
-                    } catch (Exception $e) {
+                    } catch (Exception) {
                         $progressBar->advance();
 
                         continue;
@@ -186,7 +186,7 @@ class MigrateLegacyMatrixCommand extends Command
 
                     $this->updateContentObjectAttribute(
                         (int)$contentObjectAttribute['id'],
-                        (string)$storageFieldValue->dataText
+                        $storageFieldValue->dataText
                     );
 
                     $progressBar->advance();
@@ -206,10 +206,10 @@ class MigrateLegacyMatrixCommand extends Command
     }
 
     /**
-     * @param array $cells
-     * @param array $columns
+     * @param array<string|int, mixed> $cells
+     * @param list<array<string, mixed>> $columns
      *
-     * @return array
+     * @return list<array<string, string>>
      */
     private function convertCellsToRows(array $cells, array $columns): array
     {
@@ -223,7 +223,7 @@ class MigrateLegacyMatrixCommand extends Command
 
             $row[$columnIdentifier] = (string)$cell;
 
-            if ($columnIndex === $columnsCount - 1) {
+            if ($columnIndex == $columnsCount - 1) {
                 $rows[] = $row;
                 $row = [];
             }
@@ -233,7 +233,7 @@ class MigrateLegacyMatrixCommand extends Command
     }
 
     /**
-     * @return array
+     * @return list<array<string,mixed>>
      */
     private function getContentClassAttributes(): array
     {
@@ -249,7 +249,7 @@ class MigrateLegacyMatrixCommand extends Command
             ->from(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
             ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.content_type_id')
             ->where('attr.data_type_string = :identifier')
-            ->setParameter('identifier', self::EZMATRIX_IDENTIFIER);
+            ->setParameter('identifier', self::IBEXA_MATRIX_IDENTIFIER);
 
         return $query->executeQuery()->fetchAllAssociative();
     }
@@ -282,7 +282,7 @@ class MigrateLegacyMatrixCommand extends Command
     }
 
     /**
-     * @return array
+     * @return list<array<string, mixed>>
      */
     private function getContentObjectAttributes(int $id, int $offset, int $iterationCount): array
     {

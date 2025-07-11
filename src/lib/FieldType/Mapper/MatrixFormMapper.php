@@ -14,11 +14,12 @@ use Ibexa\Contracts\ContentForms\Data\Content\FieldData;
 use Ibexa\Contracts\ContentForms\FieldType\FieldValueFormMapperInterface;
 use Ibexa\FieldTypeMatrix\Form\Type\ColumnType;
 use Ibexa\FieldTypeMatrix\Form\Type\FieldType\MatrixFieldType;
+use JMS\TranslationBundle\Annotation\Desc;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;
 
-class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValueFormMapperInterface
+final readonly class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValueFormMapperInterface
 {
     /**
      * "Maps" FieldDefinition form to current FieldType.
@@ -26,9 +27,6 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * - validator configuration,
      * - field settings
      * - default value.
-     *
-     * @param \Symfony\Component\Form\FormInterface<\Ibexa\AdminUi\Form\Data\FieldDefinitionData> $fieldDefinitionForm form for current FieldDefinition
-     * @param \Ibexa\AdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
      */
     public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
     {
@@ -60,13 +58,11 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
     /**
      * Maps Field form to current FieldType.
      * Allows to add form fields for content edition.
-     *
-     * @param \Symfony\Component\Form\FormInterface<\Ibexa\Contracts\ContentForms\Data\Content\FieldData> $fieldForm form for the current Field
-     * @param \Ibexa\Contracts\ContentForms\Data\Content\FieldData $data underlying data for current Field form
      */
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
     {
         $fieldDefinition = $data->fieldDefinition;
+        $fieldSettings = $fieldDefinition->getFieldSettings();
         $formConfig = $fieldForm->getConfig();
 
         $fieldForm
@@ -78,8 +74,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
                         [
                             'label' => $fieldDefinition->getName(),
                             'required' => $fieldDefinition->isRequired,
-                            'columns' => $fieldDefinition->fieldSettings['columns'],
-                            'minimum_rows' => $fieldDefinition->fieldSettings['minimum_rows'],
+                            'columns' => $fieldSettings['columns'],
+                            'minimum_rows' => $fieldSettings['minimum_rows'],
                         ]
                     )
                     ->setAutoInitialize(false)

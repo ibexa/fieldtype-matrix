@@ -10,13 +10,16 @@ namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 class Row
 {
-    protected array $cells;
-
-    public function __construct(array $cells = [])
+    /**
+     * @param array<string, mixed> $cells
+     */
+    public function __construct(protected array $cells = [])
     {
-        $this->cells = $cells;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getCells(): array
     {
         return $this->cells;
@@ -30,12 +33,15 @@ class Row
         return count($filtered) === 0;
     }
 
-    public function __get($name)
+    /**
+     * @return array<string, mixed>|string
+     */
+    public function __get(string $name): array|string
     {
         return $this->cells[$name];
     }
 
-    public function __isset($name): bool
+    public function __isset(string $name): bool
     {
         return isset($this->cells[$name]);
     }

@@ -22,7 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @phpstan-extends \Symfony\Component\Form\AbstractType<array{entries: array<int, array<string, mixed>>}>
  */
-class MatrixFieldType extends AbstractType
+final class MatrixFieldType extends AbstractType
 {
     public function getName(): string
     {
