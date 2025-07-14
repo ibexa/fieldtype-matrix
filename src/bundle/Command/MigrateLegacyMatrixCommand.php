@@ -134,7 +134,7 @@ final class MigrateLegacyMatrixCommand extends Command
                 (int)$contentClassAttribute['id']
             );
 
-            if ($contentAttributesCount == 0) {
+            if ($contentAttributesCount === 0) {
                 $io->comment(
                     sprintf(
                         'Zero instances of %s:%s attribute to migrate.',
