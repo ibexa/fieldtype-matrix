@@ -10,9 +10,12 @@ namespace Ibexa\FieldTypeMatrix\GraphQL;
 
 use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
-class SilentRow extends Row
+final class SilentRow extends Row
 {
-    public function __get($name)
+    /**
+     * @return array<string, mixed>|string
+     */
+    public function __get(string $name): array|string
     {
         return $this->cells[$name] ?? '';
     }

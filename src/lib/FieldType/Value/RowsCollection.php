@@ -9,17 +9,14 @@ declare(strict_types=1);
 namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 use ArrayObject;
-use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 
 /**
  * @extends ArrayObject<int, \Ibexa\FieldTypeMatrix\FieldType\Value\Row>
  */
-class RowsCollection extends ArrayObject
+final class RowsCollection extends ArrayObject
 {
     /**
      * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $elements
-     *
-     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
      */
     public function __construct(array $elements = [])
     {
@@ -28,24 +25,5 @@ class RowsCollection extends ArrayObject
         foreach ($elements as $index => $element) {
             $this->offsetSet($index, $element);
         }
-    }
-
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     *
-     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if (!$value instanceof Row) {
-            throw new InvalidArgumentType(
-                '$value',
-                Row::class,
-                $value
-            );
-        }
-
-        parent::offsetSet($offset, $value);
     }
 }

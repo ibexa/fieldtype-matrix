@@ -15,12 +15,14 @@ use Symfony\Component\Form\DataTransformerInterface;
 /**
  * @implements DataTransformerInterface<\Ibexa\FieldTypeMatrix\FieldType\Value, array<string, mixed>>
  */
-class FieldTypeModelTransformer implements DataTransformerInterface
+final readonly class FieldTypeModelTransformer implements DataTransformerInterface
 {
-    public function transform(mixed $value): mixed
+    /**
+     * @return array<string, mixed>
+     */
+    public function transform(mixed $value): array
     {
         $hash['entries'] = [];
-
         if ($value === null) {
             return $hash;
         }
@@ -32,7 +34,7 @@ class FieldTypeModelTransformer implements DataTransformerInterface
         return $hash;
     }
 
-    public function reverseTransform(mixed $value): mixed
+    public function reverseTransform(mixed $value): Value
     {
         $entries = $value['entries'] ?? [];
 

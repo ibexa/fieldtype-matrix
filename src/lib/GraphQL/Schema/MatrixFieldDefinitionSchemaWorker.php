@@ -13,15 +13,15 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Worker;
 
-class MatrixFieldDefinitionSchemaWorker implements Worker
+final readonly class MatrixFieldDefinitionSchemaWorker implements Worker
 {
-    private NameHelper $nameHelper;
-
-    public function __construct(NameHelper $nameHelper)
+    public function __construct(private NameHelper $nameHelper)
     {
-        $this->nameHelper = $nameHelper;
     }
 
+    /**
+     * @param array<string, mixed> $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $typeName = $this->typeName($args);
@@ -41,6 +41,9 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
         }
     }
 
+    /**
+     * @param array<string, mixed> $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return
@@ -52,8 +55,14 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
             && !$schema->hasType($this->typeName($args));
     }
 
+    /**
+     * @param array<string, mixed> $args
+     */
     private function typeName(array $args): string
     {
-        return $this->nameHelper->matrixFieldDefinitionType($args['ContentType'], $args['FieldDefinition']);
+        return $this->nameHelper->matrixFieldDefinitionType(
+            $args['ContentType'],
+            $args['FieldDefinition']
+        );
     }
 }

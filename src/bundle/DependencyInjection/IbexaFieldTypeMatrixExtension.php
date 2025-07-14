@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
-class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensionInterface
+final class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -39,7 +39,7 @@ class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensio
     public function prependKernelSettings(ContainerBuilder $container): void
     {
         $configFile = __DIR__ . '/../Resources/config/kernel.yaml';
-        $config = Yaml::parse(file_get_contents($configFile));
+        $config = Yaml::parseFile($configFile);
         $container->prependExtensionConfig('ibexa', $config);
         $container->addResource(new FileResource($configFile));
     }

@@ -17,19 +17,12 @@ use Ibexa\Tests\Integration\Core\Repository\BaseTestCase;
 
 final class SearchServiceTest extends BaseTestCase
 {
+    /**
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     */
     public function testFindContentWithMatrixFieldType(): void
     {
-        $content = $this->createAndPublishContentWithMatrixFieldType(
-            'Content with table',
-            new Value([
-                new Row([
-                    'foo' => 'Foo',
-                    'bar' => 'Bar',
-                    'baz' => 'Baz',
-                ]),
-            ])
-        );
-
+        $content = $this->createAndPublishContentWithMatrixFieldType();
         $searchService = $this->getRepository()->getSearchService();
 
         $searchResults = $searchService->findContent(
@@ -42,9 +35,9 @@ final class SearchServiceTest extends BaseTestCase
         self::assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
     }
 
-    private function createAndPublishContentWithMatrixFieldType(string $title, Value $table): Content
+    private function createAndPublishContentWithMatrixFieldType(): Content
     {
-        $contentType = $this->createContentTypeWithMatrixFieldType('content_with_table');
+        $contentType = $this->createContentTypeWithMatrixFieldType();
 
         $contentService = $this->getRepository()->getContentService();
         $locationService = $this->getRepository()->getLocationService();
@@ -72,8 +65,16 @@ final class SearchServiceTest extends BaseTestCase
         return $contentService->publishVersion($content->getVersionInfo());
     }
 
-    private function createContentTypeWithMatrixFieldType(string $identifier): ContentType
+    /**
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\ContentTypeFieldDefinitionValidationException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     */
+    private function createContentTypeWithMatrixFieldType(): ContentType
     {
+        $identifier = 'content_with_table';
         $repository = $this->getRepository();
 
         $contentTypeService = $repository->getContentTypeService();

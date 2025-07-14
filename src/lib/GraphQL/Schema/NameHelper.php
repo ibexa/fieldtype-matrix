@@ -12,7 +12,7 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
-class NameHelper
+final readonly class NameHelper
 {
     public function matrixFieldDefinitionType(ContentType $contentType, FieldDefinition $fieldDefinition): string
     {

@@ -23,8 +23,6 @@ trait CoreSetupFactoryTrait
      *
      * @todo refactor ibexa/core SetupFactory to include that setup w/o relying on config.php
      *
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     *
      * @throws \Exception
      */
     protected function loadCoreSettings(ContainerBuilder $containerBuilder): void
