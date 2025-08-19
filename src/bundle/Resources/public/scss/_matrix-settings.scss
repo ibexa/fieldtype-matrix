@@ -1,4 +1,8 @@
 .ibexa-matrix-settings {
+    &__columns {
+        margin-top: calculateRem(16px)
+    }
+
     &__column {
         .form-check {
             padding-left: 0;

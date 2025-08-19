@@ -21,11 +21,16 @@
                 body_row_cols: [
                     { has_checkbox: true, content: col_checkbox, raw: true },
                     { content: form_widget(form.columns.vars.prototype.name), raw: true },
-                    { content: form_widget(form.columns.vars.prototype.identifier), raw: true },
+                    { content: form_widget(form.columns.vars.prototype.identifier, {
+                        attr: {
+                            class: 'ibexa-input--matrix-column-identifier'
+                        }
+                    }), raw: true },
                 ],
                 class: 'ibexa-matrix-settings__column',
             } %}
         </script>
+
         {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ibexa-label' } }) }}
         {{ form_errors(form.columns) }}
         {% set body_rows = [] %}
@@ -40,7 +45,11 @@
                 cols: [
                     { has_checkbox: true, content: col_checkbox, raw: true },
                     { content: form_widget(column.name), raw: true },
-                    { content: form_widget(column.identifier), raw: true },
+                    { content: form_widget(column.identifier, {
+                        attr: {
+                            class: 'ibexa-input--matrix-column-identifier'
+                        }
+                    }), raw: true },
                 ],
                 class: 'ibexa-matrix-settings__column',
             }]) %}
@@ -82,5 +91,14 @@
                 {% endembed %}
             {% endblock %}
         {% endembed %}
+
+        <div class="ibexa-form-error" hidden>
+            <em class="ibexa-form-error__row">
+                <svg class="ibexa-icon ibexa-icon--small ibexa-form-error__icon">
+                    <use xlink:href="{{ ibexa_icon_path('notice') }}"></use>
+                </svg>
+                At least one column is required for matrix field.
+            </em>
+        </div>
     </div>
 {% endblock %}
