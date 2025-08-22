@@ -48,6 +48,7 @@
         "ibexa/http-cache": "~4.6.0@dev",
         "ibexa/design-engine": "~4.6.0@dev",
         "ibexa/code-style": "^1.0",
+        "ibexa/twig-components": "~4.6.x-dev",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5",
         "phpstan/phpstan": "^2.0",
