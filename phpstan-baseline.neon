@@ -1,6 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Argument of an invalid type array\<SimpleXMLElement\>\|null supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
+
+		-
 			message: '#^Cannot access offset ''entries'' on array\|bool\|float\|int\|string\|null\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -51,6 +57,12 @@ parameters:
 		-
 			message: '#^Method Ibexa\\Bundle\\FieldTypeMatrix\\Command\\MigrateLegacyMatrixCommand\:\:getContentObjectAttributes\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
+
+		-
+			message: '#^Parameter \#1 \$cells of method Ibexa\\Bundle\\FieldTypeMatrix\\Command\\MigrateLegacyMatrixCommand\:\:convertCellsToRows\(\) expects array, array\<SimpleXMLElement\>\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
 
