@@ -33,7 +33,9 @@
 
         {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ibexa-label' } }) }}
         {{ form_errors(form.columns) }}
+
         {% set body_rows = [] %}
+
         {% for column in form.columns %}
             {% set col_checkbox %}
                 <div class="form-check">
@@ -97,7 +99,7 @@
                 <svg class="ibexa-icon ibexa-icon--small ibexa-form-error__icon">
                     <use xlink:href="{{ ibexa_icon_path('notice') }}"></use>
                 </svg>
-                At least one column is required for matrix field.
+                {{ 'field.column.error.quantity'|trans|desc('At least one column is required for matrix field.') }}
             </em>
         </div>
     </div>
