@@ -17,6 +17,7 @@ use Ibexa\Bundle\GraphQL\IbexaGraphQLBundle;
 use Ibexa\Bundle\Notifications\IbexaNotificationsBundle;
 use Ibexa\Bundle\Rest\IbexaRestBundle;
 use Ibexa\Bundle\Search\IbexaSearchBundle;
+use Ibexa\Bundle\TwigComponents\IbexaTwigComponentsBundle;
 use Ibexa\Bundle\User\IbexaUserBundle;
 use Ibexa\Contracts\Test\Core\IbexaTestKernel;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
@@ -47,6 +48,7 @@ final class Kernel extends IbexaTestKernel
         yield new IbexaAdminUiBundle();
         yield new IbexaNotificationsBundle();
         yield new IbexaGraphQLBundle();
+        yield new IbexaTwigComponentsBundle();
 
         yield new IbexaFieldTypeMatrixBundle();
     }

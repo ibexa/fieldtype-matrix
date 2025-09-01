@@ -107,7 +107,7 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
             }
 
             if ($isValidXml) {
-                $columnList = $xml->xpath('//column-name');
+                $columnList = $xml->xpath('//column-name') ?: [];
 
                 $columns = [];
 
@@ -180,7 +180,8 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
                         ],
                     ]);
 
-                    $rows = $this->convertCellsToRows($xml->xpath('c'), $columns);
+                    $cells = $xml->xpath('c') ?: [];
+                    $rows = $this->convertCellsToRows($cells, $columns);
 
                     $fieldValue->data['entries'] = $rows;
 

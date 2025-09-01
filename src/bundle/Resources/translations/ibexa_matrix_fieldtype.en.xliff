@@ -26,6 +26,11 @@
         <target state="new">Delete</target>
         <note>key: field.column.delete</note>
       </trans-unit>
+      <trans-unit id="5e712908b00d328e0ae52c2b063ea2186335e029" resname="field.column.error.quantity">
+        <source>At least one column is required for matrix field.</source>
+        <target state="new">At least one column is required for matrix field.</target>
+        <note>key: field.column.error.quantity</note>
+      </trans-unit>
       <trans-unit id="fa41ae6cab6d74c6548f4052c02c0c5129a27f1d" resname="field.column.identifier">
         <source>Identifier</source>
         <target state="new">Identifier</target>

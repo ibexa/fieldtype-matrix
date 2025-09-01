@@ -43,13 +43,13 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
             ])
             ->add('columns', CollectionType::class, [
                 'entry_type' => ColumnType::class,
-                'entry_options' => ['required' => false],
+                'entry_options' => ['required' => true],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'delete_empty' => false,
                 'prototype' => true,
                 'prototype_name' => '__number__',
-                'required' => false,
+                'required' => true,
                 'property_path' => 'fieldSettings[columns]',
                 'label' => false,
                 'translation_domain' => 'ibexa_matrix_fieldtype',
