@@ -6,6 +6,7 @@
     const SELECTOR_ADD_COLUMN = '.ibexa-btn--add-column';
     const SELECTOR_REMOVE_COLUMN = '.ibexa-btn--remove-column';
     const SELECTOR_TEMPLATE = '.ibexa-matrix-settings__column-template';
+    const ERROR_NODE_SELECTOR = '.ibexa-form-error';
     const NUMBER_PLACEHOLDER = /__number__/g;
     const getNextIndex = (parentNode) => {
         return parentNode.dataset.nextIndex++;
@@ -36,9 +37,18 @@
         node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(node)));
 
         initColumns(settingsNode);
+        validateColumnsNumber(settingsNode);
 
         node.closest('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
+
         doc.body.dispatchEvent(new CustomEvent('ibexa-inputs:added'));
+        doc.body.dispatchEvent(
+            new CustomEvent('ibexa-fieldtype-matrix:added-column', {
+                detail: {
+                    columnNode: node.querySelector(`${SELECTOR_COLUMN}:last-of-type`),
+                },
+            }),
+        );
     };
     const removeItems = (event) => {
         const settingsNode = event.target.closest(SELECTOR_SETTINGS_COLUMNS);
@@ -66,6 +76,7 @@
             });
 
             node.closest('.ibexa-table').dispatchEvent(new CustomEvent('ibexa-refresh-main-table-checkbox'));
+            validateColumnsNumber(settingsNode);
         }, 0);
 
         initColumns(settingsNode);
@@ -90,6 +101,12 @@
         container.querySelector(SELECTOR_REMOVE_COLUMN).addEventListener('click', removeItems, false);
 
         initColumns(container);
+    };
+    const validateColumnsNumber = (settingsNode) => {
+        const columns = settingsNode.querySelectorAll(SELECTOR_COLUMN);
+        const errorNode = settingsNode.querySelector(ERROR_NODE_SELECTOR);
+
+        errorNode.toggleAttribute('hidden', columns.length > 0);
     };
 
     doc.querySelectorAll(SELECTOR_SETTINGS_COLUMNS).forEach((container) => {

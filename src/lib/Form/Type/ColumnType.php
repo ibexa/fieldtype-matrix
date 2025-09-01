@@ -27,9 +27,11 @@ final class ColumnType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => /** @Desc("Name") */ 'fieldtype.column.name',
+                'required' => false,
             ])
             ->add('identifier', TextType::class, [
                 'label' => /** @Desc("Identifier") */ 'fieldtype.column.identifier',
+                'required' => true,
             ]);
     }
 
