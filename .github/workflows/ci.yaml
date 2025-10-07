@@ -14,21 +14,16 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Setup PHP Action
-        uses: shivammathur/setup-php@v2
+      - uses: ibexa/gh-workflows/actions/composer-install@main
         with:
-          php-version: ${{ matrix.php }}
-          coverage: none
-          extensions: 'pdo_sqlite, gd'
-          tools: cs2pr
-
-      - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
+          gh-client-id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+          gh-client-secret: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
+          satis-network-key: ${{ secrets.SATIS_NETWORK_KEY }}
+          satis-network-token: ${{ secrets.SATIS_NETWORK_TOKEN }}
 
       - name: Run code style check
         run: composer run-script check-cs -- --format=checkstyle | cs2pr
@@ -47,19 +42,14 @@ jobs:
           - '8.3'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Setup PHP Action
-        uses: shivammathur/setup-php@v2
+      - uses: ibexa/gh-workflows/actions/composer-install@main
         with:
-          php-version: ${{ matrix.php }}
-          coverage: none
-          extensions: pdo_sqlite, gd
-          tools: cs2pr
-
-      - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
+          gh-client-id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+          gh-client-secret: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
+          satis-network-key: ${{ secrets.SATIS_NETWORK_KEY }}
+          satis-network-token: ${{ secrets.SATIS_NETWORK_TOKEN }}
 
       - name: Setup problem matchers for PHPUnit
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
@@ -85,19 +75,14 @@ jobs:
           - '8.3'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Setup PHP Action
-        uses: shivammathur/setup-php@v2
+      - uses: ibexa/gh-workflows/actions/composer-install@main
         with:
-          php-version: ${{ matrix.php }}
-          coverage: none
-          extensions: pdo_sqlite, gd
-          tools: cs2pr
-
-      - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
+          gh-client-id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+          gh-client-secret: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
+          satis-network-key: ${{ secrets.SATIS_NETWORK_KEY }}
+          satis-network-token: ${{ secrets.SATIS_NETWORK_TOKEN }}
 
       - name: Setup problem matchers for PHPUnit
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
