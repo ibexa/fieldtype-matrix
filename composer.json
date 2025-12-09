@@ -2,7 +2,7 @@
     "name": "ibexa/fieldtype-matrix",
     "description": "Repository dedicated to Matrix Field Type for eZ Platform",
     "type": "library",
-    "license": "GPL-2.0-only",
+    "license": "(GPL-2.0-only or proprietary)",
     "replace": {
         "ezsystems/ezplatform-matrix-fieldtype": "*"
     },
