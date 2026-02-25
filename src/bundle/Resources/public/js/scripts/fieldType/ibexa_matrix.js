@@ -104,6 +104,31 @@
         }
 
         /**
+         * Validates minimum filled rows
+         *
+         * @method validateMinimumRows
+         * @param {Event} event
+         * @returns {Object}
+         * @memberof EzMatrixValidator
+         */
+        validateMinimumRows(event) {
+            const matrixNode = event.target.closest(SELECTOR_FIELD);
+            const container = matrixNode.querySelector(SELECTOR_MATRIX_ENTRIES_CONTAINER);
+            const minimumRows = parseInt(container.dataset.minimumRows, 10);
+            const filledRows = [...matrixNode.querySelectorAll(SELECTOR_MATRIX_ENTRY)].filter((entry) => {
+                return [...entry.querySelectorAll('input[type="text"]')].some((input) => input.value.trim());
+            });
+            const isError = filledRows.length < minimumRows;
+            const label = matrixNode.querySelector('.ibexa-field-edit__label').innerText;
+            const errorMessage = ibexa.errors.emptyField.replace('{fieldName}', label);
+
+            return {
+                isError,
+                errorMessage,
+            };
+        }
+
+        /**
          * Attaches event listeners based on a config.
          *
          * @method init
@@ -134,6 +159,13 @@
         classInvalid: 'is-invalid',
         fieldSelector: SELECTOR_FIELD,
         eventsMap: [
+            {
+                selector: `${SELECTOR_FIELD} ${SELECTOR_MATRIX_ENTRY} input[type="text"]`,
+                eventName: 'blur',
+                callback: 'validateMinimumRows',
+                errorNodeSelectors: [`${SELECTOR_FIELD} .ibexa-form-error`],
+                invalidStateSelectors: [`${SELECTOR_FIELD} .ibexa-field-edit__label`],
+            },
             {
                 isValueValidator: false,
                 selector: SELECTOR_MATRIX_ENTRY_CHECKBOX,
