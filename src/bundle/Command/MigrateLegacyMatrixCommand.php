@@ -121,7 +121,7 @@ final class MigrateLegacyMatrixCommand extends Command
 
                 $this->updateContentClassAttribute(
                     (int)$contentClassAttribute['id'],
-                    $storageFieldDefinition->dataInt1,
+                    (int)$storageFieldDefinition->dataInt1,
                     $storageFieldDefinition->dataText5
                 );
 
