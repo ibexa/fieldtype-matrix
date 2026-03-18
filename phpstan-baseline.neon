@@ -19,12 +19,6 @@ parameters:
 			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
 
 		-
-			message: '#^Variable \$xml might not be defined\.$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
-
-		-
 			message: '#^Method Ibexa\\FieldTypeMatrix\\FieldType\\Mapper\\MatrixFormMapper\:\:mapFieldDefinitionForm\(\) has parameter \$fieldDefinitionForm with generic interface Symfony\\Component\\Form\\FormInterface but does not specify its types\: TData$#'
 			identifier: missingType.generics
 			count: 1
