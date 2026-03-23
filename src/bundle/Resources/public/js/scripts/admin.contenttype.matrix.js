@@ -3,8 +3,8 @@
     const SELECTOR_COLUMN = '.ibexa-matrix-settings__column';
     const SELECTOR_COLUMNS_CONTAINER = '.ibexa-table__body';
     const SELECTOR_COLUMN_CHECKBOX = '.ibexa-matrix-settings__column-checkbox';
-    const SELECTOR_ADD_COLUMN = '.ibexa-btn--add-column';
-    const SELECTOR_REMOVE_COLUMN = '.ibexa-btn--remove-column';
+    const SELECTOR_ADD_COLUMN = '.ids-button--add-column';
+    const SELECTOR_REMOVE_COLUMN = '.ids-button--remove-column';
     const SELECTOR_TEMPLATE = '.ibexa-matrix-settings__column-template';
     const ERROR_NODE_SELECTOR = '.ibexa-form-error';
     const NUMBER_PLACEHOLDER = /__number__/g;

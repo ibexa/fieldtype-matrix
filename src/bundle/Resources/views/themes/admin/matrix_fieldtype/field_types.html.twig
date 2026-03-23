@@ -73,22 +73,26 @@
                 {% embed '@ibexadesign/ui/component/table/table_header.html.twig' %}
                     {% trans_default_domain 'ibexa_matrix_fieldtype' %}
                     {% block actions %}
-                        <button type="button" class="btn ibexa-btn ibexa-btn--tertiary ibexa-btn--small ibexa-btn--add-column">
-                            <svg class="ibexa-icon ibexa-icon--small-medium ibexa-icon--create">
-                                <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
-                            </svg>
-                            <span class="ibexa-btn__label">
-                                {{ 'field.column.add_new'|trans|desc('Add') }}
-                            </span>
-                        </button>
-                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--remove-column">
-                            <svg class="ibexa-icon ibexa-icon--small-medium ibexa-icon--trash">
-                                <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
-                            </svg>
-                            <span class="ibexa-btn__label">
-                                {{ 'field.column.delete'|trans|desc('Delete') }}
-                            </span>
-                        </button>
+                        <twig:ibexa:button
+                            html_type="button"
+                            type="tertiary"
+                            size="small"
+                            icon="add"
+                            icon_size="small-medium"
+                            class="ids-button--add-column"
+                        >
+                            {{ 'field.column.add_new'|trans|desc('Add') }}
+                        </twig:ibexa:button>
+                        <twig:ibexa:button
+                            html_type="button"
+                            type="tertiary-alt"
+                            size="small"
+                            icon="trash"
+                            icon_size="small-medium"
+                            class="ids-button--remove-column"
+                        >
+                            {{ 'field.column.delete'|trans|desc('Delete') }}
+                        </twig:ibexa:button>
                     {% endblock %}
                 {% endembed %}
             {% endblock %}
