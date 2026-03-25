@@ -13,7 +13,10 @@
         <script type="text/template" class="ibexa-matrix-settings__column-template">
             {% set col_checkbox %}
                 <div class="form-check">
-                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                    {{ component('ibexa:checkbox:input', {
+                        name: 'matrix-column-checkbox-prototype',
+                        inputClass: 'ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox',
+                    }) }}
                 </div>
             {% endset %}
 
@@ -39,7 +42,10 @@
         {% for column in form.columns %}
             {% set col_checkbox %}
                 <div class="form-check">
-                    <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox">
+                    {{ component('ibexa:checkbox:input', {
+                        name: 'matrix-column-checkbox-' ~ loop.index,
+                        inputClass: 'ibexa-input ibexa-input--checkbox ibexa-matrix-settings__column-checkbox',
+                    }) }}
                 </div>
             {% endset %}
 
