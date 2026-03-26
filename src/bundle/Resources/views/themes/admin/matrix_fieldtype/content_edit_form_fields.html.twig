@@ -64,11 +64,11 @@
 {% block ezplatform_fieldtype_ibexa_matrix_entry_row %}
     {% set readonly = attr.readonly|default(false) %}
     {% set col_checkbox %}
-        <input
-            type="checkbox"
-            class="ibexa-input ibexa-input--checkbox ibexa-table__ibexa_matrix-entry-checkbox"
-            {{ readonly ? 'disabled' }}
-        >
+        <twig:ibexa:checkbox:input
+            name="{{ form.vars.id ~ '_matrix_entry_checkbox' }}"
+            inputClass="ibexa-input ibexa-input--checkbox ibexa-table__ibexa_matrix-entry-checkbox"
+            :disabled="readonly"
+        />
     {% endset %}
 
     {% set col_actions %}
