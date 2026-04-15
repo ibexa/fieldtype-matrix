@@ -6,6 +6,12 @@
       "repositoryUrl": "https://github.com/ibexa/graphql",
       "package": "ibexa/graphql",
       "shouldBeAddedAsVCS": true
+    },
+    {
+      "requirement": "dev-ibx-11606-replaced-deprecated-graphql-resolver as 4.6.x-dev",
+      "repositoryUrl": "https://github.com/ibexa/fieldtype-query",
+      "package": "ibexa/fieldtype-query",
+      "shouldBeAddedAsVCS": true
     }
   ]
 }
