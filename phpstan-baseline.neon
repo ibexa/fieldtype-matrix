@@ -55,12 +55,6 @@ parameters:
 			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
 
 		-
-			message: '#^Variable \$xml might not be defined\.$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/bundle/Command/MigrateLegacyMatrixCommand.php
-
-		-
 			message: '#^Parameter \#1 \$input of static method Symfony\\Component\\Yaml\\Yaml\:\:parse\(\) expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1

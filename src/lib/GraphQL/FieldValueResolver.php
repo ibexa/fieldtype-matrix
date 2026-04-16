@@ -10,8 +10,9 @@ namespace Ibexa\FieldTypeMatrix\GraphQL;
 
 use Ibexa\Core\Base\Exceptions\BadStateException;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
-class FieldValueResolver
+class FieldValueResolver implements QueryInterface
 {
     /** @var iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> */
     private iterable $strategies;

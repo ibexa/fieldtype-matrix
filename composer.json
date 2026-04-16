@@ -68,6 +68,12 @@
         }
     },
     "config": {
-        "allow-plugins": false
+        "sort-packages": true,
+        "allow-plugins": false,
+        "audit": {
+            "ignore": {
+                "PKSA-7h5p-prw9-w5nr": "The affected version of 3rd party component is installed on PHP 7.4. There's no alternative supporting PHP 7.4. Consider upgrading to PHP 8"
+            }
+        }
     }
 }
