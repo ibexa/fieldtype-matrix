@@ -39,7 +39,7 @@
     "require-dev": {
         "ibexa/ci-scripts": "^0.2@dev",
         "ibexa/doctrine-schema": "~4.6.0@dev",
-        "ibexa/admin-ui": "dev-ibx-10737 as 4.6.x-dev",
+        "ibexa/admin-ui": "~4.6.0@dev",
         "ibexa/user": "~4.6.0@dev",
         "ibexa/fieldtype-richtext": "~4.6.0@dev",
         "ibexa/search": "~4.6.0@dev",
