@@ -39,7 +39,7 @@
                         icon="add"
                         icon_size="small-medium"
                         :disabled="readonly"
-                        class="ids-button--add-matrix-entry"
+                        class="ids-btn--add-matrix-entry"
                     >
                         {{ 'ibexa_matrix.add'|trans|desc('Add') }}
                     </twig:ibexa:button>
@@ -50,7 +50,7 @@
                         icon="trash"
                         icon_size="small-medium"
                         :disabled="readonly"
-                        class="ids-button--bulk-remove-matrix"
+                        class="ids-btn--bulk-remove-matrix"
                     >
                         {{ 'ibexa_matrix.remove'|trans|desc('Delete') }}
                     </twig:ibexa:button>
@@ -81,7 +81,7 @@
             icon_size="small-medium"
             :disabled="readonly"
             title="{{ 'ibexa_matrix.remove_entry'|trans|desc('Remove') }}"
-            class="ids-button--remove-matrix-entry"
+            class="ids-btn--remove-matrix-entry"
         />
     {% endset %}
 
