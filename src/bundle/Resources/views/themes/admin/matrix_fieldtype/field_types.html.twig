@@ -86,7 +86,7 @@
                             icon_size="small-medium"
                             class="ids-btn--add-column"
                         >
-                            {{ 'field.column.add_new'|trans|desc('Add') }}
+                            {{ 'field.column.add_new'|trans({}, 'ibexa_matrix_fieldtype')|desc('Add') }}
                         </twig:ibexa:button>
                         <twig:ibexa:button
                             type="tertiary-alt"
@@ -95,7 +95,7 @@
                             icon_size="small-medium"
                             class="ids-btn--remove-column"
                         >
-                            {{ 'field.column.delete'|trans|desc('Delete') }}
+                            {{ 'field.column.delete'|trans({}, 'ibexa_matrix_fieldtype')|desc('Delete') }}
                         </twig:ibexa:button>
                     {% endblock %}
                 {% endembed %}

@@ -40,7 +40,7 @@
                         :disabled="readonly"
                         class="ids-btn--add-matrix-entry"
                     >
-                        {{ 'ibexa_matrix.add'|trans|desc('Add') }}
+                        {{ 'ibexa_matrix.add'|trans({}, 'ibexa_matrix_fieldtype')|desc('Add') }}
                     </twig:ibexa:button>
                     <twig:ibexa:button
                         type="tertiary-alt"
@@ -50,7 +50,7 @@
                         :disabled="readonly"
                         class="ids-btn--bulk-remove-matrix"
                     >
-                        {{ 'ibexa_matrix.remove'|trans|desc('Delete') }}
+                        {{ 'ibexa_matrix.remove'|trans({}, 'ibexa_matrix_fieldtype')|desc('Delete') }}
                     </twig:ibexa:button>
                 {% endblock %}
             {% endembed %}
