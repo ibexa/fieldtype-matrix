@@ -16,6 +16,11 @@
         <target state="new">Delete</target>
         <note>key: ibexa_matrix.remove</note>
       </trans-unit>
+      <trans-unit id="b576ed740c793524756921e49ff6647251c1e6ca" resname="ibexa_matrix.remove_entry">
+        <source>Remove</source>
+        <target state="new">Remove</target>
+        <note>key: ibexa_matrix.remove_entry</note>
+      </trans-unit>
       <trans-unit id="8422049ef51bbcd967ea5578aee3ed094edd252c" resname="field.column.add_new">
         <source>Add</source>
         <target state="new">Add</target>
