@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\Tests\FieldTypeMatrix;
 
+use Ibexa\Bundle\Core\DependencyInjection\Compiler\ChainConfigResolverPass;
 use Ibexa\Core\Base\Container\Compiler;
 use RuntimeException;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
@@ -84,6 +85,10 @@ trait CoreSetupFactoryTrait
         }
 
         $containerBuilder->setParameter('ibexa.kernel.root_dir', realpath($kernelRootDir));
+
+        // Wire config resolvers tagged 'ibexa.site.config.resolver' into the ChainConfigResolver.
+        // No-op on older ibexa/core versions that don't define the ChainConfigResolver service.
+        $containerBuilder->addCompilerPass(new ChainConfigResolverPass());
 
         $containerBuilder->addCompilerPass(new Compiler\FieldTypeRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Persistence\FieldTypeRegistryPass());
