@@ -12,13 +12,13 @@
     }
 
     .ibexa-table__matrix-entry {
-        .ibexa-input--text {
+        .ids-input {
             margin-bottom: 0;
         }
     }
 
     .ibexa-table__cell {
-        .ibexa-btn--remove-matrix-entry {
+        .ids-btn--remove-matrix-entry {
             padding: calculateRem(4px);
         }
     }

@@ -32,26 +32,26 @@
                 {% trans_default_domain 'ibexa_matrix_fieldtype' %}
 
                 {% block actions %}
-                    <button
-                        type="button"
-                        class="btn ibexa-btn ibexa-btn--secondary ibexa-btn--small ibexa-btn--add-matrix-entry"
-                        {{ readonly ? 'disabled' }}
+                    <twig:ibexa:button
+                        type="secondary"
+                        size="small"
+                        icon="add"
+                        icon_size="small-medium"
+                        :disabled="readonly"
+                        class="ids-btn--add-matrix-entry"
                     >
-                        <svg class="ibexa-icon ibexa-icon--small-medium ibexa-icon--edit">
-                            <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
-                        </svg>
-                        <span class="ibexa-btn__label">{{ 'ibexa_matrix.add'|trans|desc('Add') }}</span>
-                    </button>
-                    <button
-                        type="button"
-                        class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--small ibexa-btn--bulk-remove-matrix"
-                        {{ readonly ? 'disabled' }}
+                        {{ 'ibexa_matrix.add'|trans({}, 'ibexa_matrix_fieldtype')|desc('Add') }}
+                    </twig:ibexa:button>
+                    <twig:ibexa:button
+                        type="tertiary-alt"
+                        size="small"
+                        icon="trash"
+                        icon_size="small-medium"
+                        :disabled="readonly"
+                        class="ids-btn--bulk-remove-matrix"
                     >
-                        <svg class="ibexa-icon ibexa-icon--small-medium ibexa-icon--edit">
-                            <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
-                        </svg>
-                        <span class="ibexa-btn__label">{{ 'ibexa_matrix.remove'|trans|desc('Delete') }}</span>
-                    </button>
+                        {{ 'ibexa_matrix.remove'|trans({}, 'ibexa_matrix_fieldtype')|desc('Delete') }}
+                    </twig:ibexa:button>
                 {% endblock %}
             {% endembed %}
         {% endblock %}
@@ -64,23 +64,22 @@
 {% block ezplatform_fieldtype_ibexa_matrix_entry_row %}
     {% set readonly = attr.readonly|default(false) %}
     {% set col_checkbox %}
-        <input
-            type="checkbox"
-            class="ibexa-input ibexa-input--checkbox ibexa-table__ibexa_matrix-entry-checkbox"
-            {{ readonly ? 'disabled' }}
-        >
+        <twig:ibexa:checkbox:input
+            name="{{ form.vars.id ~ '_matrix_entry_checkbox' }}"
+            inputClass="ibexa-table__ibexa_matrix-entry-checkbox"
+            :disabled="readonly"
+        />
     {% endset %}
 
     {% set col_actions %}
-        <button
-            type="button"
-            class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-matrix-entry"
-            {{ readonly ? 'disabled' }}
-        >
-            <svg class="ibexa-icon ibexa-icon--small-medium ibexa-icon--edit">
-                <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
-            </svg>
-        </button>
+        <twig:ibexa:button
+            type="tertiary-alt"
+            icon="trash"
+            icon_size="small-medium"
+            :disabled="readonly"
+            title="{{ 'ibexa_matrix.remove_entry'|trans|desc('Remove') }}"
+            class="ids-btn--remove-matrix-entry"
+        />
     {% endset %}
 
     {% set body_row_cols = [{ has_checkbox: true, content: col_checkbox }] %}
