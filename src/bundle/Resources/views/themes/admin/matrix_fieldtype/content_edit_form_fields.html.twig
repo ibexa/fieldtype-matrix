@@ -1,7 +1,7 @@
 {% trans_default_domain 'ibexa_matrix_fieldtype' %}
 
 {% block ezplatform_fieldtype_ibexa_matrix_widget %}
-    {% set readonly = attr.readonly|default(false) %}
+    {% set readonly = attr.readonly|default(false) ? true : false %}
 
     <script type="text/template" class="ibexa-data-source__entry-template">
         {{ form_row(form.entries.vars.prototype, { attr: { readonly: readonly }}) }}
@@ -62,7 +62,7 @@
 {% endblock %}
 
 {% block ezplatform_fieldtype_ibexa_matrix_entry_row %}
-    {% set readonly = attr.readonly|default(false) %}
+    {% set readonly = attr.readonly|default(false) ? true : false %}
     {% set col_checkbox %}
         <twig:ibexa:checkbox:input
             name="{{ form.vars.id ~ '_matrix_entry_checkbox' }}"
