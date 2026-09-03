@@ -240,13 +240,13 @@ final class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->select([
+            ->select(
                 'attr.id',
                 'attr.identifier',
                 'attr.data_int1 as minimum_rows',
                 'attr.data_text5 as columns',
                 'class.identifier as contenttype_identifier',
-            ])
+            )
             ->from(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
             ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.content_type_id')
             ->where('attr.data_type_string = :identifier')
@@ -259,10 +259,10 @@ final class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
-            ->set('attr.data_int1', ':minimum_rows')
-            ->set('attr.data_text5', ':columns')
-            ->where('attr.id = :id')
+            ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE)
+            ->set('data_int1', ':minimum_rows')
+            ->set('data_text5', ':columns')
+            ->where('id = :id')
             ->setParameter('id', $id)
             ->setParameter('minimum_rows', $minimumRows)
             ->setParameter('columns', $columns);
@@ -289,7 +289,7 @@ final class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->select(['id', 'data_text'])
+            ->select('id', 'data_text')
             ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
             ->where('attr.content_type_field_definition_id = :ct_field_def_id')
             ->setParameter('ct_field_def_id', $id)
@@ -303,9 +303,9 @@ final class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update(Gateway::CONTENT_FIELD_TABLE, 'attr')
-            ->set('attr.data_text', ':rows')
-            ->where('attr.id = :id')
+            ->update(Gateway::CONTENT_FIELD_TABLE)
+            ->set('data_text', ':rows')
+            ->where('id = :id')
             ->setParameter('id', $id)
             ->setParameter('rows', $rows);
 
