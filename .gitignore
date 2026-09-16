@@ -5,6 +5,7 @@ yarn-error.log
 /vendor
 /.php_cs.cache
 /.phpunit.result.cache
+/.phpunit.cache/
 package-lock.json
 .DS_Store
 /composer.lock
