@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd" bootstrap="tests/bootstrap.php" beStrictAboutOutputDuringTests="true" failOnWarning="true" cacheDirectory=".phpunit.cache">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd" bootstrap="tests/bootstrap.php" beStrictAboutOutputDuringTests="true" failOnWarning="true" failOnNotice="true" cacheDirectory=".phpunit.cache" failOnDeprecation="true" displayDetailsOnTestsThatTriggerDeprecations="true">
   <php>
     <env name="KERNEL_CLASS" value="Ibexa\Tests\Integration\FieldTypeMatrix\Kernel"/>
-    <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=4&amp;max[direct]=0&amp;verbose=0"/>
   </php>
   <testsuites>
     <testsuite name="integration">
       <directory>tests/integration</directory>
     </testsuite>
   </testsuites>
+  <source baseline="phpunit.integration.baseline.xml" ignoreIndirectDeprecations="false" ignoreSuppressionOfDeprecations="true">
+    <include>
+      <directory>src/lib</directory>
+      <directory>src/bundle</directory>
+    </include>
+  </source>
 </phpunit>
