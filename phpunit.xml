@@ -1,5 +1,15 @@
 <?xml version="1.0"?>
-<phpunit backupGlobals="false" bootstrap="vendor/autoload.php" colors="true" cacheDirectory=".phpunit.cache" backupStaticProperties="false" failOnDeprecation="true" displayDetailsOnTestsThatTriggerDeprecations="true" failOnWarning="true" failOnNotice="true">
+<phpunit
+    backupGlobals="false"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    cacheDirectory=".phpunit.cache"
+    backupStaticProperties="false"
+    failOnDeprecation="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+    failOnWarning="true"
+    failOnNotice="true"
+>
   <php>
     <env name="setupFactory" value="\Ibexa\Tests\FieldTypeMatrix\LegacySetupFactory"/>
     <env name="fixtureDir" value="Legacy"/>
