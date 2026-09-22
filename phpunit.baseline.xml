@@ -13,9 +13,4 @@
    <issue><![CDATA[League\Flysystem\Filesystem::__construct(): Implicitly marking parameter $pathNormalizer as nullable is deprecated, the explicit nullable type must be used instead]]></issue>
   </line>
  </file>
- <file path="vendor/symfony/deprecation-contracts/function.php">
-  <line number="25" hash="c6af5d66288d0667e424978000f29571e4954b81">
-   <issue><![CDATA[Since symfony/validator 7.4: Support for evaluating options in the base Constraint class is deprecated. Initialize properties in the constructor of Ibexa\Core\Repository\Validator\Constraint\LocationIsContainerContentType instead.]]></issue>
-  </line>
- </file>
 </files>
