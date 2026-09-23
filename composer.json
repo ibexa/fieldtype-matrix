@@ -43,6 +43,7 @@
         "ibexa/fieldtype-richtext": "~6.0.x-dev",
         "ibexa/http-cache": "~6.0.x-dev",
         "ibexa/notifications": "~6.0.x-dev",
+        "ibexa/phpstan": "~6.0.x-dev",
         "ibexa/rector": "~6.0.x-dev",
         "ibexa/rest": "~6.0.x-dev",
         "ibexa/search": "~6.0.x-dev",
