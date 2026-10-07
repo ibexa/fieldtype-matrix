@@ -22,7 +22,7 @@ final class LegacySetupFactory extends CoreLegacySetupFactory
     public function getServiceContainer()
     {
         if (!isset(self::$serviceContainer)) {
-            /** @var \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder */
+            /** @var ContainerBuilder $containerBuilder */
             $containerBuilder = new ContainerBuilder();
             $this->externalBuildContainer($containerBuilder);
             self::$serviceContainer = new ServiceContainer(

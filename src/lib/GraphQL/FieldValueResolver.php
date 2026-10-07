@@ -8,17 +8,20 @@ declare(strict_types=1);
 
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
 use Ibexa\Core\Base\Exceptions\BadStateException;
+use Ibexa\FieldTypeMatrix\FieldType\Value;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
+use Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 class FieldValueResolver implements QueryInterface
 {
-    /** @var iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> */
+    /** @var iterable<ContentResolvingStrategyInterface> */
     private iterable $strategies;
 
     /**
-     * @param iterable<\Ibexa\FieldTypeMatrix\GraphQL\Strategy\ContentResolvingStrategyInterface> $strategies
+     * @param iterable<ContentResolvingStrategyInterface> $strategies
      */
     public function __construct(iterable $strategies)
     {
@@ -26,11 +29,13 @@ class FieldValueResolver implements QueryInterface
     }
 
     /**
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\BadStateException
      */
-    public function resolveMatrixFieldValue(object $item, string $fieldDefIdentifier): RowsCollection
-    {
+    public function resolveMatrixFieldValue(
+        object $item,
+        string $fieldDefIdentifier
+    ): RowsCollection {
         $silentRows = [];
         $content = null;
 
@@ -49,7 +54,7 @@ class FieldValueResolver implements QueryInterface
             );
         }
 
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value|null $fieldValue */
+        /** @var Value|null $fieldValue */
         $fieldValue = $content->getFieldValue($fieldDefIdentifier);
         if ($fieldValue === null) {
             return new RowsCollection();

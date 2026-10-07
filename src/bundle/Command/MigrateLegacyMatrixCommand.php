@@ -32,11 +32,11 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
 
     private const CONFIRMATION_ANSWER = 'yes';
 
-    /** @var \Doctrine\DBAL\Connection */
+    /** @var Connection */
     private $connection;
 
     /**
-     * @param \Doctrine\DBAL\Connection $connection
+     * @param Connection $connection
      */
     public function __construct(
         Connection $connection
@@ -71,8 +71,10 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
-    {
+    public function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ) {
         $io = new SymfonyStyle($input, $output);
 
         if ($input->getOption('force') !== true) {
@@ -214,8 +216,10 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
      *
      * @return array
      */
-    private function convertCellsToRows(array $cells, array $columns): array
-    {
+    private function convertCellsToRows(
+        array $cells,
+        array $columns
+    ): array {
         $row = [];
         $rows = [];
         $columnsCount = \count($columns);
@@ -262,8 +266,11 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
      * @param int $minimumRows
      * @param string $columns
      */
-    private function updateContentClassAttribute(int $id, int $minimumRows, string $columns): void
-    {
+    private function updateContentClassAttribute(
+        int $id,
+        int $minimumRows,
+        string $columns
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
             ->update('ezcontentclass_attribute', 'attr')
@@ -301,8 +308,11 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
      *
      * @return array
      */
-    private function getContentObjectAttributes(int $id, int $offset, int $iterationCount): array
-    {
+    private function getContentObjectAttributes(
+        int $id,
+        int $offset,
+        int $iterationCount
+    ): array {
         $query = $this->connection->createQueryBuilder();
         $query
             ->select(['id', 'data_text'])
@@ -319,8 +329,10 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
      * @param int $id
      * @param string $rows
      */
-    private function updateContentObjectAttribute(int $id, string $rows): void
-    {
+    private function updateContentObjectAttribute(
+        int $id,
+        string $rows
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
             ->update('ezcontentobject_attribute', 'attr')
@@ -334,12 +346,14 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
 
     /**
      * @param int $maxSteps
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param OutputInterface $output
      *
-     * @return \Symfony\Component\Console\Helper\ProgressBar
+     * @return ProgressBar
      */
-    protected function getProgressBar(int $maxSteps, OutputInterface $output): ProgressBar
-    {
+    protected function getProgressBar(
+        int $maxSteps,
+        OutputInterface $output
+    ): ProgressBar {
         $progressBar = new ProgressBar($output, $maxSteps);
         $progressBar->setFormat(
             ' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%'

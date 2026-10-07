@@ -42,8 +42,10 @@ final class SearchServiceTest extends BaseTest
         $this->assertEquals($content->id, $searchResults->searchHits[0]->valueObject->id);
     }
 
-    private function createAndPublishContentWithMatrixFieldType(string $title, Value $table): Content
-    {
+    private function createAndPublishContentWithMatrixFieldType(
+        string $title,
+        Value $table
+    ): Content {
         $contentType = $this->createContentTypeWithMatrixFieldType('content_with_table');
 
         $contentService = $this->getRepository()->getContentService();
