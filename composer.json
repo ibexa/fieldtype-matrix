@@ -19,20 +19,20 @@
         }
     },
     "require": {
-        "php": " >=8.3",
+        "php": ">=8.5",
         "ext-json": "*",
         "ext-libxml": "*",
         "ext-simplexml": "*",
         "ibexa/content-forms": "~6.0.x-dev",
         "ibexa/core": "~6.0.x-dev",
         "ibexa/graphql": "~6.0.x-dev",
-        "symfony/config": "^7.4 || ^8.1",
-        "symfony/console": "^7.4 || ^8.1",
-        "symfony/dependency-injection": "^7.4 || ^8.1",
-        "symfony/form": "^7.4 || ^8.1",
-        "symfony/http-kernel": "^7.4 || ^8.1",
-        "symfony/options-resolver": "^7.4 || ^8.1",
-        "symfony/yaml": "^7.4 || ^8.1"
+        "symfony/config": "^8.1",
+        "symfony/console": "^8.1",
+        "symfony/dependency-injection": "^8.1",
+        "symfony/form": "^8.1",
+        "symfony/http-kernel": "^8.1",
+        "symfony/options-resolver": "^8.1",
+        "symfony/yaml": "^8.1"
     },
     "require-dev": {
         "ibexa/admin-ui": "~6.0.x-dev",
@@ -54,7 +54,7 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^11.5",
-        "symfony/runtime": "^7.4 || ^8.1"
+        "symfony/runtime": "^8.1"
     },
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
