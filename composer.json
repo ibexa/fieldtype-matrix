@@ -38,6 +38,7 @@
     },
     "require-dev": {
         "ibexa/ci-scripts": "^0.2@dev",
+        "ibexa/doctrine-migrations": "~4.6.x-dev",
         "ibexa/doctrine-schema": "~4.6.0@dev",
         "ibexa/admin-ui": "~4.6.0@dev",
         "ibexa/user": "~4.6.0@dev",
