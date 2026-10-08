@@ -14,8 +14,10 @@ use Ibexa\FieldTypeMatrix\FieldType\Value as MatrixValue;
 
 class InputHandler implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         return new MatrixValue(
             array_map(
                 static function (array $row) {

@@ -38,6 +38,7 @@
     },
     "require-dev": {
         "ibexa/ci-scripts": "^0.2@dev",
+        "ibexa/doctrine-migrations": "~4.6.x-dev",
         "ibexa/doctrine-schema": "~4.6.0@dev",
         "ibexa/admin-ui": "~4.6.0@dev",
         "ibexa/user": "~4.6.0@dev",
@@ -47,7 +48,7 @@
         "ibexa/test-core": "^4.6.x-dev",
         "ibexa/http-cache": "~4.6.0@dev",
         "ibexa/design-engine": "~4.6.0@dev",
-        "ibexa/code-style": "^1.0",
+        "ibexa/code-style": "~2.3.1",
         "ibexa/twig-components": "~4.6.x-dev",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5",

@@ -15,7 +15,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class MatrixFieldDefinitionSchemaWorker implements Worker
 {
-    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
+    /** @var NameHelper */
     private $nameHelper;
 
     public function __construct(NameHelper $nameHelper)
@@ -23,12 +23,14 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
         $this->nameHelper = $nameHelper;
     }
 
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $typeName = $this->typeName($args);
         $schema->addType(new Builder\Input\Type($typeName, 'object'));
 
-        /** @var \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition */
+        /** @var FieldDefinition $fieldDefinition */
         $fieldDefinition = $args['FieldDefinition'];
         foreach ($fieldDefinition->getFieldSettings()['columns'] as $column) {
             $schema->addFieldToType(
@@ -42,8 +44,10 @@ class MatrixFieldDefinitionSchemaWorker implements Worker
         }
     }
 
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return
             isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType
