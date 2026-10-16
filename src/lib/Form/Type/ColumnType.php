@@ -22,8 +22,10 @@ final class ColumnType extends AbstractType
     /**
      * @param array<string, mixed> $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         $builder
             ->add('name', TextType::class, [
                 'label' => /** @Desc("Name") */ 'fieldtype.column.name',

@@ -10,6 +10,4 @@ namespace Ibexa\Bundle\FieldTypeMatrix;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class IbexaFieldTypeMatrixBundle extends Bundle
-{
-}
+final class IbexaFieldTypeMatrixBundle extends Bundle {}

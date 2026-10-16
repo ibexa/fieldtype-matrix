@@ -16,7 +16,7 @@ use ArrayObject;
 final class RowsCollection extends ArrayObject
 {
     /**
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $elements
+     * @param Row[] $elements
      */
     public function __construct(array $elements = [])
     {

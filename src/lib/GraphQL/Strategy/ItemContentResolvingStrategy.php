@@ -15,7 +15,7 @@ final class ItemContentResolvingStrategy implements ContentResolvingStrategyInte
 {
     public function resolveContent(object $item): Content
     {
-        /** @var \Ibexa\GraphQL\Value\Item $item */
+        /** @var Item $item */
         return $item->getContent();
     }
 

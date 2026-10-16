@@ -12,12 +12,13 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
+use Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
 
 final class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
     /**
-     * @param iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> $strategies
+     * @param iterable<FieldTypeToContentTypeStrategyInterface> $strategies
      */
     public function __construct(
         FieldDefinitionMapper $innerMapper,
@@ -38,7 +39,7 @@ final class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper 
     }
 
     /**
-     * @throws \Ibexa\Core\Base\Exceptions\NotFoundException
+     * @throws NotFoundException
      */
     public function mapToFieldValueType(FieldDefinition $fieldDefinition): ?string
     {

@@ -23,22 +23,28 @@ final readonly class MatrixConverter implements Converter
      *       Rather allow invalid value or omit it to let validation layer in FieldType handle issues when user tried
      *       to publish the given draft.
      */
-    public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue): void
-    {
+    public function toStorageValue(
+        FieldValue $value,
+        StorageFieldValue $storageFieldValue
+    ): void {
         $entries = $value->data['entries'] ?? [];
 
         $storageFieldValue->dataText = json_encode(array_values($entries)) ?: '';
     }
 
-    public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue): void
-    {
+    public function toFieldValue(
+        StorageFieldValue $value,
+        FieldValue $fieldValue
+    ): void {
         $fieldValue->data = [
             'entries' => $value->dataText === null ? [] : json_decode($value->dataText, true),
         ];
     }
 
-    public function toStorageFieldDefinition(FieldDefinition $fieldDef, StorageFieldDefinition $storageDef): void
-    {
+    public function toStorageFieldDefinition(
+        FieldDefinition $fieldDef,
+        StorageFieldDefinition $storageDef
+    ): void {
         $fieldSettings = $fieldDef->fieldTypeConstraints->fieldSettings;
 
         $columns = array_values($fieldSettings['columns']);
@@ -55,8 +61,10 @@ final readonly class MatrixConverter implements Converter
         $storageDef->dataText5 = json_encode($columns) ?: '';
     }
 
-    public function toFieldDefinition(StorageFieldDefinition $storageDef, FieldDefinition $fieldDef): void
-    {
+    public function toFieldDefinition(
+        StorageFieldDefinition $storageDef,
+        FieldDefinition $fieldDef
+    ): void {
         $fieldDef->fieldTypeConstraints->fieldSettings = new FieldSettings(
             [
                 'minimum_rows' => (int)$storageDef->dataInt1,

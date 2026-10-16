@@ -56,8 +56,10 @@ final class MigrateLegacyMatrixCommand extends Command
             );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output): int
-    {
+    public function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $io = new SymfonyStyle($input, $output);
 
         if ($input->getOption('force') !== true) {
@@ -212,8 +214,10 @@ final class MigrateLegacyMatrixCommand extends Command
      *
      * @return list<array<string, string>>
      */
-    private function convertCellsToRows(array $cells, array $columns): array
-    {
+    private function convertCellsToRows(
+        array $cells,
+        array $columns
+    ): array {
         $row = [];
         $rows = [];
         $columnsCount = \count($columns);
@@ -255,8 +259,11 @@ final class MigrateLegacyMatrixCommand extends Command
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    private function updateContentClassAttribute(int $id, int $minimumRows, string $columns): void
-    {
+    private function updateContentClassAttribute(
+        int $id,
+        int $minimumRows,
+        string $columns
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
             ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE)
@@ -285,8 +292,11 @@ final class MigrateLegacyMatrixCommand extends Command
     /**
      * @return list<array<string, mixed>>
      */
-    private function getContentObjectAttributes(int $id, int $offset, int $iterationCount): array
-    {
+    private function getContentObjectAttributes(
+        int $id,
+        int $offset,
+        int $iterationCount
+    ): array {
         $query = $this->connection->createQueryBuilder();
         $query
             ->select('id', 'data_text')
@@ -299,8 +309,10 @@ final class MigrateLegacyMatrixCommand extends Command
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    private function updateContentObjectAttribute(int $id, string $rows): void
-    {
+    private function updateContentObjectAttribute(
+        int $id,
+        string $rows
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
             ->update(Gateway::CONTENT_FIELD_TABLE)
@@ -312,8 +324,10 @@ final class MigrateLegacyMatrixCommand extends Command
         $query->executeStatement();
     }
 
-    protected function getProgressBar(int $maxSteps, OutputInterface $output): ProgressBar
-    {
+    protected function getProgressBar(
+        int $maxSteps,
+        OutputInterface $output
+    ): ProgressBar {
         $progressBar = new ProgressBar($output, $maxSteps);
         $progressBar->setFormat(
             ' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%'
