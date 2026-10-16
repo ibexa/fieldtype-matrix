@@ -15,8 +15,10 @@ use Ibexa\Contracts\Core\Search;
 
 final class Indexable implements IndexableInterface
 {
-    public function getIndexData(Field $field, FieldDefinition $fieldDefinition): array
-    {
+    public function getIndexData(
+        Field $field,
+        FieldDefinition $fieldDefinition
+    ): array {
         $entries = $field->value->data['entries'] ?? [];
 
         $cells = [];

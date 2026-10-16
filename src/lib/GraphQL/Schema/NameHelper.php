@@ -14,8 +14,10 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
 
 class NameHelper
 {
-    public function matrixFieldDefinitionType(ContentType $contentType, FieldDefinition $fieldDefinition): string
-    {
+    public function matrixFieldDefinitionType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): string {
         $caseConverter = new CamelCaseToSnakeCaseNameConverter(null, false);
 
         return sprintf(
@@ -25,8 +27,10 @@ class NameHelper
         );
     }
 
-    public function matrixFieldDefinitionInputType(ContentType $contentType, FieldDefinition $fieldDefinition): string
-    {
+    public function matrixFieldDefinitionInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): string {
         $caseConverter = new CamelCaseToSnakeCaseNameConverter(null, false);
 
         return sprintf(

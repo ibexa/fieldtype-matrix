@@ -115,8 +115,11 @@ class Type extends FieldType
     /**
      * {@inheritdoc}
      */
-    public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
-    {
+    public function getName(
+        SPIValue $value,
+        FieldDefinition $fieldDefinition,
+        string $languageCode
+    ): string {
         return '';
     }
 
@@ -156,17 +159,19 @@ class Type extends FieldType
      */
     public function isEmptyValue(SPIValue $value): bool
     {
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
+        /** @var Value $value */
         return $value->getRows()->count() === 0;
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value $value
+     * @param Value $value
      */
-    public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
-    {
+    public function validate(
+        FieldDefinition $fieldDefinition,
+        SPIValue $value
+    ) {
         if ($this->isEmptyValue($value)) {
             return [];
         }
@@ -198,7 +203,7 @@ class Type extends FieldType
      */
     public function toHash(SPIValue $value)
     {
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
+        /** @var Value $value */
         $rows = $value->getRows();
 
         $hash['entries'] = [];

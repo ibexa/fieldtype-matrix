@@ -12,19 +12,20 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
+use Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper;
 
 class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper
 {
-    /** @var \Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper */
+    /** @var NameHelper */
     private $nameHelper;
 
-    /** @var iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> */
+    /** @var iterable<FieldTypeToContentTypeStrategyInterface> */
     private iterable $strategies;
 
     /**
-     * @param iterable<\Ibexa\FieldTypeMatrix\FieldType\Mapper\FieldTypeToContentTypeStrategyInterface> $strategies
+     * @param iterable<FieldTypeToContentTypeStrategyInterface> $strategies
      */
     public function __construct(
         FieldDefinitionMapper $innerMapper,
@@ -71,8 +72,10 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
         );
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         if (!$this->canMap($fieldDefinition) && \is_callable('parent::mapToFieldValueInputType')) {
             return parent::mapToFieldValueInputType($contentType, $fieldDefinition);
         }

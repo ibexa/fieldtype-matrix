@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Ibexa\FieldTypeMatrix\FieldType;
 
 use Ibexa\Core\FieldType\Value as BaseValue;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class Value extends BaseValue
@@ -16,7 +17,7 @@ class Value extends BaseValue
     protected RowsCollection $rows;
 
     /**
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $rows
+     * @param Row[] $rows
      */
     public function __construct(array $rows = [])
     {

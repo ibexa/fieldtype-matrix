@@ -38,7 +38,7 @@ class MatrixFieldType extends AbstractType
     }
 
     /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -48,14 +48,19 @@ class MatrixFieldType extends AbstractType
         $resolver->setDefault('translation_domain', 'ibexa_matrix_fieldtype');
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
+    public function buildView(
+        FormView $view,
+        FormInterface $form,
+        array $options
+    ): void {
         $view->vars['columns'] = $options['columns'];
         $view->vars['minimum_rows'] = $options['minimum_rows'];
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         $builder
             ->add('entries', MatrixCollectionType::class, [
                 'columns' => $options['columns'],
@@ -71,7 +76,7 @@ class MatrixFieldType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($columnsByIdentifier) {
             $value = $event->getData();
 
-            /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\Row $originalRow */
+            /** @var Row $originalRow */
             foreach ($value->getRows() as $originalRow) {
                 $cells = $originalRow->getCells();
                 $rows[] = new Row(array_intersect_key($cells, $columnsByIdentifier));

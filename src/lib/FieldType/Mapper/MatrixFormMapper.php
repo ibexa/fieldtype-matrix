@@ -27,11 +27,13 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * - field settings
      * - default value.
      *
-     * @param \Symfony\Component\Form\FormInterface<\Ibexa\AdminUi\Form\Data\FieldDefinitionData> $fieldDefinitionForm form for current FieldDefinition
-     * @param \Ibexa\AdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
+     * @param FormInterface<FieldDefinitionData> $fieldDefinitionForm form for current FieldDefinition
+     * @param FieldDefinitionData $data underlying data for current FieldDefinition form
      */
-    public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
-    {
+    public function mapFieldDefinitionForm(
+        FormInterface $fieldDefinitionForm,
+        FieldDefinitionData $data
+    ): void {
         $isTranslation = $data->contentTypeData->languageCode !== $data->contentTypeData->mainLanguageCode;
         $fieldDefinitionForm
             ->add('minimum_rows', IntegerType::class, [
@@ -61,11 +63,13 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * Maps Field form to current FieldType.
      * Allows to add form fields for content edition.
      *
-     * @param \Symfony\Component\Form\FormInterface<\Ibexa\Contracts\ContentForms\Data\Content\FieldData> $fieldForm form for the current Field
-     * @param \Ibexa\Contracts\ContentForms\Data\Content\FieldData $data underlying data for current Field form
+     * @param FormInterface<FieldData> $fieldForm form for the current Field
+     * @param FieldData $data underlying data for current Field form
      */
-    public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
-    {
+    public function mapFieldValueForm(
+        FormInterface $fieldForm,
+        FieldData $data
+    ): void {
         $fieldDefinition = $data->fieldDefinition;
         $formConfig = $fieldForm->getConfig();
 

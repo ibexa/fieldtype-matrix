@@ -39,13 +39,18 @@ class MatrixEntryType extends AbstractType
         parent::configureOptions($resolver);
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
+    public function buildView(
+        FormView $view,
+        FormInterface $form,
+        array $options
+    ): void {
         $view->vars['columns'] = $options['columns'];
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         foreach ($options['columns'] as $column) {
             $builder->add($column['identifier'], TextType::class, [
                 'label' => false,

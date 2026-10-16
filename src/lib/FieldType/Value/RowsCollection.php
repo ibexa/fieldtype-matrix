@@ -17,9 +17,9 @@ use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 class RowsCollection extends ArrayObject
 {
     /**
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value\Row[] $elements
+     * @param Row[] $elements
      *
-     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
+     * @throws InvalidArgumentType
      */
     public function __construct(array $elements = [])
     {
@@ -34,10 +34,12 @@ class RowsCollection extends ArrayObject
      * @param mixed $offset
      * @param mixed $value
      *
-     * @throws \Ibexa\Core\Base\Exceptions\InvalidArgumentType
+     * @throws InvalidArgumentType
      */
-    public function offsetSet($offset, $value): void
-    {
+    public function offsetSet(
+        $offset,
+        $value
+    ): void {
         if (!$value instanceof Row) {
             throw new InvalidArgumentType(
                 '$value',

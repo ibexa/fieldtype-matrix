@@ -10,8 +10,6 @@ namespace Ibexa\Bundle\FieldTypeMatrix;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class IbexaFieldTypeMatrixBundle extends Bundle
-{
-}
+class IbexaFieldTypeMatrixBundle extends Bundle {}
 
 class_alias(IbexaFieldTypeMatrixBundle::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle');
