@@ -15,7 +15,7 @@ final class SilentRow extends Row
     /**
      * @return array<string, mixed>|string
      */
-    public function __get(string $name): array|string
+    public function __get(string $name): array | string
     {
         return $this->cells[$name] ?? '';
     }

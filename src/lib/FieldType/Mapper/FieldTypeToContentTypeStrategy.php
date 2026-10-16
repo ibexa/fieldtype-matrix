@@ -14,9 +14,7 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 
 final readonly class FieldTypeToContentTypeStrategy implements FieldTypeToContentTypeStrategyInterface
 {
-    public function __construct(private ContentTypeService $contentTypeService)
-    {
-    }
+    public function __construct(private ContentTypeService $contentTypeService) {}
 
     public function findContentTypeOf(FieldDefinition $fieldDefinition): ?ContentType
     {

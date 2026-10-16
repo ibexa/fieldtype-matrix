@@ -13,9 +13,7 @@ class Row
     /**
      * @param array<string, mixed> $cells
      */
-    public function __construct(protected array $cells = [])
-    {
-    }
+    public function __construct(protected array $cells = []) {}
 
     /**
      * @return array<string, mixed>
@@ -36,7 +34,7 @@ class Row
     /**
      * @return array<string, mixed>|string
      */
-    public function __get(string $name): array|string
+    public function __get(string $name): array | string
     {
         return $this->cells[$name];
     }
