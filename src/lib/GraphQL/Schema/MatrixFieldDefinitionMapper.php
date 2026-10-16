@@ -65,8 +65,10 @@ final class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper 
         );
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         if (!$this->canMap($fieldDefinition)) {
             return parent::mapToFieldValueInputType($contentType, $fieldDefinition);
         }
