@@ -28,8 +28,10 @@ final readonly class MatrixFormMapper implements FieldDefinitionFormMapperInterf
      * - field settings
      * - default value.
      */
-    public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
-    {
+    public function mapFieldDefinitionForm(
+        FormInterface $fieldDefinitionForm,
+        FieldDefinitionData $data
+    ): void {
         $isTranslation = $data->contentTypeData->languageCode !== $data->contentTypeData->mainLanguageCode;
         $fieldDefinitionForm
             ->add('minimum_rows', IntegerType::class, [
@@ -59,8 +61,10 @@ final readonly class MatrixFormMapper implements FieldDefinitionFormMapperInterf
      * Maps Field form to current FieldType.
      * Allows to add form fields for content edition.
      */
-    public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
-    {
+    public function mapFieldValueForm(
+        FormInterface $fieldForm,
+        FieldData $data
+    ): void {
         $fieldDefinition = $data->getFieldDefinition();
         $fieldSettings = $fieldDefinition->getFieldSettings();
         $formConfig = $fieldForm->getConfig();
