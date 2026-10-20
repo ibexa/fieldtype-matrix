@@ -29,9 +29,7 @@ final class Type extends FieldType
         ],
     ];
 
-    public function __construct(private readonly string $fieldTypeIdentifier)
-    {
-    }
+    public function __construct(private readonly string $fieldTypeIdentifier) {}
 
     protected function getSortInfo(FieldTypeValue $value): string
     {
@@ -91,8 +89,11 @@ final class Type extends FieldType
         return $this->fieldTypeIdentifier;
     }
 
-    public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
-    {
+    public function getName(
+        SPIValue $value,
+        FieldDefinition $fieldDefinition,
+        string $languageCode
+    ): string {
         return '';
     }
 
@@ -119,17 +120,19 @@ final class Type extends FieldType
 
     public function isEmptyValue(SPIValue $value): bool
     {
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
+        /** @var Value $value */
         return $value->getRows()->count() === 0;
     }
 
     /**
-     * @param \Ibexa\FieldTypeMatrix\FieldType\Value $value
+     * @param Value $value
      *
-     * @return \Ibexa\Core\FieldType\ValidationError[]
+     * @return ValidationError[]
      */
-    public function validate(FieldDefinition $fieldDefinition, SPIValue $value): array
-    {
+    public function validate(
+        FieldDefinition $fieldDefinition,
+        SPIValue $value
+    ): array {
         if ($this->isEmptyValue($value)) {
             return [];
         }
@@ -161,7 +164,7 @@ final class Type extends FieldType
      */
     public function toHash(SPIValue $value): array
     {
-        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value $value */
+        /** @var Value $value */
         $rows = $value->getRows();
         $hash['entries'] = [];
 

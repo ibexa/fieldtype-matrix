@@ -18,8 +18,10 @@ final readonly class InputHandler implements FieldTypeInputHandler
     /**
      * @param array<string, mixed> $input
      */
-    public function toFieldValue($input, mixed $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        mixed $inputFormat = null
+    ): Value {
         return new MatrixValue(
             array_map(
                 static function (array $row): Row {

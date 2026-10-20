@@ -56,8 +56,10 @@ final class MigrateLegacyMatrixCommand extends Command
             );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output): int
-    {
+    public function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $io = new SymfonyStyle($input, $output);
 
         if ($input->getOption('force') !== true) {
@@ -212,8 +214,10 @@ final class MigrateLegacyMatrixCommand extends Command
      *
      * @return list<array<string, string>>
      */
-    private function convertCellsToRows(array $cells, array $columns): array
-    {
+    private function convertCellsToRows(
+        array $cells,
+        array $columns
+    ): array {
         $row = [];
         $rows = [];
         $columnsCount = \count($columns);
@@ -240,13 +244,13 @@ final class MigrateLegacyMatrixCommand extends Command
     {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->select([
+            ->select(
                 'attr.id',
                 'attr.identifier',
                 'attr.data_int1 as minimum_rows',
                 'attr.data_text5 as columns',
                 'class.identifier as contenttype_identifier',
-            ])
+            )
             ->from(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
             ->join('attr', ContentTypeGateway::CONTENT_TYPE_TABLE, 'class', 'class.id = attr.content_type_id')
             ->where('attr.data_type_string = :identifier')
@@ -255,14 +259,17 @@ final class MigrateLegacyMatrixCommand extends Command
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    private function updateContentClassAttribute(int $id, int $minimumRows, string $columns): void
-    {
+    private function updateContentClassAttribute(
+        int $id,
+        int $minimumRows,
+        string $columns
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE, 'attr')
-            ->set('attr.data_int1', ':minimum_rows')
-            ->set('attr.data_text5', ':columns')
-            ->where('attr.id = :id')
+            ->update(ContentTypeGateway::FIELD_DEFINITION_TABLE)
+            ->set('data_int1', ':minimum_rows')
+            ->set('data_text5', ':columns')
+            ->where('id = :id')
             ->setParameter('id', $id)
             ->setParameter('minimum_rows', $minimumRows)
             ->setParameter('columns', $columns);
@@ -285,11 +292,14 @@ final class MigrateLegacyMatrixCommand extends Command
     /**
      * @return list<array<string, mixed>>
      */
-    private function getContentObjectAttributes(int $id, int $offset, int $iterationCount): array
-    {
+    private function getContentObjectAttributes(
+        int $id,
+        int $offset,
+        int $iterationCount
+    ): array {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->select(['id', 'data_text'])
+            ->select('id', 'data_text')
             ->from(Gateway::CONTENT_FIELD_TABLE, 'attr')
             ->where('attr.content_type_field_definition_id = :ct_field_def_id')
             ->setParameter('ct_field_def_id', $id)
@@ -299,21 +309,25 @@ final class MigrateLegacyMatrixCommand extends Command
         return $query->executeQuery()->fetchAllAssociative();
     }
 
-    private function updateContentObjectAttribute(int $id, string $rows): void
-    {
+    private function updateContentObjectAttribute(
+        int $id,
+        string $rows
+    ): void {
         $query = $this->connection->createQueryBuilder();
         $query
-            ->update(Gateway::CONTENT_FIELD_TABLE, 'attr')
-            ->set('attr.data_text', ':rows')
-            ->where('attr.id = :id')
+            ->update(Gateway::CONTENT_FIELD_TABLE)
+            ->set('data_text', ':rows')
+            ->where('id = :id')
             ->setParameter('id', $id)
             ->setParameter('rows', $rows);
 
         $query->executeStatement();
     }
 
-    protected function getProgressBar(int $maxSteps, OutputInterface $output): ProgressBar
-    {
+    protected function getProgressBar(
+        int $maxSteps,
+        OutputInterface $output
+    ): ProgressBar {
         $progressBar = new ProgressBar($output, $maxSteps);
         $progressBar->setFormat(
             ' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%'
