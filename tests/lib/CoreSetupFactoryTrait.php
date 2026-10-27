@@ -54,7 +54,6 @@ trait CoreSetupFactoryTrait
         $loader->load('storage_engines/shortcuts.yml');
         $loader->load('search_engines/common.yml');
         $loader->load('settings.yml');
-        $loader->load('utils.yml');
         $loader->load('policies.yml');
         $loader->load('thumbnails.yml');
         $loader->load('search_engines/legacy.yml');
